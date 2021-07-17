@@ -1,30 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>GameFinder | Login</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui,shrink-to-fit=no,viewport-fit=cover">
-        <link rel="stylesheet" href="style.css">
-    </head>
 
-    <body>
-        <div class="limiter">
-            <div class="container-login">
-                <div class="login-title">
-                <h1>GAME FINDER</h1>
+<head>
+    <title>GameFinder | Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui,shrink-to-fit=no,viewport-fit=cover">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="containerLogin">
+            <div class="loginTitle">
+                <h1>GAME<strong>FINDER</strong></h1>
+            </div>
+            <form class="wrapLoginForm">
+                <div class="userData">
+                    <img src="media/login/userAvatar.png" alt="Avatar icon">
+                    <input class="inputLogin" type="text" name="UserOrEmail" placeholder="Username or email"
+                        name="userData" required>
                 </div>
-                <div class="login-form">
-                    <div class="wrap-userData">
-                        <img src="media/login/userAvatar.svg" alt="Avatar icon">
-                        <input class="inputLogin" type="text" name="UserOrEmail" placeholder="Username or email" name="userData" required>
+                <div class="userPass">
+                    <img src="media/login/passKey.png" alt="Key icon">
+                    <input type="password" placeholder="Password" name="userPassword" required>
+                    <img src="media/login/showpass.png" alt="Show password">
+                </div>
+            </form>
+            <div class="loginActions">
+                <div>
+                    <a href="">Register now</a>
+                    <a href="">Forgot password?</a>
+                </div>
+            </div>
+            <div class="LineDivider">
+                <hr> or
+                <hr>
+            </div>
+            <div class="loginOptions">
+                <!--estilos que formateen el boton que sean iguales (radius,etc) y una sub clase para el color(color azul para fb,celeste twitter)-->
+                <div class="loginFacebook">
+                    <div class="divImagen">
+                        <img src="media/login/FacebookLogo.png" alt="Facebook logo">
                     </div>
-                    <div class="wrap-userPass">
-                        <img src="media/login/passKey.svg" alt="Key icon">
-                        <input type="password" placeholder="Password" name="userPassword" required>
-                        <img src="media/login/showpass.svg" alt="Show password">
+                    <div class="divtext">
+                        <input class="LoginWithFb" type="button" name="loginFacebook">
                     </div>
+                </div>
+                <div class="loginTwitter">
+                    <div class="divImagen">
+                        <img src="media/login/TwitterLogo.png" alt="Twitter logo">
+                    </div>
+                    <div class="divtext">
+                        <input class="LoginWithTw" type="button" name="loginTwitter">
+                    </div>
+                </div>
+                <div class="loginGoogle">
+                    <div class="divImagen">
+                        <img src="media/login/GoogleLogo.png" alt="Google logo">
+                    </div>
+                    <div class="divtext"></div>
+                    <input class="LoginWithG" type="button" name="loginGoogle">
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+    <div class="containerCarrousel">
+        <!-- :D -->
+        <img src="media/login/carrousel1.png" alt="Biomutant image">
+    </div>
+    </div>
+</body>
+
 </html>
