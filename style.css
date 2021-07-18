@@ -58,8 +58,8 @@ body {
 
 .containerLogin {
   display: flex;
-  align-content: center;
   flex-direction: column;
+  align-items: center;
   text-align: center;
   width: 630px;
   height: 660px;
@@ -70,12 +70,14 @@ body {
   border-radius: 10px 0px 0px 10px;
 }
 
-.wrapLoginForm{
-  justify-content: center;
+input{
+  border: none;
+  outline:none;
 }
 
+/* Si se rompe el centrado, fijarse que el padre tenga display flex, flex direction column y align items center*/
+
 .loginTitle {
-  /*font-size: 45px;*/
   font-style: normal;
   font-weight: 400;
   line-height: 61px;
@@ -110,7 +112,7 @@ body {
   height: 20px;
   width: 20px;
   padding-top: 16px;
-  box-sizing: content-box;
+  box-sizing: content-box; /* F */
 }
 
 .inputLogin{
@@ -156,21 +158,66 @@ body {
   justify-content: right;
 }
 
+.actions{
+  display: flex;
+  margin-top: 47px;
+}
+
+.rememberCheckbox{
+  color: #929699;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+
+}
+
+.submitButton{
+  height: 40px;
+  width: 100px;
+  left: 0px;
+  top: 0px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+  border-radius: 8px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#errorMessage1, #errorMessage2 {
+	color: red;
+}
+
+.options{
+  display: flex;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  margin-top: 15px;
+}
+
+.registerNowText{
+  text-align: left;
+}
+
+.forgotPassText{
+  text-align: right;
+}
+
 .lineDivider {
   display: flex;
 }
-
-.containerCarrousel {
-  border-radius: 0px 10px 10px 0px;
-  overflow: hidden; /* F: Para lo que sobre */
-  width: 453px;
-  height: 660px;
-}
-
-/*
-Lo mejor es centrar el título y los input, en vez de andar poniendo padding derecho o izq.
-Lo que si, usar padding top o bottom.
-*/
 
 .loginFacebook {
   display: flex;
@@ -194,4 +241,11 @@ Lo que si, usar padding top o bottom.
   width: 240;
   height: 40;
     margin-top: 24px;
+}
+
+.containerCarrousel {
+  border-radius: 0px 10px 10px 0px;
+  overflow: hidden; /* F: Para lo que sobre */
+  width: 453px;
+  height: 660px;
 }

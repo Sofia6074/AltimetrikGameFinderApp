@@ -27,6 +27,7 @@
                         <input class="input" type="email" name="Email" placeholder="Email" name="userMail" required>
                     </div>
                 </div>
+                <div id="errorMessage1"></div> 
                 <div class="userPass">
                     <div class="image">
                         <img src="media/login/key.svg" class="imageClass" alt="Key icon">
@@ -38,11 +39,21 @@
                         <img src="media/login/showpass.svg" class="imageClassKey" alt="Show password">
                     </div>
                 </div>
+                <div id="errorMessage2"></div>
             </form>
             <div class="loginActions">
-                <div>
-                    <a href="">Register now</a>
-                    <a href="">Forgot password?</a>
+                <div class="actions">
+                    <div class="checkDiv">
+                        <input type="checkbox" id="rememberCheckbox">
+                        <label class="rememberCheckbox" for="rememberCheckbox">Remember me</label>
+                    </div>
+                    <div class="loginButton">
+                        <input class="submitButton" type="submit" value="LOGIN">
+                    </div>
+                </div>
+                <div class="options">
+                    <a class="registerNowText" href="">Register now</a>
+                    <a class="forgotPassText" href="">Forgot password?</a>
                 </div>
             </div>
             <div class="LineDivider">
