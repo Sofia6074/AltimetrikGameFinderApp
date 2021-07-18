@@ -100,7 +100,10 @@ input{
   border-radius: 8px;
   border: 1px solid #8F8F8F;
   box-sizing: border-box; /* F */
-  border-radius: 8px;
+}
+
+.userMail:active{
+  border: 1px solid #FFFFFF;
 }
 
 .image{
@@ -122,6 +125,10 @@ input{
   background-color: transparent;
 }
 
+.inputLogin:active{
+  border-left: 1px solid #FFFFFF;
+}
+
 .input{
   background-color: transparent;
   margin-top: 15px;
@@ -139,10 +146,18 @@ input{
   margin-top: 32px;
 }
 
+.userPass:active{
+  border: 1px solid #FFFFFF;
+}
+
 .inputPass{
   border-left: 1px solid #8F8F8F;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.inputPass:active{
+  border-left: 1px solid #FFFFFF;
 }
 
 .imageKey{
@@ -188,14 +203,14 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked{
-  height: 20px;
-  width: 20px;
-  left: 330px;
-  top: 493px;
   background: #7CD235;
   background-image: "media/login/check.png";
   border-radius: 4px;
   border: none;
+}
+
+input[type="checkbox"]:focus{
+  border: 1px solid #FFFFFF;
 }
 
 .rememberCheckboxText{
@@ -224,6 +239,19 @@ input[type="checkbox"]:checked{
   letter-spacing: 0px;
   text-align: center;
   color: #FFFFFF;
+}
+
+.submitButton:hover{
+  background: #7CD235;
+}
+
+.submitButton:active{
+  box-shadow: inset 0px 4px 4px rgba(43, 179, 79, 0.63);
+  background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+}
+
+.submitButton:focus{
+  border: 1px solid #FFFFFF;
 }
 
 #errorMessage1, #errorMessage2 {
@@ -350,4 +378,18 @@ hr {
   overflow: hidden; /* F: Para lo que sobre */
   width: 453px;
   height: 660px;
+}
+
+@media (max-width: 1023px) {
+  .carrousel { 
+     display: none;
+  }
+
+  .containerCarrousel{
+    display: none;
+  }
+  
+  .containerLogin{
+    border-radius: 10px;
+  }
 }
