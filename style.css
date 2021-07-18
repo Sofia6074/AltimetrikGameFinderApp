@@ -147,7 +147,7 @@ input{
 .imageKey{
   height: 52px;
   width: 52px;
-  justify-content: right;
+  margin-left: auto;
 }
 
 .imageClassKey{
@@ -159,17 +159,46 @@ input{
 }
 
 .actions{
+  display: flex;
   height: 52px;
   width: 330px;
   left: 0px;
   top: 0px;
   border-radius: 8px;
-  display: flex;
   margin-top: 47px;
   justify-content: space-between;
 }
 
-.rememberCheckbox{
+.checkDiv{
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+  left: 330px;
+  top: 493px;
+  border: 1px solid #8F8F8F;
+  outline: none;
+  border-radius: 4px;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"]:checked{
+  height: 20px;
+  width: 20px;
+  left: 330px;
+  top: 493px;
+  background: #7CD235;
+  background-image: "media/login/check.png";
+  border-radius: 4px;
+  border: none;
+}
+
+.rememberCheckboxText{
+  margin-left: 10px;
   color: #929699;
   font-size: 14px;
   font-style: normal;
@@ -177,7 +206,6 @@ input{
   line-height: 19px;
   letter-spacing: 0px;
   text-align: left;
-
 }
 
 .submitButton{
@@ -224,33 +252,34 @@ input{
   text-decoration:none
 }
 
-.separator {
+.lineDivider{
   display: flex;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
+  margin-top: 31px;
+}
+
+.dividerText{
+  height: 16px;
+  width: 61px;
+  left: 464px;
+  top: 578px;
   font-family: Roboto;
-  font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
+  font-size: 14px;
   line-height: 16px;
-  letter-spacing: 0px;
   text-align: center;
   color: #FFFFFF;
 }
 
-.separator::before,
-.separator::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid rgb(255, 255, 255);
-}
-
-.separator:not(:empty)::before {
-  margin-right: .25em;
-}
-
-.separator:not(:empty)::after {
-  margin-left: .25em;
+hr {
+  height: 2px;
+  width: 134px;
+  left: 330px;
+  top: 588px;
+  border-radius: 0px;
+  border: 1px solid #FFFFFF;
 }
 
 .loginFacebook {
