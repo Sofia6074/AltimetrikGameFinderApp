@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <script src="script.js"></script>
     <div class="limiter">
         <div class="containerLogin">
             <div class="loginTitle">
@@ -33,10 +34,10 @@
                         <img src="media/login/key.svg" class="imageClass" alt="Key icon">
                     </div>
                     <div class="inputPass">
-                        <input class="input" type="password" placeholder="Password" name="userPassword" required>
+                        <input class="input" type="password" placeholder="Password" name="userPassword" id="passInput" required>
                     </div>
-                    <div class="imageKey">
-                        <img src="media/login/showpass.svg" class="imageClassKey" alt="Show password">
+                    <div class="imageShowPass">
+                        <img onclick="togglePass()" src="media/login/showpass.svg" class="imageClassShowPass" alt="Show password">
                     </div>
                 </div>
                 <div id="errorMessage2"></div>
