@@ -19,15 +19,24 @@
                 <h1>GAME<strong>FINDER</strong></h1>
             </div>
             <form class="wrapLoginForm">
-                <div class="userData">
-                    <img src="media/login/userAvatar.png" alt="Avatar icon">
-                    <input class="inputLogin" type="text" name="UserOrEmail" placeholder="Username or email"
-                        name="userData" required>
+                <div class="userMail">
+                    <div class="image">
+                        <img src="media/login/userAvatar.svg" class="imageClass" alt="Avatar icon">
+                    </div>
+                    <div class="inputLogin">
+                        <input class="input" type="email" name="Email" placeholder="Email" name="userMail" required>
+                    </div>
                 </div>
                 <div class="userPass">
-                    <img src="media/login/passKey.png" alt="Key icon">
-                    <input type="password" placeholder="Password" name="userPassword" required>
-                    <img src="media/login/showpass.png" alt="Show password">
+                    <div class="image">
+                        <img src="media/login/key.svg" class="imageClass" alt="Key icon">
+                    </div>
+                    <div class="inputPass">
+                        <input class="input" type="password" placeholder="Password" name="userPassword" required>
+                    </div>
+                    <div class="imageKey">
+                        <img src="media/login/showpass.svg" class="imageClassKey" alt="Show password">
+                    </div>
                 </div>
             </form>
             <div class="loginActions">
@@ -40,8 +49,8 @@
                 <hr> or
                 <hr>
             </div>
+            
             <div class="loginOptions">
-                <!--estilos que formateen el boton que sean iguales (radius,etc) y una sub clase para el color(color azul para fb,celeste twitter)-->
                 <div class="loginFacebook">
                     <div class="divImagen">
                         <img src="media/login/FacebookLogo.png" alt="Facebook logo">
@@ -67,11 +76,9 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="containerCarrousel">
-        <!-- :D -->
-        <img src="media/login/carrousel1.png" alt="Biomutant image">
-    </div>
+        <div class="containerCarrousel">
+            <img src="media/login/carrousel1.png" alt="Biomutant image">
+        </div>
     </div>
 </body>
 
