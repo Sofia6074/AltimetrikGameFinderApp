@@ -124,6 +124,7 @@ input{
 
 .input{
   background-color: transparent;
+  margin-top: 15px;
 }
 
 .userPass {
@@ -160,7 +161,7 @@ input{
 
 .actions{
   display: flex;
-  height: 52px;
+  height: 40px;
   width: 330px;
   left: 0px;
   top: 0px;
@@ -242,14 +243,9 @@ input[type="checkbox"]:checked{
   justify-content: space-between;
 }
 
-.registerNowText{
+a{
   color: #FFFFFF;
-  text-decoration:none
-}
-
-.forgotPassText{
-  color: #FFFFFF;
-  text-decoration:none
+  text-decoration: none;
 }
 
 .lineDivider{
@@ -257,6 +253,7 @@ input[type="checkbox"]:checked{
   flex-direction: row;
   align-items: center;
   margin-top: 31px;
+  height: 2px;
 }
 
 .dividerText{
@@ -282,28 +279,70 @@ hr {
   border: 1px solid #FFFFFF;
 }
 
-.loginFacebook {
+.loginOptionBox {
   display: flex;
-  text-align: center;
-  width: 240;
-  height: 40;
-  margin-top: 24px;
+  width: 240px;
+  height: 40px;
+  margin-top: 27px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.loginTwitter {
-  display: flex;
-  text-align: center;
-  width: 240;
-  height: 40;
-  margin-top: 24px;
+.optionImage{
+  vertical-align: sub;
 }
 
-.loginGoogle {
-  display: flex;
+.imageFB{
+  height: 40px;
+  width: 46.54545593261719px;
+  background: #263C68;
+  /*border-radius: 8px 0px 0px 8px;*/
+}
+
+.FBText{
+  padding-top: 13.2px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
   text-align: center;
-  width: 240;
-  height: 40;
-    margin-top: 24px;
+  text-transform: uppercase;
+  background: #3B5998;
+  flex: auto;
+}
+
+.imageTW{
+  height: 40px;
+  width: 46.54545593261719px;
+  background: #0695CB;
+  /*border-radius: 8px 0px 0px 8px;*/
+}
+
+.TWText{
+  padding-top: 13.2px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  background: #00ACED;
+  flex: auto;
+}
+
+.imageG{
+  height: 40px;
+  width: 46.54545593261719px;
+  background: #9D9D9D;
+}
+
+.GText{
+  padding-top: 12px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  background: #C7C7C7;
+  flex: auto;
 }
 
 .containerCarrousel {
