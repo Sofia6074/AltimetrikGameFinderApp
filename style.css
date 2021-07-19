@@ -204,8 +204,9 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked{
   background: #7CD235;
-  background-image: url(media/login/check.png);
+  background-image: url(media/login/check.svg);
   background-repeat:no-repeat;
+  background-position: center;
   border-radius: 4px;
   border: none;
 }
