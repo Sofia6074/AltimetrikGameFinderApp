@@ -1,8 +1,8 @@
 function togglePass(){
-    var x = document.getElementById("passInput");
-  if (x.type === "password") {
-    x.type = "text";
+    var pass = document.getElementById("passInput");
+  if (pass.type === "password") {
+    pass.type = "text";
   } else {
-    x.type = "password";
+    pass.type = "password";
   }
 }
