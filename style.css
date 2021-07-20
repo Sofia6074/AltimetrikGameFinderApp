@@ -29,13 +29,11 @@ h1 {
 */
 
 * {
-  margin: 0;
-  /*margin y padding para sacar borde blanco*/
+  margin: 0; /*margin y padding para sacar borde blanco*/
   padding: 0;
-  font-family: "Open Sans", sans-serif;
-  /*Para que quede por defecto Open Sans*/
+  font-family: "Open Sans", sans-serif; /*Para que quede por defecto Open Sans*/
   font-style: normal;
-  box-sizing: border-box;
+  box-sizing: border-box; /*Para que no aumenten los bordes*/
 }
 
 html{
@@ -109,6 +107,7 @@ input{
 .image{
   height: 52px;
   width: 52px;
+  flex: none;
 }
 
 .imageClass{
@@ -123,6 +122,7 @@ input{
   padding-left: 20px;
   padding-right: 20px;
   background-color: transparent;
+  width: 278px;
 }
 
 .inputLogin:active{
@@ -131,7 +131,8 @@ input{
 
 .input{
   background-color: transparent;
-  margin-top: 15px;
+  height: 50px;
+  display: flex;
 }
 
 .userPass {
@@ -154,6 +155,7 @@ input{
   border-left: 1px solid #8F8F8F;
   padding-left: 20px;
   padding-right: 20px;
+  width: 278px;
 }
 
 .inputPass:active{
@@ -211,7 +213,7 @@ input[type="checkbox"]:checked{
   border: none;
 }
 
-input[type="checkbox"]:focus{
+input[type="checkbox"]:focus-visible{
   border: 1px solid #FFFFFF;
 }
 
@@ -252,7 +254,7 @@ input[type="checkbox"]:focus{
   background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
 }
 
-.submitButton:focus{
+.submitButton:focus-visible{
   border: 1px solid #FFFFFF;
 }
 
@@ -291,7 +293,6 @@ a{
   width: 61px;
   left: 464px;
   top: 578px;
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -382,16 +383,85 @@ hr {
   height: 660px;
 }
 
-@media (max-width: 1023px) {
-  .carrousel { 
-     display: none;
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  body{
+    background-color: #303030;
+  }
+
+  .limiter{
+    padding-top: 0px;
+  }
+
+  .containerLogin {
+    box-shadow: none;
+    border-radius: 0px;
+  }
+
+  .loginTitle{
+    margin-top: 105px;
+  }
+
+  .image{
+    flex: none;
   }
 
   .containerCarrousel{
     display: none;
   }
-  
-  .containerLogin{
-    border-radius: 10px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  body{
+    background-color: #303030;
   }
+
+  .containerLogin {
+    box-shadow: none;
+    border-radius: 0px;
+  }
+
+  .containerCarrousel{
+    display: none;
+  }
+
+  .limiter{
+    padding-top: 0px;
+  }
+
+  .loginTitle {
+    font-size: 17px; /*To check*/
+    line-height: 48px;
+    margin-top: 45px;
+    margin-bottom: 38px;
+  }
+
+  .userMail{
+    width: 240px;
+  }
+
+  .inputLogin{
+    width: 158px;
+  }
+
+  .userPass{
+    width: 240px;
+    padding-right: 0px;
+  }
+
+  .inputPass{
+    width: 145px;
+  }
+
+  .image{
+    flex: none;
+  }
+
+  .actions{
+    width: 240px;
+  }
+
+  hr{
+    width: 89px;
+  }
+  
 }
