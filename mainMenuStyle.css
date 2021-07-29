@@ -1,17 +1,11 @@
 * {
-    margin: 0; /*margin y padding para sacar borde blanco*/
-    padding: 0;
-    font-family: "Open Sans", sans-serif; /*Para que quede por defecto Open Sans*/
-    font-style: normal;
-    box-sizing: border-box; /*Para que no aumenten los bordes*/
-}
-  
-html{
     margin: 0;
-    width: 100%;
-    height: 100%;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    box-sizing: border-box;
 }
-  
+    
 body {
     background-color: #141414;
 }
@@ -102,5 +96,5 @@ header {
 
 hr {
     height: 1px;
-    width: 360px;   
+    width: 3600px;   
 }
