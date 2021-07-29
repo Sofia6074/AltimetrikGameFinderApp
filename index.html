@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>GameFinder | Login</title>
+    <title>GameFinder_Login</title>
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui,shrink-to-fit=no,viewport-fit=cover">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,17 +20,21 @@
             </div>
             <form class="wrapLoginForm">
                 <div class="userMail">
+                    <!-- Not an image, must change it to icon -->
                     <div class="image">
                         <img src="media/login/userAvatar.svg" class="imageClass" alt="Avatar icon">
+                        <!-- change the .svg  -->
                     </div>
                     <div class="inputLogin">
                         <input class="input" type="email" name="Email" placeholder="Email" name="userMail" required>
                     </div>
                 </div>
-                <div id="errorMessage1"></div> 
+                <div id="errorMessage1"></div>
+                <!-- needs to be more descriptive, for example "mailErrorMessage"  -->
                 <div class="userPass">
                     <div class="image">
                         <img src="media/login/key.svg" class="imageClass" alt="Key icon">
+                        <!-- Change the .svg  -->
                     </div>
                     <div class="inputPass">
                         <input class="input" type="password" placeholder="Password" name="userPassword" id="passInput" required>
@@ -39,8 +42,10 @@
                     <div class="imageShowPass">
                         <img onclick="togglePass()" src="media/login/showpass.svg" class="imageClassShowPass" alt="Show password">
                     </div>
+                    <!-- improve when applying BEM -->
                 </div>
                 <div id="errorMessage2"></div>
+                <!-- needs to be more descriptive, for example "passwordErrorMessage"  -->
             </form>
             <div class="loginActions">
                 <div class="actions">
@@ -57,6 +62,7 @@
                     <a class="forgotPassText" href="">Forgot password?</a>
                 </div>
             </div>
+
             <div class="lineDivider">
                 <hr>
                 <div class="dividerText">
@@ -67,6 +73,7 @@
             
             <div class="loginOptions">
                 <div class="loginOptionBox">
+                    <!-- More descriptive names (Example: FB => Facebook) -->
                     <div class="imageFB">
                         <img class="optionImage" src="media/login/FacebookLogo.png" alt="Facebook logo">
                     </div>

@@ -1,45 +1,9 @@
-/*
-- - - Selector universal
-*  {
-	color: red;
-}
-
-- - - Selector de tipo
-h1 {
-	color: blue;
-}
-
-- - - Selector de clase
-//En HTML se pone "class y acá se lo llama con un "."
-.titulo_h1 {
-	color: blue;
-}
-
-- - - Selector por ID
-//En HTML se pone "id" y acá se lo llama con "#". No deberían haber 2 ids iguales
-#titulo_tigres  {
-	color:  orange;
-}
-
-- - - Selector por atributo
-//En HTML creamos el atributo y acá lo llamamos entre corchetes []
-[nutrias="sip"] {
-	color: sandybrown;
-}
-*/
-
 * {
-  margin: 0; /*margin y padding para sacar borde blanco*/
-  padding: 0;
-  font-family: "Open Sans", sans-serif; /*Para que quede por defecto Open Sans*/
-  font-style: normal;
-  box-sizing: border-box; /*Para que no aumenten los bordes*/
-}
-
-html{
   margin: 0;
-  width: 100%;
-  height: 100%;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  box-sizing: border-box;
 }
 
 body {
@@ -49,7 +13,6 @@ body {
 .limiter {
   display: flex;
   justify-content: center;
-  height: 100%;
   padding-top: 180px;
   padding-bottom: 184px;
 }
@@ -68,15 +31,12 @@ body {
   border-radius: 10px 0px 0px 10px;
 }
 
-input{
+input {
   border: none;
   outline:none;
 }
 
-/* Si se rompe el centrado, fijarse que el padre tenga display flex, flex direction column y align items center*/
-
 .loginTitle {
-  font-style: normal;
   font-weight: 400;
   line-height: 61px;
   letter-spacing: 2.799999952316284px;
@@ -85,7 +45,7 @@ input{
   color: #FFFFFF;
 }
 
-.loginTitle h1{
+h1 {
   font-weight: 400;
 }
 
@@ -97,27 +57,27 @@ input{
   top: 300px;
   border-radius: 8px;
   border: 1px solid #8F8F8F;
-  box-sizing: border-box; /* F */
+  box-sizing: border-box;
 }
 
-.userMail:active{
+.userMail:active {
   border: 1px solid #FFFFFF;
 }
 
-.image{
+.image {
   height: 52px;
   width: 52px;
   flex: none;
 }
 
-.imageClass{
+.imageClass {
   height: 20px;
   width: 20px;
   padding-top: 16px;
-  box-sizing: content-box; /* F */
+  box-sizing: content-box;
 }
 
-.inputLogin{
+.inputLogin {
   border-left: 1px solid #8F8F8F;
   padding-left: 20px;
   padding-right: 20px;
@@ -125,11 +85,11 @@ input{
   width: 278px;
 }
 
-.inputLogin:active{
+.inputLogin:active {
   border-left: 1px solid #FFFFFF;
 }
 
-.input{
+.input {
   background-color: transparent;
   height: 50px;
   display: flex;
@@ -147,28 +107,27 @@ input{
   margin-top: 32px;
 }
 
-.userPass:active{
+.userPass:active {
   border: 1px solid #FFFFFF;
 }
 
-.inputPass{
+.inputPass {
   border-left: 1px solid #8F8F8F;
   padding-left: 20px;
   padding-right: 20px;
   width: 278px;
 }
 
-.inputPass:active{
+.inputPass:active {
   border-left: 1px solid #FFFFFF;
 }
 
-.imageShowPass{
+.imageShowPass {
   height: 52px;
   width: 52px;
-  margin-left: auto;
 }
 
-.imageClassShowPass{
+.imageClassShowPass {
   height: 20px;
   width: 20px;
   padding-top: 16px;
@@ -176,7 +135,7 @@ input{
   justify-content: right;
 }
 
-.actions{
+.actions {
   display: flex;
   height: 40px;
   width: 330px;
@@ -187,7 +146,7 @@ input{
   justify-content: space-between;
 }
 
-.checkDiv{
+.checkDiv {
   display: flex;
   align-items: center;
 }
@@ -221,7 +180,6 @@ input[type="checkbox"]:focus-visible{
   margin-left: 10px;
   color: #929699;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
@@ -237,7 +195,6 @@ input[type="checkbox"]:focus-visible{
   background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
   border-radius: 8px;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: 22px;
   letter-spacing: 0px;
@@ -266,7 +223,6 @@ input[type="checkbox"]:focus-visible{
   display: flex;
   font-family: Open Sans;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
@@ -293,7 +249,6 @@ a{
   width: 61px;
   left: 464px;
   top: 578px;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;

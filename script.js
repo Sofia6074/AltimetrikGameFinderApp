@@ -4,5 +4,6 @@ function togglePass(){
     pass.type = "text";
   } else {
     pass.type = "password";
+    /*change the image with style.backgroundimage(url)*/
   }
 }
