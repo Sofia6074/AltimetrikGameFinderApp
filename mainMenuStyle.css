@@ -53,6 +53,10 @@ header {
     margin-top: 32px;
 }
 
+input[type="text"]{
+    color: #A6A6A6;
+}
+
 input::placeholder{
     color: #A6A6A6;
 }
