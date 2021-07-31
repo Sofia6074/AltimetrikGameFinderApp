@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>GameFinder | Main Menu</title>
+    <title>GameFinder__Main Menu</title>
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui,shrink-to-fit=no,viewport-fit=cover">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="mainMenuStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,28 +14,29 @@
 <body>
     <div class="container">
         <header>
-            <div class="title">
-                <h1>GAME<strong>FINDER</strong></h1>
-            </div>
-            <div class="searchBarContainer">
-                <div class="searchBarImg">
-                    <img src="media/mainMenu/searchLens.png" alt="Search icon">
+            <div class="headerOptions">
+                <div class="headerOptions__title">
+                    <h1>GAME<strong>FINDER</strong></h1>
                 </div>
-                <input type="text" placeholder="Type game name or console">
-            </div>
-            <div class="logoutContainer">
-                <a href="">Logout</a>
-                <div class="logoutImg">
-                    <img src="media/mainMenu/logOut.png" alt="Logout icon">
+                <div class="headerOptions__searchBarContainer">
+                    <div class="searchBarIcon">
+                        <img src="media/mainMenu/searchLens.png" alt="Search icon">
+                    </div>
+                    <input type="text" placeholder="Type game name or console">
+                </div>
+                <div class="headerOptions__logoutContainer">
+                    <a href="">Logout</a>
+                    <div class="logoutIcon">
+                        <img src="media/mainMenu/logOut.png" alt="Logout icon">
+                    </div>
+                </div>
+                <div class="headerOptions__profileIconContainer">
+                    <img src="media/mainMenu/profile.png" alt="Profile photo">
                 </div>
             </div>
-            <div class="profileIconContainer">
-                <!-- Must be rounded -->
-                <img src="media/mainMenu/profile.png" alt="Profile photo">
-            </div>
-            <!-- <div>
+            <div class="headerLine">
                 <hr>
-            </div> -->
+            </div>
         </header>
     </div>
 </body>
