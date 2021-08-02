@@ -1,3 +1,17 @@
+/* - - - - - - - - GENERAL - - - - - - - - */
+
+:root {
+    --black: #141414;
+    --darkGrey: #303030;
+    --grey: #A6A6A6;
+    --white: #FFFFFF;
+    --white2: #F1F1F1;
+    --lightGreen: #7CD235;
+    --green: #2BB34F;
+    --gradientGreen: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    --red: #D24040;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -10,12 +24,14 @@ body {
     background-color: #141414;
 }
 
+/* - - - - - - - - HEADER - - - - - - - - */
+
 header {
     display: flex;
     flex-direction: column;
     height: 120px;
     width: 100%;
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    background: var(--gradientGreen);
     box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
 }
 
@@ -40,25 +56,25 @@ header {
     font-size: 28px;
     line-height: 38px;
     letter-spacing: 1.74222px;
-    color: #FFFFFF;
+    color: var(--white);
 }
 
 .headerOptions__searchBarContainer{
     display: flex;
     width: 362px;
     height: 40px;
-    background: #F1F1F1;
+    background: var(--white2);
     border-radius: 20px;
     margin: auto;
     margin-top: 32px;
 }
 
 input[type="text"]{
-    color: #A6A6A6;
+    color: var(--grey);
 }
 
 input::placeholder{
-    color: #A6A6A6;
+    color: var(--grey);
 }
 
 .searchBarIcon{
@@ -136,6 +152,8 @@ hr {
     border: 1px solid white;
 }
 
+/* - - - - - - - - NAV - - - - - - - - */
+
 nav {
     width: 263px;
     color: #FFFFFF;
@@ -174,3 +192,6 @@ li img{
     font-size: 22px;
     line-height: 30px;
 }
+
+/* - - - - - - - - CARDS (3 column view) - - - - - - - - */
+
