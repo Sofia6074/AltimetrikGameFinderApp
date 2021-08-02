@@ -135,3 +135,42 @@ hr {
     width: 96%; /*Note: Calculated by myself, that's not in the Figma*/
     border: 1px solid white;
 }
+
+nav {
+    width: 263px;
+    color: #FFFFFF;
+}
+
+ul {
+    list-style-type: none;
+    padding-top: 33px;
+    padding-left: 39px;
+}
+
+li img{
+    margin-right: 13px;
+}
+
+.list__boldOption.marginTop{
+    margin-top: 33px;
+}
+
+
+.list__boldOption{
+    margin-top: 11px;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.list_iconOption.marginTop{
+    margin-top: 33px;
+}
+
+.list_iconOption{
+    display: flex;
+    margin-top: 11px;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 30px;
+}
