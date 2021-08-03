@@ -2,6 +2,7 @@
 
 :root {
     --black: #141414;
+    --gradientBlack: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
     --darkGrey: #303030;
     --darGrey2: #3D3D3D;
     --grey2: #939393;
@@ -24,6 +25,9 @@
     
 body {
     background-color: #141414;
+    /* background: var(--gradientBlack); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* - - - - - - - - HEADER - - - - - - - - */
@@ -273,11 +277,13 @@ li img{
 
 .cardImage img{
     flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover */
 }
 
 .cardInfo{
+    display: flex;
     height: 109px;
     padding-top: 10px;
     padding-left: 20px;
@@ -319,4 +325,44 @@ li img{
     width: 186px;
     margin-top: 2px;
     border: 1px solid var(--darGrey2)
+}
+
+.cardInfo__rightInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.rightInfo__platformIcons{
+    width: 100%;
+    display: flex;
+}
+
+.platformIcon{
+    height: 13px;
+    width: 13px;
+    margin-left: 8px;
+}
+
+.rightInfo__position{
+    margin-left: auto;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--green);
+}
+
+.rightInfo__giftButton{
+    margin-left: auto;
+}
+
+.rightInfo__giftButton input[type="button"]{
+    margin-top: 5px;
+    height: 24px;
+    width: 46px;
+    border-radius: 10px;
+    background-image: url(media/mainMenu/gift.svg);
+    border: none;
+    outline: none;
 }
