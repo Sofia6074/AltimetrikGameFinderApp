@@ -161,6 +161,7 @@ hr {
 nav {
     width: 263px;
     color: #FFFFFF;
+    flex: none;
 }
 
 ul {
@@ -196,19 +197,23 @@ li img{
     line-height: 30px;
 }
 
-/* - - - - - - - - SECTION - - - - - - - - */
+/* - - - - - - - - CARDS SECTION - - - - - - - - */
 
-.section{
+.cardsSection{
+    height: 89px;
+    flex: auto;
+    margin-right: 40px;
+}
+
+.cardsSection__info{
     display: flex;
     justify-content: space-between;
     margin-right: 40px;
-    margin-left: 60px;
-    height: 100%;
     width: 100%;
     margin-bottom: 30px;
 }
 
-.title{
+.titles__mainTitle{
     font-weight: 800;
     font-size: 55px;
     line-height: 75px;
@@ -216,7 +221,7 @@ li img{
     color: var(--white);
 }
 
-.subtitle{
+.titles__subtitle{
     font-weight: normal;
     font-size: 18px;
     line-height: 25px;
@@ -225,7 +230,7 @@ li img{
     color: var(--white);
 }
 
-.section__viewOptions{
+.viewOptions{
     display: flex;
     margin-top: 51px;
 }
@@ -234,8 +239,9 @@ li img{
     margin-left: 24px;
 }
 
-/* - - - - - - - - CARDS - - - - - - - - */
+/* - - - - - - - - CARDS CONTAINER - - - - - - - - */
 
 .cardsContainer{
     background-color: aquamarine;
+    display: grid;
 }
