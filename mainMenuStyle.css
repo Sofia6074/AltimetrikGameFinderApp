@@ -154,6 +154,10 @@ hr {
 
 /* - - - - - - - - NAV - - - - - - - - */
 
+.horizontalContainer{
+    display: flex;
+}
+
 nav {
     width: 263px;
     color: #FFFFFF;
@@ -172,7 +176,6 @@ li img{
 .list__boldOption.marginTop{
     margin-top: 33px;
 }
-
 
 .list__boldOption{
     margin-top: 11px;
@@ -193,5 +196,46 @@ li img{
     line-height: 30px;
 }
 
-/* - - - - - - - - CARDS (3 column view) - - - - - - - - */
+/* - - - - - - - - SECTION - - - - - - - - */
 
+.section{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
+    margin-left: 60px;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.title{
+    font-weight: 800;
+    font-size: 55px;
+    line-height: 75px;
+    margin-top: 24px;
+    color: var(--white);
+}
+
+.subtitle{
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: -8px;
+    /* negative margin is valid? */
+    color: var(--white);
+}
+
+.section__viewOptions{
+    display: flex;
+    margin-top: 51px;
+}
+
+.singleColumnView{
+    margin-left: 24px;
+}
+
+/* - - - - - - - - CARDS - - - - - - - - */
+
+.cardsContainer{
+    background-color: aquamarine;
+}
