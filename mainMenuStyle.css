@@ -3,6 +3,8 @@
 :root {
     --black: #141414;
     --darkGrey: #303030;
+    --darGrey2: #3D3D3D;
+    --grey2: #939393;
     --grey: #A6A6A6;
     --white: #FFFFFF;
     --white2: #F1F1F1;
@@ -147,7 +149,7 @@ input::placeholder{
     justify-content: center;
 }
 
-hr {
+header hr {
     width: 96%; /*Note: Calculated by myself, that's not in the Figma*/
     border: 1px solid white;
 }
@@ -160,12 +162,16 @@ hr {
 
 nav {
     width: 263px;
+    height: 100%;
     color: #FFFFFF;
     flex: none;
 }
 
-ul {
+ul{
     list-style-type: none;
+}
+
+nav ul {
     padding-top: 22px;
     padding-left: 39px;
 }
@@ -202,7 +208,7 @@ li img{
 .cardsSection{
     height: 89px;
     flex: auto;
-    margin-right: 40px;
+    padding-right: 40px;
 }
 
 .cardsSection__info{
@@ -242,6 +248,75 @@ li img{
 /* - - - - - - - - CARDS CONTAINER - - - - - - - - */
 
 .cardsContainer{
-    background-color: aquamarine;
+    display: flex;
+    width: 100%;
+}
+
+.cardsContainer ul{
     display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 314px 314px 314px;
+    grid-gap: 24px;
+}
+
+.cardsContainer li{
+    background-color: var(--darkGrey);
+    border-radius: 10px;
+    overflow: hidden
+}
+
+.cardImage{
+    height: 205px;
+    display: flex;
+}
+
+.cardImage img{
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+.cardInfo{
+    height: 109px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.cardInfo__leftInfo{
+    width: 186px;
+}
+
+.leftInfo__title{
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 31px;
+    color: var(--white);
+}
+
+.leftInfo__releaseDate{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey2);
+}
+
+.leftInfo__genres{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey2);
+}
+
+.cardInfo__leftInfo hr {
+    width: 186px;
+    margin-top: 2px;
+    border: 1px solid var(--darGrey2)
 }
