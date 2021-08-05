@@ -1,3 +1,7 @@
+:root{
+  --errorRed: #E07979;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -30,6 +34,38 @@ body {
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
   border-radius: 10px 0px 0px 10px;
 }
+
+/* - - - Turn inputs borders and text to red in case an error happens - - - */
+
+.errorText {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--errorRed);
+}
+
+.userMail.error{
+  border: 1px solid var(--errorRed);
+  fill: var(--errorRed);
+}
+
+.inputLogin.error{
+  border-left: 1px solid var(--errorRed);
+}
+
+.userPass.error {
+  border: 1px solid var(--errorRed);
+}
+
+.inputPass.error {
+  border-left: 1px solid var(--errorRed);
+}
+
+.imageClass.error {
+  fill: var(--errorRed);
+}
+
+/* - - - */
 
 input {
   border: none;
@@ -71,6 +107,7 @@ h1 {
 }
 
 .imageClass {
+  fill: #D1D1D1;
   height: 20px;
   width: 20px;
   padding-top: 16px;
