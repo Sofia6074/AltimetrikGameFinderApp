@@ -26,11 +26,11 @@
                         <!-- change the .svg  -->
                     </div>
                     <div class="inputLogin">
-                        <input class="input" type="email" name="Email" placeholder="Email" name="userMail" required>
+                        <input class="input" type="email" name="Email" placeholder="Email" name="userMail" id="emailInput" required>
                     </div>
                 </div>
-                <div id="errorMessage1"></div>
-                <!-- needs to be more descriptive, for example "mailErrorMessage"  -->
+                <span class="mailErrorMessage"></span>
+                
                 <div class="userPass">
                     <div class="image">
                         <img src="media/login/key.svg" class="imageClass" alt="Key icon">
@@ -44,8 +44,8 @@
                     </div>
                     <!-- improve when applying BEM -->
                 </div>
-                <div id="errorMessage2"></div>
-                <!-- needs to be more descriptive, for example "passwordErrorMessage"  -->
+                <span class="passwordErrorMessage"></span>
+    
             </form>
             <div class="loginActions">
                 <div class="actions">
@@ -75,7 +75,7 @@
                 <div class="loginOptionBox">
                     <!-- More descriptive names (Example: FB => Facebook) -->
                     <div class="imageFB">
-                        <img class="optionImage" src="media/login/FacebookLogo.png" alt="Facebook logo">
+                        <img class="optionImage" src="media/login/facebookLogo.png" alt="Facebook logo">
                     </div>
                     <div class="FBText">
                         <a href=""> LOGIN WITH FACEBOOK </a>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="loginOptionBox">
                     <div class="imageTW">
-                        <img class="optionImage" src="media/login/TwitterLogo.png" alt="Twitter logo">
+                        <img class="optionImage" src="media/login/twitterLogo.png" alt="Twitter logo">
                     </div>
                     <div class="TWText">
                         <a href=""> LOGIN WITH TWITTER </a>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="loginOptionBox">
                     <div class="imageG">
-                        <img class="optionImage" src="media/login/GoogleLogo.png" alt="Google logo">
+                        <img class="optionImage" src="media/login/googleLogo.png" alt="Google logo">
                     </div>
                     <div class="GText">
                         <a href=""> LOGIN WITH GOOGLE </a>
