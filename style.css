@@ -38,10 +38,13 @@ body {
 /* - - - Turn inputs borders and text to red in case an error happens - - - */
 
 .errorText {
+  display: flex;
+  padding-top: 7px;
   font-weight: normal;
   font-size: 14px;
   line-height: 19px;
   color: var(--errorRed);
+  margin-bottom: -26px;
 }
 
 .userMail.error{
