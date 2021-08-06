@@ -3,6 +3,7 @@ window.addEventListener("load", start);
 function start(){
   console.log("start function");
   document.querySelector(".submitButton").addEventListener("click",login);
+  document.querySelector(".imageClassShowPass").addEventListener("click",togglePass);
 }
 
 // - - - - - Login control
@@ -11,23 +12,23 @@ function login(){
   let email = document.getElementById("emailInput").value;
   let password = document.getElementById("passInput").value;
 
-  // if (validateEmail(email) && validatePassword(password)){
-  //   if (checkValidUser()){
-  //     window.location = "mainMenu.html";
-  //   }
-  //   else{
-  //   let errorMessage = document.querySelector(".passwordErrorMessage");
-  //   let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
-  //   let node = document.createTextNode("Your email or password is incorrect");
+  if (validateEmail(email) && validatePassword(password)){
+    if (checkValidUser()){
+      window.location = "mainMenu.html";
+    } else{
+    let errorMessage = document.querySelector(".passwordErrorMessage");
+    let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
+    let node = document.createTextNode("Your email or password is incorrect");
     
-  //   errorMessage.innerHTML = "";
-  //   errorMessage.appendChild(node);
-  //   errorMessage.classList.add("errorText");
+    errorMessage.innerHTML = "";
+    errorMessage.appendChild(node);
+    errorMessage.classList.add("errorText");
 
-  //   for (let i = 0; i < elements.length; i++) {
-  //     elements[i].classList.add("error");
-  //   }
-  // }
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.add("error");
+    }
+    }
+  }
 }
 
 // - - - - - - - - - - Form validation
