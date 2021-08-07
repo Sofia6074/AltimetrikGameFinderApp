@@ -1,8 +1,12 @@
 window.addEventListener("load", start);
 
 function start(){
+  document.querySelector(".inputMail").addEventListener("click",focusEmailInput);
+  document.getElementById("emailInput").addEventListener("blur",blurEmailInput);
+  document.querySelector(".inputPass").addEventListener("click",focusPassInput);
+  document.getElementById("passInput").addEventListener("blur",blurPassInput);
   document.querySelector(".submitButton").addEventListener("click",login);
-  document.querySelector(".imageClassShowPass").addEventListener("click",togglePass);
+  document.querySelector(".showPasswordIcon__svg").addEventListener("click",togglePass);
 }
 
 // - - - - - - - - - - Login control
@@ -12,7 +16,6 @@ async function login(){
 
   if (validateEmail(email) && validatePassword(password)){
     let loginResponse = await checkIfUserRegistered();
-    console.log("login: " + loginResponse);
 
     if (loginResponse === 200){
       window.location = "mainMenu.html";
@@ -34,7 +37,6 @@ async function login(){
 // - - - - - - - - - - Check if the user is already registered
 async function checkIfUserRegistered(){
   let loginResponse = await loginUser();
-  console.log("checkIfUserResgistered: " + loginResponse);
   return loginResponse;
 }
 
@@ -73,8 +75,8 @@ function validateEmail(email) {
 
     for (let i = 0; i < elements.length; i++) {
       elements[i].classList.add("error");
-      //classList: Allows for manipulation of element's class content attribute
-      //           as a set of whitespace-separated tokens through a DOMTokenList object.
+      // Personal note: "classList" allows for manipulation of element's class content attribute
+      //                as a set of whitespace-separated tokens through a DOMTokenList object.
     }
   }
   return result;
@@ -117,10 +119,49 @@ function validatePassword(password) {
   return true;
 }
 
+// - - - - - - - - - - Change icons color depending on the event
+// Email
+function focusEmailInput(){
+  document.querySelectorAll(".input")[0].setAttribute("style", "color:white;");
+  document.querySelectorAll(".icon__svg")[0].setAttribute("style", "fill:white;");
+  let elements = document.querySelectorAll(".userMail, .inputMail");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].classList.add("focus");
+  }
+}
+
+function blurEmailInput(){
+  document.querySelectorAll(".input")[0].removeAttribute("style", "color:white;");
+  document.querySelectorAll(".icon__svg")[0].removeAttribute("style", "fill:white;");
+  let elements = document.querySelectorAll(".userMail, .inputMail");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].classList.remove("focus");
+  }
+}
+
+// Password
+function focusPassInput(){
+  document.querySelectorAll(".input")[1].setAttribute("style", "color:white;");
+  document.querySelectorAll(".icon__svg")[1].setAttribute("style", "fill:white;");
+  let elements = document.querySelectorAll(".userPass, .inputPass, .icon__svg");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].classList.add("focus");
+  }
+}
+
+function blurPassInput(){
+  document.querySelectorAll(".input")[1].removeAttribute("style", "color:white;");
+  document.querySelectorAll(".icon__svg")[1].removeAttribute("style", "fill:white;");
+  let elements = document.querySelectorAll(".userPass, .inputPass, .icon__svg");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].classList.remove("focus");
+  }
+}
+
 // - - - - - - - - - - Show or hide password
 function togglePass(){
   let pass = document.getElementById("passInput");
-  let passImage = document.querySelector(".imageClassShowPass");
+  let passImage = document.querySelector(".showPasswordIcon__svg");
 
   if (pass.type === "password") {
     pass.type = "text";

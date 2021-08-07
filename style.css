@@ -70,10 +70,6 @@ h1 {
   box-sizing: border-box;
 }
 
-.userMail:active {
-  border: 1px solid var(--white);
-}
-
 .icon {
   height: 52px;
   width: 52px;
@@ -88,16 +84,12 @@ h1 {
   box-sizing: content-box;
 }
 
-.inputLogin {
+.inputMail {
   border-left: 1px solid var(--lightGray);
   padding-left: 20px;
   padding-right: 20px;
   background-color: transparent;
   width: 278px;
-}
-
-.inputLogin:active {
-  border-left: 1px solid var(--white);
 }
 
 .input {
@@ -119,19 +111,11 @@ h1 {
   margin-top: 32px;
 }
 
-.userPass:active {
-  border: 1px solid var(--white);
-}
-
 .inputPass {
   border-left: 1px solid var(--lightGray);
   padding-left: 20px;
   padding-right: 20px;
   width: 278px;
-}
-
-.inputPass:active {
-  border-left: 1px solid var(--white);
 }
 
 .showPasswordIcon {
@@ -344,7 +328,7 @@ hr {
   height: 660px;
 }
 
-/* - - - Turn inputs borders and text to red in case an error happens - - - */
+/* - - - Error - - - */
 
 .errorText {
   display: flex;
@@ -376,6 +360,25 @@ hr {
 .imageClass.error {
   fill: var(--errorRed);
 }
+
+/* - - - Active - - - */
+
+.userMail.focus {
+  border: 1px solid var(--white);
+}
+
+.inputMail.focus {
+  border-left: 1px solid var(--white);
+}
+
+.userPass.focus {
+  border: 1px solid var(--white);
+}
+
+.inputPass.focus {
+  border-left: 1px solid var(--white);
+}
+
 
 /* - - - */
 
