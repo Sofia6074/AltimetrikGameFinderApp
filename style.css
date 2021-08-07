@@ -4,6 +4,7 @@
   --lightGray: #8F8F8F;
   --white: #FFFFFF;
   --green: #7CD235;
+  --gradientGreen: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
   --errorRed: #E07979;
 }
 
@@ -39,41 +40,6 @@ body {
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
   border-radius: 10px 0px 0px 10px;
 }
-
-/* - - - Turn inputs borders and text to red in case an error happens - - - */
-
-.errorText {
-  display: flex;
-  padding-top: 7px;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 19px;
-  color: var(--errorRed);
-  margin-bottom: -26px;
-}
-
-.userMail.error{
-  border: 1px solid var(--errorRed);
-  fill: var(--errorRed);
-}
-
-.inputLogin.error{
-  border-left: 1px solid var(--errorRed);
-}
-
-.userPass.error {
-  border: 1px solid var(--errorRed);
-}
-
-.inputPass.error {
-  border-left: 1px solid var(--errorRed);
-}
-
-.imageClass.error {
-  fill: var(--errorRed);
-}
-
-/* - - - */
 
 input {
   border: none;
@@ -238,7 +204,7 @@ input[type="checkbox"]:focus-visible{
   left: 0px;
   top: 0px;
   border-radius: 8px;
-  background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+  background: var(--gradientGreen);
   border-radius: 8px;
   font-size: 16px;
   font-weight: 500;
@@ -254,15 +220,11 @@ input[type="checkbox"]:focus-visible{
 
 .submitButton:active{
   box-shadow: inset 0px 4px 4px rgba(43, 179, 79, 0.63);
-  background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+  background: var(--gradientGreen);
 }
 
 .submitButton:focus-visible{
   border: 1px solid var(--white);
-}
-
-#errorMessage1, #errorMessage2 {
-	color: red;
 }
 
 .options{
@@ -324,14 +286,13 @@ hr {
   vertical-align: sub;
 }
 
-.imageFB{
+.FacebookImage{
   height: 40px;
   width: 46.54545593261719px;
   background: #263C68;
-  /*border-radius: 8px 0px 0px 8px;*/
 }
 
-.FBText{
+.FacebookText{
   padding-top: 13.2px;
   font-weight: bold;
   font-size: 12px;
@@ -342,14 +303,13 @@ hr {
   flex: auto;
 }
 
-.imageTW{
+.TwitterImage{
   height: 40px;
   width: 46.54545593261719px;
   background: #0695CB;
-  /*border-radius: 8px 0px 0px 8px;*/
 }
 
-.TWText{
+.TwitterText{
   padding-top: 13.2px;
   font-weight: bold;
   font-size: 12px;
@@ -360,13 +320,13 @@ hr {
   flex: auto;
 }
 
-.imageG{
+.GoogleImage{
   height: 40px;
   width: 46.54545593261719px;
   background: #9D9D9D;
 }
 
-.GText{
+.GoogleText{
   padding-top: 12px;
   font-weight: bold;
   font-size: 12px;
@@ -383,6 +343,41 @@ hr {
   width: 453px;
   height: 660px;
 }
+
+/* - - - Turn inputs borders and text to red in case an error happens - - - */
+
+.errorText {
+  display: flex;
+  padding-top: 7px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--errorRed);
+  margin-bottom: -26px;
+}
+
+.userMail.error{
+  border: 1px solid var(--errorRed);
+  fill: var(--errorRed);
+}
+
+.inputLogin.error{
+  border-left: 1px solid var(--errorRed);
+}
+
+.userPass.error {
+  border: 1px solid var(--errorRed);
+}
+
+.inputPass.error {
+  border-left: 1px solid var(--errorRed);
+}
+
+.imageClass.error {
+  fill: var(--errorRed);
+}
+
+/* - - - */
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   body{
