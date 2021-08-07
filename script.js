@@ -1,9 +1,9 @@
 window.addEventListener("load", start);
 
 function start(){
-  document.querySelector(".inputMail").addEventListener("click",focusEmailInput);
+  document.querySelector(".inputMail").addEventListener("click",activeEmailInput);
   document.getElementById("emailInput").addEventListener("blur",blurEmailInput);
-  document.querySelector(".inputPass").addEventListener("click",focusPassInput);
+  document.querySelector(".userPass").addEventListener("click",activePassInput);
   document.getElementById("passInput").addEventListener("blur",blurPassInput);
   document.querySelector(".submitButton").addEventListener("click",login);
   document.querySelector(".showPasswordIcon__svg").addEventListener("click",togglePass);
@@ -121,7 +121,8 @@ function validatePassword(password) {
 
 // - - - - - - - - - - Change icons color depending on the event
 // Email
-function focusEmailInput(){
+function activeEmailInput(){
+  blurPassInput();
   document.querySelectorAll(".input")[0].setAttribute("style", "color:white;");
   document.querySelectorAll(".icon__svg")[0].setAttribute("style", "fill:white;");
   let elements = document.querySelectorAll(".userMail, .inputMail");
@@ -140,7 +141,7 @@ function blurEmailInput(){
 }
 
 // Password
-function focusPassInput(){
+function activePassInput(){
   document.querySelectorAll(".input")[1].setAttribute("style", "color:white;");
   document.querySelectorAll(".icon__svg")[1].setAttribute("style", "fill:white;");
   let elements = document.querySelectorAll(".userPass, .inputPass, .icon__svg");
