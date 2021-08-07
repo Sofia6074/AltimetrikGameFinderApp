@@ -1,43 +1,66 @@
 window.addEventListener("load", start);
 
 function start(){
-  console.log("start function");
   document.querySelector(".submitButton").addEventListener("click",login);
   document.querySelector(".imageClassShowPass").addEventListener("click",togglePass);
 }
 
-// - - - - - Login control
-function login(){
-  console.log("login function");
+// - - - - - - - - - - Login control
+async function login(){
   let email = document.getElementById("emailInput").value;
   let password = document.getElementById("passInput").value;
 
   if (validateEmail(email) && validatePassword(password)){
-    if (checkValidUser()){
+    let loginResponse = await checkIfUserRegistered();
+    console.log("login: " + loginResponse);
+
+    if (loginResponse === 200){
       window.location = "mainMenu.html";
     } else{
-    let errorMessage = document.querySelector(".passwordErrorMessage");
-    let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
-    let node = document.createTextNode("Your email or password is incorrect");
-    
-    errorMessage.innerHTML = "";
-    errorMessage.appendChild(node);
-    errorMessage.classList.add("errorText");
+      let errorMessage = document.querySelector(".passwordErrorMessage");
+      let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
+      let node = document.createTextNode("Your email or password is incorrect");
+      errorMessage.innerHTML = "";
+      errorMessage.appendChild(node);
+      errorMessage.classList.add("errorText");
 
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].classList.add("error");
-    }
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.add("error");
+      }
     }
   }
+}
+
+// - - - - - - - - - - Check if the user is already registered
+async function checkIfUserRegistered(){
+  let loginResponse = await loginUser();
+  console.log("checkIfUserResgistered: " + loginResponse);
+  return loginResponse;
+}
+
+// - - - - - - - - - - Get status
+async function loginUser() {
+  let userData = document.querySelectorAll(".input");
+  let userEmail = userData[0].value;
+  let userPass = userData[1].value;
+
+  const loginResponse = await fetch('http://localhost:3000/login', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({email: `${userEmail}`, password: `${userPass}`})
+  });
+  let response = await loginResponse.status;
+  return response;
 }
 
 // - - - - - - - - - - Form validation
 // Email validator
 function validateEmail(email) {
-  console.log("validateEmail function - email: " + email);
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let result = email.length <= 254 && re.test(email);
-  console.log("validateEmail function: " + result);
 
   if (!result){
     let errorMessage = document.querySelector(".mailErrorMessage");
@@ -59,11 +82,9 @@ function validateEmail(email) {
 
 // Password validator
 function validatePassword(password) {
-  console.log("validatePassword function");
 
   // Check length
   if (password.length <= 3){
-    console.log("validatePassword function: length not valid");
     let errorMessage = document.querySelector(".passwordErrorMessage");
     let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
     let node = document.createTextNode("The password is too short");
@@ -77,11 +98,9 @@ function validatePassword(password) {
     }
     return false;
   }
-  console.log("validatePassword function: length valid");
 
   // Check white spaces
   if (password.indexOf(' ') > 0){
-    console.log("validatePassword function: space not valid");
     let errorMessage = document.querySelector(".passwordErrorMessage");
     let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
     let node = document.createTextNode("The password can't have white spaces");
@@ -95,7 +114,6 @@ function validatePassword(password) {
     }
     return false;
   }
-  console.log("validatePassword function: space valid");
   return true;
 }
 
