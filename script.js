@@ -84,38 +84,45 @@ function validateEmail(email) {
 
 // Password validator
 function validatePassword(password) {
+  let errorMessage = document.querySelector(".passwordErrorMessage");
+    let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
+    errorMessage.innerHTML = "";
+    errorMessage.classList.add("errorText");
 
   // Check length
   if (password.length <= 3){
-    let errorMessage = document.querySelector(".passwordErrorMessage");
-    let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
     let node = document.createTextNode("The password is too short");
-
-    errorMessage.innerHTML = "";
     errorMessage.appendChild(node);
-    errorMessage.classList.add("errorText");
-
     for (let i = 0; i < elements.length; i++) {
       elements[i].classList.add("error");
     }
     return false;
+
+  } else {
+    let node = document.createTextNode("");
+    errorMessage.appendChild(node);
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("error");
+    }
   }
 
   // Check white spaces
   if (password.indexOf(' ') > 0){
-    let errorMessage = document.querySelector(".passwordErrorMessage");
-    let elements = document.querySelectorAll(".userMail, .inputLogin, .userPass, .inputPass, .imageClass");
     let node = document.createTextNode("The password can't have white spaces");
-
-    errorMessage.innerHTML = "";
     errorMessage.appendChild(node);
-    errorMessage.classList.add("errorText");
-
     for (let i = 0; i < elements.length; i++) {
       elements[i].classList.add("error");
     }
     return false;
+
+  } else {
+    let node = document.createTextNode("");
+    errorMessage.appendChild(node);
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("error");
+    }
   }
+
   return true;
 }
 

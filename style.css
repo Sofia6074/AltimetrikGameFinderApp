@@ -379,8 +379,7 @@ hr {
   border-left: 1px solid var(--white);
 }
 
-
-/* - - - */
+/* - - - Media Queries - - - */
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   body{
