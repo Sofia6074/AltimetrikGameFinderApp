@@ -54,7 +54,7 @@ async function loginUser() {
     },
     body: JSON.stringify({email: `${userEmail}`, password: `${userPass}`})
   });
-  let response = await loginResponse.status;
+  let response = loginResponse.status;
   return response;
 }
 
@@ -81,6 +81,7 @@ function validateEmail(email) {
     }
   }
   else{
+    errorMessage.classList.remove("errorText");
     icon.classList.remove("error");
     for (let i = 0; i < elements.length; i++) {
       elements[i].classList.remove("error");
