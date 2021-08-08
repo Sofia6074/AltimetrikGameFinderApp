@@ -345,7 +345,7 @@ hr {
   fill: var(--errorRed);
 }
 
-.inputLogin.error{
+.inputMail.error{
   border-left: 1px solid var(--errorRed);
 }
 
@@ -357,7 +357,7 @@ hr {
   border-left: 1px solid var(--errorRed);
 }
 
-.imageClass.error {
+.icon__svg.error {
   fill: var(--errorRed);
 }
 
