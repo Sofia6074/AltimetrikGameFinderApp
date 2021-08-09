@@ -25,9 +25,9 @@
 
 body {
     background-color: #141414;
-    /* background: var(--gradientBlack); */
+    /* background: var(--gradientBlack);
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 }
 
 /* - - - - - - - - HEADER - - - - - - - - */
@@ -154,9 +154,10 @@ input::placeholder {
     justify-content: center;
 }
 
-hr {
-    width: 96%;
-    /*Note: Calculated by myself, that's not in the Figma*/
+.headerLine hr {
+    width: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
     border: 1px solid white;
 }
 
