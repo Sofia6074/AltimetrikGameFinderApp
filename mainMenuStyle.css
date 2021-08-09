@@ -180,12 +180,16 @@ nav ul {
     padding-left: 39px;
 }
 
+li {
+    min-width: 363px;
+}
+
 li a{
     text-decoration: none;
     color: #FFFFFF;
 }
 
-li img{
+nav img{
     margin-right: 13px;
 }
 
@@ -212,7 +216,7 @@ li img{
     line-height: 30px;
 }
 
-/* - - - - - - - - CARDS SECTION - - - - - - - - */
+/* - - - - - - - - CARDS CONTAINER - - - - - - - - */
 
 .cardsSection{
     height: 89px;
@@ -241,7 +245,6 @@ li img{
     font-size: 18px;
     line-height: 25px;
     margin-top: -8px;
-    /* negative margin is valid? */
     color: var(--white);
 }
 
@@ -250,11 +253,26 @@ li img{
     margin-top: 51px;
 }
 
-.singleColumnView{
-    margin-left: 24px;
+.threeColumnView svg{
+    fill: #515151;
 }
 
-/* - - - - - - - - CARDS CONTAINER - - - - - - - - */
+.threeColumnView svg:hover{
+    fill: #7D7D7D;
+}
+
+.singleColumnView svg{
+    margin-left: 24px;
+    fill: #303030;
+}
+
+.singleColumnView svg:hover{
+    fill: #7D7D7D;
+}
+
+/* - - - - - - - - CARDS - - - - - - - - */
+
+/* - - - threeColumnView - - -*/
 
 .cardsContainer{
     display: flex;
@@ -266,7 +284,7 @@ li img{
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 314px 314px 314px;
-    grid-gap: 24px;
+    gap: 24px;
 }
 
 .cardsContainer li{
@@ -284,7 +302,6 @@ li img{
     flex-shrink: 0;
     width: 100%;
     height: 100%;
-    /* object-fit: cover */
 }
 
 .cardInfo{
@@ -309,7 +326,7 @@ li img{
 .leftInfo__releaseDate{
     display: flex;
     justify-content: space-between;
-    margin-top: 7px;
+    margin-top: 3px;
     font-weight: 300;
     font-size: 12px;
     line-height: 16px;
@@ -370,4 +387,166 @@ li img{
     background-image: url(media/mainMenu/gift.svg);
     border: none;
     outline: none;
+}
+
+/* - - - singleColumnView - - -*/
+
+.infoContainer--singleColumn.singleView{
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+}
+
+.releaseDate--singleColumn.singleView{
+    width: 155px;
+}
+
+.genres--singleColumn.singleView{
+    width: 155px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.cardsContainer.singleView{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.cardsContainer.singleView ul{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.cardsContainer.singleView li{
+    background-color: var(--darkGrey);
+    border-radius: 10px;
+    width: 696px;
+    height: 538px;
+    overflow: hidden
+}
+
+.cardImage.singleView{
+    height: 315px;
+    display: flex;
+}
+
+.cardImage.singleView img{
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardInfo.singleView{
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 0px;
+}
+
+.cardInfo.singleView img{
+    display: block;
+    /* Personal note: the img has an implicit line-height assigned to it, which gives it some vertical breathing room.
+    Since line-height only applies to inline elements, setting the img to display: block removes the line-height */
+}
+
+.cardInfo__leftInfo.singleView{
+    margin-top: 20px;
+}
+
+.leftInfo__title.singleView{
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 31px;
+    color: var(--white);
+}
+
+.leftInfo__releaseDate.singleView{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 17px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey2);
+}
+
+.releaseDate__date.singleView{
+    color: var(--white);
+}
+
+.leftInfo__genres.singleView{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey2);
+}
+
+.genres__info.singleView{
+    color: var(--white);
+}
+
+.leftInfo__position.singleView{
+    margin-left: auto;
+    margin-top: 18px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--green);
+}
+
+.cardInfo__leftInfo.singleView hr {
+    width: auto;
+    margin-top: 2px;
+    border: 1px solid var(--darGrey2)
+}
+
+.cardInfo__rightInfo.singleView{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.rightInfo__platformIcons.singleView{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+}
+
+.platformIcon.singleView{
+    height: 13px;
+    width: 13px;
+    margin-left: 8px;
+}
+
+.rightInfo__giftButton.singleView{
+    margin-left: auto;
+    margin-top: 21px;
+}
+
+.rightInfo__giftButton.singleView input[type="button"]{
+    margin-top: 0px;
+    height: 24px;
+    width: 46px;
+    border-radius: 10px;
+    background-image: url(media/mainMenu/gift.svg);
+    border: none;
+    outline: none;
+}
+
+.cardInfo__gameDescription.singleView{
+    color: var(--white);
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: left;
 }
