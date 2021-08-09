@@ -183,6 +183,11 @@ nav ul {
     padding-left: 39px;
 }
 
+li a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
 li img {
     margin-right: 13px;
 }
