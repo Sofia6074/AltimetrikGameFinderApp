@@ -42,7 +42,6 @@
     <div class="horizontalContainer">
         <nav>
             <ul>
-                <!-- add "a" tags -->
                 <li class="list__boldOption" style="color: #7CD235;">Home</li>
                 <li class="list__boldOption"><a href="">Reviews</a></li>
                 <li class="list__boldOption"><a href="">New Releases</a></li>
@@ -104,54 +103,68 @@
                     </div>
                 </div>
             </div>
-            <div class="cardsContainer">
-                <ul class="cardsContainer__list">
-                    <li>
-                        <div class="cardImage">
+            <div class="cardsContainer singleView">
+                <ul class="cardsContainer__list singleView">
+                    <li class="singleView">
+                        <div class="cardImage singleView">
                             <img src="media/mainMenu/biomutantPlaceholder.png">
                         </div>
-                        <div class="cardInfo">
-                            <div class="cardInfo__leftInfo">
-                                <div class="leftInfo__title">Biomutant</div>
-                                <div class="leftInfo__releaseDate">
-                                    <div class="releaseDate__text">
-                                        Release date
+                        <div class="cardInfo singleView">
+                            <div class="cardInfo__leftInfo singleView">
+                                <div class="leftInfo__title singleView">Biomutant</div>
+                                <div class="infoContainer--singleColumn singleView">
+                                    <div class = "releaseDate--singleColumn singleView">
+                                        <div class="leftInfo__releaseDate singleView">
+                                            <div class="releaseDate__text singleView">
+                                                Release date
+                                            </div>
+                                            <div class="releaseDate__date singleView">
+                                                May 31 2021
+                                            </div>
+                                        </div>
+                                        <hr class="leftInfo__firstLine singleView">
                                     </div>
-                                    <div class="releaseDate__date">
-                                        May 31 2021
+                                    <div class="genres--singleColumn singleView">
+                                        <div class="leftInfo__genres singleView">
+                                            <div class="genres__text singleView">
+                                                Genres
+                                            </div>
+                                            <div class="genres__info singleView">
+                                                Action, RPG
+                                            </div>
+                                        </div>
+                                        <hr class="leftInfo__secondLine singleView">
+                                    </div>
+                                    <div class="leftInfo__position singleView">
+                                        #1
                                     </div>
                                 </div>
-                                <hr class="leftInfo__firstLine">
-                                <div class="leftInfo__genres">
-                                    <div class="releaseDate__text">
-                                        Genres
-                                    </div>
-                                    <div class="releaseDate__date">
-                                        Action, RPG
-                                    </div>
-                                </div>
-                                <hr class="leftInfo__secondLine">
                             </div>
-                            <div class="cardInfo__rightInfo">
-                                <div class="rightInfo__platformIcons">
-                                    <div class="platformIcon">
+                            <div class="cardInfo__rightInfo singleView">
+                                <div class="rightInfo__platformIcons singleView">
+                                    <div class="platformIcon singleView">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
-                                    <div class="platformIcon">
+                                    <div class="platformIcon singleView">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
-                                    <div class="platformIcon">
+                                    <div class="platformIcon singleView">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
                                 </div>
-                                <div class="rightInfo__position">
+                                <div class="rightInfo__position singleView" hidden>
                                     #X
                                 </div>
-                                <div class="rightInfo__giftButton">
+                                <div class="rightInfo__giftButton singleView">
                                     <input type="button">
                                 </div>
                             </div>
                         </div>
+                        <div class="cardInfo__gameDescription singleView">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                            Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
+                            Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
+                            Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
+                        </div>  
                     </li>
                 </ul>
             </div>
