@@ -1,4 +1,4 @@
-:root{
+:root {
   --black: #141414;
   --gray: #303030;
   --lightGray: #8F8F8F;
@@ -43,7 +43,7 @@ body {
 
 input {
   border: none;
-  outline:none;
+  outline: none;
 }
 
 .loginTitle {
@@ -106,7 +106,7 @@ h1 {
   left: 330px;
   top: 300px;
   border: 1px solid var(--lightGray);
-  box-sizing: border-box; 
+  box-sizing: border-box;
   border-radius: 8px;
   margin-top: 32px;
 }
@@ -159,20 +159,20 @@ input[type="checkbox"] {
   -webkit-appearance: none;
 }
 
-input[type="checkbox"]:checked{
+input[type="checkbox"]:checked {
   background: var(--green);
   background-image: url(media/login/check.svg);
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-position: center;
   border-radius: 4px;
   border: none;
 }
 
-input[type="checkbox"]:focus-visible{
+input[type="checkbox"]:focus-visible {
   border: 1px solid var(--white);
 }
 
-.rememberCheckboxText{
+.rememberCheckboxText {
   margin-left: 10px;
   color: #929699;
   font-size: 14px;
@@ -182,7 +182,7 @@ input[type="checkbox"]:focus-visible{
   text-align: left;
 }
 
-.submitButton{
+.submitButton {
   height: 40px;
   width: 100px;
   left: 0px;
@@ -198,20 +198,20 @@ input[type="checkbox"]:focus-visible{
   color: var(--white);
 }
 
-.submitButton:hover{
+.submitButton:hover {
   background: var(--green);
 }
 
-.submitButton:active{
+.submitButton:active {
   box-shadow: inset 0px 4px 4px rgba(43, 179, 79, 0.63);
   background: var(--gradientGreen);
 }
 
-.submitButton:focus-visible{
+.submitButton:focus-visible {
   border: 1px solid var(--white);
 }
 
-.options{
+.options {
   display: flex;
   font-family: Open Sans;
   font-size: 14px;
@@ -223,12 +223,12 @@ input[type="checkbox"]:focus-visible{
   justify-content: space-between;
 }
 
-a{
+a {
   color: var(--white);
   text-decoration: none;
 }
 
-.lineDivider{
+.lineDivider {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -236,7 +236,7 @@ a{
   height: 2px;
 }
 
-.dividerText{
+.dividerText {
   height: 16px;
   width: 61px;
   left: 464px;
@@ -266,17 +266,17 @@ hr {
   overflow: hidden;
 }
 
-.optionImage{
+.optionImage {
   vertical-align: sub;
 }
 
-.FacebookImage{
+.FacebookImage {
   height: 40px;
   width: 46.54545593261719px;
   background: #263C68;
 }
 
-.FacebookText{
+.FacebookText {
   padding-top: 13.2px;
   font-weight: bold;
   font-size: 12px;
@@ -287,13 +287,13 @@ hr {
   flex: auto;
 }
 
-.TwitterImage{
+.TwitterImage {
   height: 40px;
   width: 46.54545593261719px;
   background: #0695CB;
 }
 
-.TwitterText{
+.TwitterText {
   padding-top: 13.2px;
   font-weight: bold;
   font-size: 12px;
@@ -304,13 +304,13 @@ hr {
   flex: auto;
 }
 
-.GoogleImage{
+.GoogleImage {
   height: 40px;
   width: 46.54545593261719px;
   background: #9D9D9D;
 }
 
-.GoogleText{
+.GoogleText {
   padding-top: 12px;
   font-weight: bold;
   font-size: 12px;
@@ -323,7 +323,8 @@ hr {
 
 .containerCarrousel {
   border-radius: 0px 10px 10px 0px;
-  overflow: hidden; /* F: Para lo que sobre */
+  overflow: hidden;
+  /* F: Para lo que sobre */
   width: 453px;
   height: 660px;
 }
@@ -340,12 +341,12 @@ hr {
   margin-bottom: -26px;
 }
 
-.userMail.error{
+.userMail.error {
   border: 1px solid var(--errorRed);
   fill: var(--errorRed);
 }
 
-.inputMail.error{
+.inputMail.error {
   border-left: 1px solid var(--errorRed);
 }
 
@@ -382,84 +383,68 @@ hr {
 /* - - - Media Queries - - - */
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  body{
+  body {
     background-color: var(--gray);
   }
-
-  .limiter{
+  .limiter {
     padding-top: 0px;
   }
-
   .containerLogin {
     box-shadow: none;
     border-radius: 0px;
   }
-
-  .loginTitle{
+  .loginTitle {
     margin-top: 105px;
   }
-
-  .image{
+  .image {
     flex: none;
   }
-
-  .containerCarrousel{
+  .containerCarrousel {
     display: none;
   }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-  body{
+  body {
     background-color: var(--gray);
   }
-
   .containerLogin {
     box-shadow: none;
     border-radius: 0px;
   }
-
-  .containerCarrousel{
+  .containerCarrousel {
     display: none;
   }
-
-  .limiter{
+  .limiter {
     padding-top: 0px;
   }
-
   .loginTitle {
-    font-size: 17px; /*To check*/
+    font-size: 17px;
+    /*To check*/
     line-height: 48px;
     margin-top: 45px;
     margin-bottom: 38px;
   }
-
-  .userMail{
+  .userMail {
     width: 240px;
   }
-
-  .inputLogin{
+  .inputLogin {
     width: 158px;
   }
-
-  .userPass{
+  .userPass {
     width: 240px;
     padding-right: 0px;
   }
-
-  .inputPass{
+  .inputPass {
     width: 145px;
   }
-
-  .image{
+  .image {
     flex: none;
   }
-
-  .actions{
+  .actions {
     width: 240px;
   }
-
-  hr{
+  hr {
     width: 89px;
   }
-  
 }
