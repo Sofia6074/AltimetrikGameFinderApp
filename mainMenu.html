@@ -96,7 +96,7 @@
                         <svg width="40" height="40" viewBox="0 0 40 40" alt="Triple card view icon" xmlns="http://www.w3.org/2000/svg">
                             <rect width="40" height="40" rx="10"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M27.5428 8.79993H13.257C11.6791 8.79993 10.3999 10.0791 10.3999 11.6571V15.9428C10.3999 17.5207 11.6791 18.7999 13.257 18.7999H27.5428C29.1207 18.7999 30.3999 17.5207 30.3999 15.9428V11.6571C30.3999 10.0791 29.1207 8.79993 27.5428 8.79993ZM11.8285 11.6571C11.8285 10.8681 12.4681 10.2285 13.2571 10.2285H27.5428C28.3318 10.2285 28.9714 10.8681 28.9714 11.6571V15.9428C28.9714 16.7318 28.3318 17.3714 27.5428 17.3714H13.2571C12.4681 17.3714 11.8285 16.7318 11.8285 15.9428V11.6571ZM13.257 21.6571H27.5428C29.1207 21.6571 30.3999 22.9362 30.3999 24.5142V28.7999C30.3999 30.3779 29.1207 31.6571 27.5428 31.6571H13.257C11.6791 31.6571 10.3999 30.3779 10.3999 28.7999V24.5142C10.3999 22.9362 11.6791 21.6571 13.257 21.6571ZM11.8285 24.5141C11.8285 23.7252 12.4681 23.0856 13.2571 23.0856H27.5428C28.3318 23.0856 28.9714 23.7252 28.9714 24.5141V28.7999C28.9714 29.5888 28.3318 30.2284 27.5428 30.2284H13.2571C12.4681 30.2284 11.8285 29.5888 11.8285 28.7999V24.5141Z" fill="black"/>
-                        </svg>                            
+                        </svg>                           
                     </div>
                     <div class="singleColumnView">
                         <svg width="40" height="40" viewBox="0 0 40 40" alt="Single card view icon" xmlns="http://www.w3.org/2000/svg">
@@ -106,64 +106,67 @@
                     </div>
                 </div>
             </div>
-            <div class="cardsContainer singleView">
-                <ul class="cardsContainer__list singleView">
+            <!-- add singleView tag from here -->
+            <div class="cardsContainer">
+                <ul class="cardsContainer__list">
                     <li>
-                        <div class="cardImage singleView">
+                        <div class="cardImage">
                             <img src="media/mainMenu/biomutantPlaceholder.png">
                         </div>
-                        <div class="cardInfo singleView">
-                            <div class="cardInfo__leftInfo singleView">
-                                <div class="leftInfo__title singleView">Biomutant</div>
-                                <div class="infoContainer--singleColumn singleView">
-                                    <div class = "releaseDate--singleColumn singleView">
-                                        <div class="leftInfo__releaseDate singleView">
-                                            <div class="releaseDate__text singleView">
+                        <div class="cardInfo">
+                            <div class="cardInfo__leftInfo">
+                                <div class="leftInfo__title">Biomutant</div>
+                                <div class="infoContainer--singleColumn">
+                                    <div class = "releaseDate--singleColumn">
+                                        <div class="leftInfo__releaseDate">
+                                            <div class="releaseDate__text">
                                                 Release date
                                             </div>
-                                            <div class="releaseDate__date singleView">
+                                            <div class="releaseDate__date">
                                                 May 31 2021
                                             </div>
                                         </div>
-                                        <hr class="leftInfo__firstLine singleView">
+                                        <hr class="leftInfo__firstLine">
                                     </div>
-                                    <div class="genres--singleColumn singleView">
-                                        <div class="leftInfo__genres singleView">
-                                            <div class="genres__text singleView">
+                                    <div class="genres--singleColumn">
+                                        <div class="leftInfo__genres">
+                                            <div class="genres__text">
                                                 Genres
                                             </div>
-                                            <div class="genres__info singleView">
+                                            <div class="genres__info">
                                                 Action, RPG
                                             </div>
                                         </div>
-                                        <hr class="leftInfo__secondLine singleView">
+                                        <hr class="leftInfo__secondLine">
                                     </div>
-                                    <div class="leftInfo__position singleView">
+                                    <!-- hide it for tripleView -->
+                                    <div class="leftInfo__position" hidden>
                                         #1
                                     </div>
                                 </div>
                             </div>
-                            <div class="cardInfo__rightInfo singleView">
-                                <div class="rightInfo__platformIcons singleView">
-                                    <div class="platformIcon singleView">
+                            <div class="cardInfo__rightInfo">
+                                <div class="rightInfo__platformIcons">
+                                    <div class="platformIcon">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
-                                    <div class="platformIcon singleView">
+                                    <div class="platformIcon">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
-                                    <div class="platformIcon singleView">
+                                    <div class="platformIcon">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
                                 </div>
-                                <div class="rightInfo__position singleView" hidden>
+                                <!-- hide it for singleView -->
+                                <div class="rightInfo__position">
                                     #X
                                 </div>
-                                <div class="rightInfo__giftButton singleView">
+                                <div class="rightInfo__giftButton">
                                     <input type="button">
                                 </div>
                             </div>
                         </div>
-                        <div class="cardInfo__gameDescription singleView">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                        <div class="cardInfo__gameDescription ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
                             Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
                             Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
                             Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
