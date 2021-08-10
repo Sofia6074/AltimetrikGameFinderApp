@@ -361,6 +361,10 @@ hr {
   fill: var(--errorRed);
 }
 
+.showPasswordIcon__svg:focus{
+  outline: none;
+}
+
 /* - - - Active - - - */
 
 .userMail.focus {
