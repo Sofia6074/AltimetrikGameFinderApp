@@ -278,7 +278,7 @@ li img {
     width: 100%;
 }
 
-.cardsContainer ul{
+.cardsContainer__list{
     display: grid;
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
@@ -286,24 +286,25 @@ li img {
     gap: 24px;
 }
 
-.cardsContainer li{
+.card.listElement{
     background-color: var(--darkGrey);
     border-radius: 10px;
-    overflow: hidden
+    overflow: hidden;
+    min-width: 363px;
 }
 
-.cardImage{
+.card.card__Image{
     height: 205px;
     display: flex;
 }
 
-.cardImage img{
+.card.card__Image img{
     flex-shrink: 0;
     width: 100%;
     height: 100%;
 }
 
-.cardInfo{
+.card.cardInfo{
     display: flex;
     height: 109px;
     padding-top: 10px;
@@ -311,18 +312,18 @@ li img {
     padding-right: 20px;
 }
 
-.cardInfo__leftInfo{
+.card.cardInfo__leftInfo{
     width: 186px;
 }
 
-.leftInfo__title{
+.card.leftInfo__title{
     font-weight: 800;
     font-size: 23px;
     line-height: 31px;
     color: var(--white);
 }
 
-.leftInfo__releaseDate{
+.card.leftInfo__releaseDate{
     display: flex;
     justify-content: space-between;
     margin-top: 3px;
@@ -332,7 +333,7 @@ li img {
     color: var(--grey2);
 }
 
-.leftInfo__genres{
+.card.leftInfo__genres{
     display: flex;
     justify-content: space-between;
     margin-top: 7px;
@@ -342,30 +343,30 @@ li img {
     color: var(--grey2);
 }
 
-.cardInfo__leftInfo hr {
+.card.cardInfo__leftInfo hr {
     width: 186px;
     margin-top: 2px;
     border: 1px solid var(--darGrey2)
 }
 
-.cardInfo__rightInfo{
+.card.cardInfo__rightInfo{
     display: flex;
     flex-direction: column;
     margin-left: auto;
 }
 
-.rightInfo__platformIcons{
+.card.rightInfo__platformIcons{
     width: 100%;
     display: flex;
 }
 
-.platformIcon{
+.card.platformIcon{
     height: 13px;
     width: 13px;
     margin-left: 8px;
 }
 
-.rightInfo__position{
+.card.rightInfo__position{
     margin-left: auto;
     margin-top: 20px;
     font-weight: bold;
@@ -374,11 +375,11 @@ li img {
     color: var(--green);
 }
 
-.rightInfo__giftButton{
+.card.rightInfo__giftButton{
     margin-left: auto;
 }
 
-.rightInfo__giftButton input[type="button"]{
+.card.rightInfo__giftButton input[type="button"]{
     margin-top: 5px;
     height: 24px;
     width: 46px;
@@ -390,36 +391,36 @@ li img {
 
 /* - - - singleColumnView - - -*/
 
-.infoContainer--singleColumn.singleView{
+.infoContainer--singleColumn.singleColumnView{
     display: flex;
     align-items: flex-end;
     position: absolute;
 }
 
-.releaseDate--singleColumn.singleView{
+.releaseDate--singleColumn.singleColumnView{
     width: 155px;
 }
 
-.genres--singleColumn.singleView{
+.genres--singleColumn.singleColumnView{
     width: 155px;
     margin-left: 40px;
     margin-right: 40px;
 }
 
-.cardsContainer.singleView{
+.cardsContainer.singleColumnView{
     display: flex;
     width: 100%;
     justify-content: center;
     margin-top: 40px;
 }
 
-.cardsContainer.singleView ul{
+.cardsContainer__list.singleColumnView{
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
-.cardsContainer.singleView li{
+.card.singleColumnView li{
     background-color: var(--darkGrey);
     border-radius: 10px;
     width: 696px;
@@ -427,43 +428,43 @@ li img {
     overflow: hidden
 }
 
-.cardImage.singleView{
+.cardImage.singleColumnView{
     height: 315px;
     display: flex;
 }
 
-.cardImage.singleView img{
+.cardImage.singleColumnView img{
     flex-shrink: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.cardInfo.singleView{
+.cardInfo.singleColumnView{
     display: flex;
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 0px;
 }
 
-.cardInfo.singleView img{
+.cardInfo.singleColumnView img{
     display: block;
     /* Personal note: the img has an implicit line-height assigned to it, which gives it some vertical breathing room.
     Since line-height only applies to inline elements, setting the img to display: block removes the line-height */
 }
 
-.cardInfo__leftInfo.singleView{
+.cardInfo__leftInfo.singleColumnView{
     margin-top: 20px;
 }
 
-.leftInfo__title.singleView{
+.leftInfo__title.singleColumnView{
     font-weight: 800;
     font-size: 23px;
     line-height: 31px;
     color: var(--white);
 }
 
-.leftInfo__releaseDate.singleView{
+.leftInfo__releaseDate.singleColumnView{
     display: flex;
     justify-content: space-between;
     margin-top: 17px;
@@ -473,11 +474,11 @@ li img {
     color: var(--grey2);
 }
 
-.releaseDate__date.singleView{
+.releaseDate__date.singleColumnView{
     color: var(--white);
 }
 
-.leftInfo__genres.singleView{
+.leftInfo__genres.singleColumnView{
     display: flex;
     justify-content: space-between;
     margin-top: 7px;
@@ -487,11 +488,11 @@ li img {
     color: var(--grey2);
 }
 
-.genres__info.singleView{
+.genres__info.singleColumnView{
     color: var(--white);
 }
 
-.leftInfo__position.singleView{
+.leftInfo__position.singleColumnView{
     margin-left: auto;
     margin-top: 18px;
     font-weight: bold;
@@ -500,36 +501,36 @@ li img {
     color: var(--green);
 }
 
-.cardInfo__leftInfo.singleView hr {
+.cardInfo__leftInfo.singleColumnView hr {
     width: auto;
     margin-top: 2px;
     border: 1px solid var(--darGrey2)
 }
 
-.cardInfo__rightInfo.singleView{
+.cardInfo__rightInfo.singleColumnView{
     display: flex;
     flex-direction: column;
     margin-left: auto;
 }
 
-.rightInfo__platformIcons.singleView{
+.rightInfo__platformIcons.singleColumnView{
     width: 100%;
     display: flex;
     margin-top: 30px;
 }
 
-.platformIcon.singleView{
+.platformIcon.singleColumnView{
     height: 13px;
     width: 13px;
     margin-left: 8px;
 }
 
-.rightInfo__giftButton.singleView{
+.rightInfo__giftButton.singleColumnView{
     margin-left: auto;
     margin-top: 21px;
 }
 
-.rightInfo__giftButton.singleView input[type="button"]{
+.rightInfo__giftButton.singleColumnView input[type="button"]{
     margin-top: 0px;
     height: 24px;
     width: 46px;
@@ -539,7 +540,7 @@ li img {
     outline: none;
 }
 
-.cardInfo__gameDescription.singleView{
+.cardInfo__gameDescription.singleColumnView{
     color: var(--white);
     margin-left: 40px;
     margin-right: 40px;
