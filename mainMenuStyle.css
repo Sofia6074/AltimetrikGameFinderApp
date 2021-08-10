@@ -302,6 +302,7 @@ li img {
     flex-shrink: 0;
     width: 100%;
     height: 100%;
+    object-fit: fill;
 }
 
 .card.cardInfo{
@@ -341,6 +342,10 @@ li img {
     font-size: 12px;
     line-height: 16px;
     color: var(--grey2);
+}
+
+.card.leftInfo__position{
+    display: none;
 }
 
 .card.cardInfo__leftInfo hr {
@@ -389,6 +394,10 @@ li img {
     outline: none;
 }
 
+.card.cardInfo__gameDescription{
+    display: none;
+}
+
 /* - - - singleColumnView - - -*/
 
 .infoContainer--singleColumn.singleColumnView{
@@ -420,7 +429,7 @@ li img {
     gap: 24px;
 }
 
-.card.singleColumnView li{
+.card.listElement.singleColumnView{
     background-color: var(--darkGrey);
     border-radius: 10px;
     width: 696px;
@@ -428,16 +437,16 @@ li img {
     overflow: hidden
 }
 
-.cardImage.singleColumnView{
+.card__Image.singleColumnView{
     height: 315px;
     display: flex;
 }
 
-.cardImage.singleColumnView img{
+.card__Image.singleColumnView img{
     flex-shrink: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .cardInfo.singleColumnView{
@@ -499,6 +508,7 @@ li img {
     font-size: 16px;
     line-height: 22px;
     color: var(--green);
+    display: block;
 }
 
 .cardInfo__leftInfo.singleColumnView hr {
@@ -525,6 +535,10 @@ li img {
     margin-left: 8px;
 }
 
+.rightInfo__position.singleColumnView{
+    display: none;
+}
+
 .rightInfo__giftButton.singleColumnView{
     margin-left: auto;
     margin-top: 21px;
@@ -549,4 +563,5 @@ li img {
     line-height: 19px;
     letter-spacing: 0px;
     text-align: left;
+    display: block;
 }
