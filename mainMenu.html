@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="mainMenuStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
+    <script src="mainMenuScript.js"></script>
     <div class="container">
         <header>
             <div class="headerOptions">
@@ -42,7 +45,6 @@
     <div class="horizontalContainer">
         <nav>
             <ul>
-                <!-- add "a" tags -->
                 <li class="list__boldOption" style="color: #7CD235;">Home</li>
                 <li class="list__boldOption"><a href="">Reviews</a></li>
                 <li class="list__boldOption"><a href="">New Releases</a></li>
@@ -77,7 +79,7 @@
                     </div>
                     <a href="">Best of the year</a>
                 </li>
-            </ul>  
+            </ul>
         </nav>
         <div class="cardsSection">
             <div class="cardsSection__info">
@@ -90,68 +92,387 @@
                     </div>
                 </div>
                 <div class="viewOptions">
-                    <div class="threeColumnView">
-                        <svg width="40" height="40" viewBox="0 0 40 40" alt="Triple card view icon" xmlns="http://www.w3.org/2000/svg">
+                    <div class="tripleColumnViewButton">
+                        <svg class="tripleColumnViewButton__svg" width="40" height="40" viewBox="0 0 40 40" alt="Triple card view icon" xmlns="http://www.w3.org/2000/svg">
                             <rect width="40" height="40" rx="10"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M27.5428 8.79993H13.257C11.6791 8.79993 10.3999 10.0791 10.3999 11.6571V15.9428C10.3999 17.5207 11.6791 18.7999 13.257 18.7999H27.5428C29.1207 18.7999 30.3999 17.5207 30.3999 15.9428V11.6571C30.3999 10.0791 29.1207 8.79993 27.5428 8.79993ZM11.8285 11.6571C11.8285 10.8681 12.4681 10.2285 13.2571 10.2285H27.5428C28.3318 10.2285 28.9714 10.8681 28.9714 11.6571V15.9428C28.9714 16.7318 28.3318 17.3714 27.5428 17.3714H13.2571C12.4681 17.3714 11.8285 16.7318 11.8285 15.9428V11.6571ZM13.257 21.6571H27.5428C29.1207 21.6571 30.3999 22.9362 30.3999 24.5142V28.7999C30.3999 30.3779 29.1207 31.6571 27.5428 31.6571H13.257C11.6791 31.6571 10.3999 30.3779 10.3999 28.7999V24.5142C10.3999 22.9362 11.6791 21.6571 13.257 21.6571ZM11.8285 24.5141C11.8285 23.7252 12.4681 23.0856 13.2571 23.0856H27.5428C28.3318 23.0856 28.9714 23.7252 28.9714 24.5141V28.7999C28.9714 29.5888 28.3318 30.2284 27.5428 30.2284H13.2571C12.4681 30.2284 11.8285 29.5888 11.8285 28.7999V24.5141Z" fill="black"/>
-                        </svg>                            
+                        </svg>                           
                     </div>
-                    <div class="singleColumnView">
-                        <svg width="40" height="40" viewBox="0 0 40 40" alt="Single card view icon" xmlns="http://www.w3.org/2000/svg">
+                    <div class="singleColumnViewButton">
+                        <svg class="singleColumnViewButton__svg"width="40" height="40" viewBox="0 0 40 40" alt="Single card view icon" xmlns="http://www.w3.org/2000/svg">
                             <rect width="40" height="40" rx="10"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4004 11.8287C10.4004 11.4342 10.7202 11.1144 11.1147 11.1144H29.6861C30.0806 11.1144 30.4004 11.4342 30.4004 11.8287C30.4004 12.2232 30.0806 12.543 29.6861 12.543H11.1147C10.7202 12.543 10.4004 12.2232 10.4004 11.8287ZM27.5432 15.4001H13.2575C11.6796 15.4001 10.4004 16.6793 10.4004 18.2572V22.5429C10.4004 24.1209 11.6796 25.4001 13.2575 25.4001H27.5432C29.1212 25.4001 30.4004 24.1209 30.4004 22.5429V18.2572C30.4004 16.6793 29.1212 15.4001 27.5432 15.4001ZM11.8291 18.2573C11.8291 17.4684 12.4687 16.8288 13.2577 16.8288H27.5434C28.3324 16.8288 28.972 17.4684 28.972 18.2573V22.5431C28.972 23.332 28.3324 23.9716 27.5434 23.9716H13.2577C12.4687 23.9716 11.8291 23.332 11.8291 22.5431V18.2573ZM11.1147 28.2573C10.7202 28.2573 10.4004 28.5771 10.4004 28.9716C10.4004 29.3661 10.7202 29.6859 11.1147 29.6859H29.6861C30.0806 29.6859 30.4004 29.3661 30.4004 28.9716C30.4004 28.5771 30.0806 28.2573 29.6861 28.2573H11.1147Z" fill="black"/>
                         </svg>
                     </div>
                 </div>
             </div>
-            <div class="cardsContainer">
-                <ul class="cardsContainer__list">
-                    <li>
-                        <div class="cardImage">
+            <div class="card cardsContainer">
+                <ul class="card cardsContainer__list">
+                    <li class="card listElement">
+                        <div class="card card__Image">
                             <img src="media/mainMenu/biomutantPlaceholder.png">
                         </div>
-                        <div class="cardInfo">
-                            <div class="cardInfo__leftInfo">
-                                <div class="leftInfo__title">Biomutant</div>
-                                <div class="leftInfo__releaseDate">
-                                    <div class="releaseDate__text">
-                                        Release date
+                        <div class="card cardInfo">
+                            <div class="card cardInfo__leftInfo">
+                                <div class="card leftInfo__title">Biomutant</div>
+                                <div class="card infoContainer--singleColumn">
+                                    <div class = "card releaseDate--singleColumn">
+                                        <div class="card leftInfo__releaseDate">
+                                            <div class="card releaseDate__text">
+                                                Release date
+                                            </div>
+                                            <div class="card releaseDate__date">
+                                                May 31 2021
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__firstLine">
                                     </div>
-                                    <div class="releaseDate__date">
-                                        May 31 2021
+                                    <div class="card genres--singleColumn">
+                                        <div class="card leftInfo__genres">
+                                            <div class="card genres__text">
+                                                Genres
+                                            </div>
+                                            <div class="card genres__info">
+                                                Action, RPG
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__secondLine">
+                                    </div>
+                                    <div class="card leftInfo__position">
+                                        #1
                                     </div>
                                 </div>
-                                <hr class="leftInfo__firstLine">
-                                <div class="leftInfo__genres">
-                                    <div class="releaseDate__text">
-                                        Genres
-                                    </div>
-                                    <div class="releaseDate__date">
-                                        Action, RPG
-                                    </div>
-                                </div>
-                                <hr class="leftInfo__secondLine">
                             </div>
-                            <div class="cardInfo__rightInfo">
-                                <div class="rightInfo__platformIcons">
-                                    <div class="platformIcon">
+                            <div class="card cardInfo__rightInfo">
+                                <div class="card rightInfo__platformIcons">
+                                    <div class="card platformIcon">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
-                                    <div class="platformIcon">
+                                    <div class="card platformIcon">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
-                                    <div class="platformIcon">
+                                    <div class="card platformIcon">
                                         <img src="media/mainMenu/platformNintendoSwitch.svg">
                                     </div>
                                 </div>
-                                <div class="rightInfo__position">
+                                <div class="card rightInfo__position">
                                     #X
                                 </div>
-                                <div class="rightInfo__giftButton">
+                                <div class="card rightInfo__giftButton">
                                     <input type="button">
                                 </div>
                             </div>
                         </div>
+                        <div class="card cardInfo__gameDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                            Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
+                            Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
+                            Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
+                        </div>  
+                    </li>
+                    <li class="card listElement">
+                        <div class="card card__Image">
+                            <img src="media/mainMenu/biomutantPlaceholder.png">
+                        </div>
+                        <div class="card cardInfo">
+                            <div class="card cardInfo__leftInfo">
+                                <div class="card leftInfo__title">Biomutant</div>
+                                <div class="card infoContainer--singleColumn">
+                                    <div class = "card releaseDate--singleColumn">
+                                        <div class="card leftInfo__releaseDate">
+                                            <div class="card releaseDate__text">
+                                                Release date
+                                            </div>
+                                            <div class="card releaseDate__date">
+                                                May 31 2021
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__firstLine">
+                                    </div>
+                                    <div class="card genres--singleColumn">
+                                        <div class="card leftInfo__genres">
+                                            <div class="card genres__text">
+                                                Genres
+                                            </div>
+                                            <div class="card genres__info">
+                                                Action, RPG
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__secondLine">
+                                    </div>
+                                    <div class="card leftInfo__position">
+                                        #1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card cardInfo__rightInfo">
+                                <div class="card rightInfo__platformIcons">
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                </div>
+                                <div class="card rightInfo__position">
+                                    #X
+                                </div>
+                                <div class="card rightInfo__giftButton">
+                                    <input type="button">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card cardInfo__gameDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                            Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
+                            Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
+                            Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
+                        </div>  
+                    </li>
+                    <li class="card listElement">
+                        <div class="card card__Image">
+                            <img src="media/mainMenu/biomutantPlaceholder.png">
+                        </div>
+                        <div class="card cardInfo">
+                            <div class="card cardInfo__leftInfo">
+                                <div class="card leftInfo__title">Biomutant</div>
+                                <div class="card infoContainer--singleColumn">
+                                    <div class = "card releaseDate--singleColumn">
+                                        <div class="card leftInfo__releaseDate">
+                                            <div class="card releaseDate__text">
+                                                Release date
+                                            </div>
+                                            <div class="card releaseDate__date">
+                                                May 31 2021
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__firstLine">
+                                    </div>
+                                    <div class="card genres--singleColumn">
+                                        <div class="card leftInfo__genres">
+                                            <div class="card genres__text">
+                                                Genres
+                                            </div>
+                                            <div class="card genres__info">
+                                                Action, RPG
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__secondLine">
+                                    </div>
+                                    <div class="card leftInfo__position">
+                                        #1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card cardInfo__rightInfo">
+                                <div class="card rightInfo__platformIcons">
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                </div>
+                                <div class="card rightInfo__position">
+                                    #X
+                                </div>
+                                <div class="card rightInfo__giftButton">
+                                    <input type="button">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card cardInfo__gameDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                            Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
+                            Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
+                            Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
+                        </div>  
+                    </li>
+                    <li class="card listElement">
+                        <div class="card card__Image">
+                            <img src="media/mainMenu/biomutantPlaceholder.png">
+                        </div>
+                        <div class="card cardInfo">
+                            <div class="card cardInfo__leftInfo">
+                                <div class="card leftInfo__title">Biomutant</div>
+                                <div class="card infoContainer--singleColumn">
+                                    <div class = "card releaseDate--singleColumn">
+                                        <div class="card leftInfo__releaseDate">
+                                            <div class="card releaseDate__text">
+                                                Release date
+                                            </div>
+                                            <div class="card releaseDate__date">
+                                                May 31 2021
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__firstLine">
+                                    </div>
+                                    <div class="card genres--singleColumn">
+                                        <div class="card leftInfo__genres">
+                                            <div class="card genres__text">
+                                                Genres
+                                            </div>
+                                            <div class="card genres__info">
+                                                Action, RPG
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__secondLine">
+                                    </div>
+                                    <div class="card leftInfo__position">
+                                        #1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card cardInfo__rightInfo">
+                                <div class="card rightInfo__platformIcons">
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                </div>
+                                <div class="card rightInfo__position">
+                                    #X
+                                </div>
+                                <div class="card rightInfo__giftButton">
+                                    <input type="button">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card cardInfo__gameDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                            Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
+                            Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
+                            Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
+                        </div>  
+                    </li>
+                    <li class="card listElement">
+                        <div class="card card__Image">
+                            <img src="media/mainMenu/biomutantPlaceholder.png">
+                        </div>
+                        <div class="card cardInfo">
+                            <div class="card cardInfo__leftInfo">
+                                <div class="card leftInfo__title">Biomutant</div>
+                                <div class="card infoContainer--singleColumn">
+                                    <div class = "card releaseDate--singleColumn">
+                                        <div class="card leftInfo__releaseDate">
+                                            <div class="card releaseDate__text">
+                                                Release date
+                                            </div>
+                                            <div class="card releaseDate__date">
+                                                May 31 2021
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__firstLine">
+                                    </div>
+                                    <div class="card genres--singleColumn">
+                                        <div class="card leftInfo__genres">
+                                            <div class="card genres__text">
+                                                Genres
+                                            </div>
+                                            <div class="card genres__info">
+                                                Action, RPG
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__secondLine">
+                                    </div>
+                                    <div class="card leftInfo__position">
+                                        #1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card cardInfo__rightInfo">
+                                <div class="card rightInfo__platformIcons">
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                </div>
+                                <div class="card rightInfo__position">
+                                    #X
+                                </div>
+                                <div class="card rightInfo__giftButton">
+                                    <input type="button">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card cardInfo__gameDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                            Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
+                            Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
+                            Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
+                        </div>  
+                    </li>
+                    <li class="card listElement">
+                        <div class="card card__Image">
+                            <img src="media/mainMenu/biomutantPlaceholder.png">
+                        </div>
+                        <div class="card cardInfo">
+                            <div class="card cardInfo__leftInfo">
+                                <div class="card leftInfo__title">Biomutant</div>
+                                <div class="card infoContainer--singleColumn">
+                                    <div class = "card releaseDate--singleColumn">
+                                        <div class="card leftInfo__releaseDate">
+                                            <div class="card releaseDate__text">
+                                                Release date
+                                            </div>
+                                            <div class="card releaseDate__date">
+                                                May 31 2021
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__firstLine">
+                                    </div>
+                                    <div class="card genres--singleColumn">
+                                        <div class="card leftInfo__genres">
+                                            <div class="card genres__text">
+                                                Genres
+                                            </div>
+                                            <div class="card genres__info">
+                                                Action, RPG
+                                            </div>
+                                        </div>
+                                        <hr class="card leftInfo__secondLine">
+                                    </div>
+                                    <div class="card leftInfo__position">
+                                        #1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card cardInfo__rightInfo">
+                                <div class="card rightInfo__platformIcons">
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                    <div class="card platformIcon">
+                                        <img src="media/mainMenu/platformNintendoSwitch.svg">
+                                    </div>
+                                </div>
+                                <div class="card rightInfo__position">
+                                    #X
+                                </div>
+                                <div class="card rightInfo__giftButton">
+                                    <input type="button">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card cardInfo__gameDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                            Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
+                            Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
+                            Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
+                        </div>  
                     </li>
                 </ul>
             </div>

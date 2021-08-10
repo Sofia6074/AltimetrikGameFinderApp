@@ -22,12 +22,12 @@
     font-style: normal;
     box-sizing: border-box;
 }
-    
+
 body {
     background-color: #141414;
-    /* background: var(--gradientBlack); */
+    /* background: var(--gradientBlack);
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 }
 
 /* - - - - - - - - HEADER - - - - - - - - */
@@ -41,20 +41,20 @@ header {
     box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
 }
 
-.headerOptions{
+.headerOptions {
     display: flex;
     height: 90px;
     width: 100%;
 }
 
-.headerOptions__title{
+.headerOptions__title {
     height: 38px;
     width: 198px;
     margin-left: 39px;
     margin-top: 34px;
 }
 
-.headerOptions__title h1{
+.headerOptions__title h1 {
     font-size: 28px;
     width: 198px;
     height: 38px;
@@ -65,7 +65,7 @@ header {
     color: var(--white);
 }
 
-.headerOptions__searchBarContainer{
+.headerOptions__searchBarContainer {
     display: flex;
     width: 362px;
     height: 40px;
@@ -75,29 +75,30 @@ header {
     margin-top: 32px;
 }
 
-input[type="text"]{
-    color: var(--grey);
+input[type="text"] {
+    color: #A6A6A6;
 }
 
-input::placeholder{
-    color: var(--grey);
+input::placeholder {
+    color: #A6A6A6;
 }
 
-.searchBarIcon{
+.searchBarIcon {
     display: flex;
     align-items: center;
     justify-content: center;
     background: #F1F1F1;
     border-radius: 20px 0px 0px 20px;
-    width: 56px; /*Note: Calculated by myself (20+16+20), that's not in the Figma*/
+    width: 56px;
+    /*Note: Calculated by myself (20+16+20), that's not in the Figma*/
 }
 
-.searchBarIcon img{
+.searchBarIcon img {
     height: 15.998370170593262px;
     width: 16.000619888305664px;
 }
 
-.headerOptions__searchBarContainer input{
+.headerOptions__searchBarContainer input {
     height: 40px;
     width: 326px;
     background: #F1F1F1;
@@ -111,17 +112,17 @@ input::placeholder{
     padding-left: 5px;
 }
 
-.headerOptions__logoutContainer{
+.headerOptions__logoutContainer {
     display: flex;
     align-items: baseline;
     margin-top: 44px;
 }
 
-.headerOptions__logoutContainer img{
+.headerOptions__logoutContainer img {
     margin-left: 11px;
 }
 
-.headerOptions__logoutContainer a{
+.headerOptions__logoutContainer a {
     color: #FFFFFF;
     text-decoration: none;
     font-weight: normal;
@@ -129,32 +130,34 @@ input::placeholder{
     line-height: 19px;
 }
 
-.logoutIcon{
+.logoutIcon {
     display: flex;
     align-items: baseline;
 }
 
-.headerOptions__profileIconContainer{
+.headerOptions__profileIconContainer {
     margin-top: 29.33px;
     margin-left: 32.32px;
     margin-right: 37.81px;
 }
 
-.headerOptions__profileIconContainer img{
+.headerOptions__profileIconContainer img {
     height: 45.33333206176758px;
     width: 43.870967864990234px;
     /* object-fit: cover; */
     border-radius: 50%;
 }
 
-.headerLine{
+.headerLine {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-header hr {
-    width: 96%; /*Note: Calculated by myself, that's not in the Figma*/
+.headerLine hr {
+    width: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
     border: 1px solid white;
 }
 
@@ -180,31 +183,31 @@ nav ul {
     padding-left: 39px;
 }
 
-li a{
+li a {
     text-decoration: none;
     color: #FFFFFF;
 }
 
-li img{
+li img {
     margin-right: 13px;
 }
 
-.list__boldOption.marginTop{
+.list__boldOption.marginTop {
     margin-top: 33px;
 }
 
-.list__boldOption{
+.list__boldOption {
     margin-top: 11px;
     font-weight: 800;
     font-size: 22px;
     line-height: 30px;
 }
 
-.list_iconOption.marginTop{
+.list_iconOption.marginTop {
     margin-top: 33px;
 }
 
-.list_iconOption{
+.list_iconOption {
     display: flex;
     margin-top: 11px;
     font-weight: normal;
@@ -212,7 +215,7 @@ li img{
     line-height: 30px;
 }
 
-/* - - - - - - - - CARDS SECTION - - - - - - - - */
+/* - - - - - - - - CARDS CONTAINER - - - - - - - - */
 
 .cardsSection{
     height: 89px;
@@ -241,7 +244,6 @@ li img{
     font-size: 18px;
     line-height: 25px;
     margin-top: -8px;
-    /* negative margin is valid? */
     color: var(--white);
 }
 
@@ -250,44 +252,60 @@ li img{
     margin-top: 51px;
 }
 
-.singleColumnView{
-    margin-left: 24px;
+.tripleColumnViewButton__svg{
+    fill: #515151;
 }
 
-/* - - - - - - - - CARDS CONTAINER - - - - - - - - */
+.tripleColumnViewButton__svg:hover{
+    fill: #7D7D7D;
+}
+
+.singleColumnViewButton__svg{
+    margin-left: 24px;
+    fill: #303030;
+}
+
+.singleColumnViewButton__svg:hover{
+    fill: #7D7D7D;
+}
+
+/* - - - - - - - - CARDS - - - - - - - - */
+
+/* - - - threeColumnView - - -*/
 
 .cardsContainer{
     display: flex;
     width: 100%;
 }
 
-.cardsContainer ul{
+.cardsContainer__list{
     display: grid;
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 314px 314px 314px;
-    grid-gap: 24px;
+    gap: 24px;
 }
 
-.cardsContainer li{
+.card.listElement{
     background-color: var(--darkGrey);
     border-radius: 10px;
-    overflow: hidden
+    overflow: hidden;
+    min-width: 363px;
 }
 
-.cardImage{
+.card.card__Image{
     height: 205px;
     display: flex;
 }
 
-.cardImage img{
+.card.card__Image img{
     flex-shrink: 0;
     width: 100%;
     height: 100%;
-    /* object-fit: cover */
+    object-fit: fill;
 }
 
-.cardInfo{
+.card.cardInfo{
     display: flex;
     height: 109px;
     padding-top: 10px;
@@ -295,18 +313,28 @@ li img{
     padding-right: 20px;
 }
 
-.cardInfo__leftInfo{
+.card.cardInfo__leftInfo{
     width: 186px;
 }
 
-.leftInfo__title{
+.card.leftInfo__title{
     font-weight: 800;
     font-size: 23px;
     line-height: 31px;
     color: var(--white);
 }
 
-.leftInfo__releaseDate{
+.card.leftInfo__releaseDate{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey2);
+}
+
+.card.leftInfo__genres{
     display: flex;
     justify-content: space-between;
     margin-top: 7px;
@@ -316,40 +344,34 @@ li img{
     color: var(--grey2);
 }
 
-.leftInfo__genres{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 7px;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 16px;
-    color: var(--grey2);
+.card.leftInfo__position{
+    display: none;
 }
 
-.cardInfo__leftInfo hr {
+.card.cardInfo__leftInfo hr {
     width: 186px;
     margin-top: 2px;
     border: 1px solid var(--darGrey2)
 }
 
-.cardInfo__rightInfo{
+.card.cardInfo__rightInfo{
     display: flex;
     flex-direction: column;
     margin-left: auto;
 }
 
-.rightInfo__platformIcons{
+.card.rightInfo__platformIcons{
     width: 100%;
     display: flex;
 }
 
-.platformIcon{
+.card.platformIcon{
     height: 13px;
     width: 13px;
     margin-left: 8px;
 }
 
-.rightInfo__position{
+.card.rightInfo__position{
     margin-left: auto;
     margin-top: 20px;
     font-weight: bold;
@@ -358,11 +380,11 @@ li img{
     color: var(--green);
 }
 
-.rightInfo__giftButton{
+.card.rightInfo__giftButton{
     margin-left: auto;
 }
 
-.rightInfo__giftButton input[type="button"]{
+.card.rightInfo__giftButton input[type="button"]{
     margin-top: 5px;
     height: 24px;
     width: 46px;
@@ -370,4 +392,176 @@ li img{
     background-image: url(media/mainMenu/gift.svg);
     border: none;
     outline: none;
+}
+
+.card.cardInfo__gameDescription{
+    display: none;
+}
+
+/* - - - singleColumnView - - -*/
+
+.infoContainer--singleColumn.singleColumnView{
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+}
+
+.releaseDate--singleColumn.singleColumnView{
+    width: 155px;
+}
+
+.genres--singleColumn.singleColumnView{
+    width: 155px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.cardsContainer.singleColumnView{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.cardsContainer__list.singleColumnView{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card.listElement.singleColumnView{
+    background-color: var(--darkGrey);
+    border-radius: 10px;
+    width: 696px;
+    height: 538px;
+    overflow: hidden
+}
+
+.card__Image.singleColumnView{
+    height: 315px;
+    display: flex;
+}
+
+.card__Image.singleColumnView img{
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.cardInfo.singleColumnView{
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 0px;
+}
+
+.cardInfo.singleColumnView img{
+    display: block;
+    /* Personal note: the img has an implicit line-height assigned to it, which gives it some vertical breathing room.
+    Since line-height only applies to inline elements, setting the img to display: block removes the line-height */
+}
+
+.cardInfo__leftInfo.singleColumnView{
+    margin-top: 20px;
+}
+
+.leftInfo__title.singleColumnView{
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 31px;
+    color: var(--white);
+}
+
+.leftInfo__releaseDate.singleColumnView{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 17px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey2);
+}
+
+.releaseDate__date.singleColumnView{
+    color: var(--white);
+}
+
+.leftInfo__genres.singleColumnView{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey2);
+}
+
+.genres__info.singleColumnView{
+    color: var(--white);
+}
+
+.leftInfo__position.singleColumnView{
+    margin-left: auto;
+    margin-top: 18px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--green);
+    display: block;
+}
+
+.cardInfo__leftInfo.singleColumnView hr {
+    width: auto;
+    margin-top: 2px;
+    border: 1px solid var(--darGrey2)
+}
+
+.cardInfo__rightInfo.singleColumnView{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.rightInfo__platformIcons.singleColumnView{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+}
+
+.platformIcon.singleColumnView{
+    height: 13px;
+    width: 13px;
+    margin-left: 8px;
+}
+
+.rightInfo__position.singleColumnView{
+    display: none;
+}
+
+.rightInfo__giftButton.singleColumnView{
+    margin-left: auto;
+    margin-top: 21px;
+}
+
+.rightInfo__giftButton.singleColumnView input[type="button"]{
+    margin-top: 0px;
+    height: 24px;
+    width: 46px;
+    border-radius: 10px;
+    background-image: url(media/mainMenu/gift.svg);
+    border: none;
+    outline: none;
+}
+
+.cardInfo__gameDescription.singleColumnView{
+    color: var(--white);
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: left;
+    display: block;
 }
