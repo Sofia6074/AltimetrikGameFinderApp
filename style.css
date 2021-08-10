@@ -98,6 +98,7 @@ h1 {
   height: 50px;
   display: flex;
   color: var(--lightGray);
+  width: 100%;
 }
 
 .userPass {
@@ -405,8 +406,10 @@ input[type="radio"]:not(:first-child){
   margin-left: 9px;
 }
 
-img {
+.carousel__item img {
   object-fit: fill;
+  width: 100%;
+  height: 100%;
 }
 
 /* - - - - - - - - MEDIA QUERIES - - - - - - - - */
