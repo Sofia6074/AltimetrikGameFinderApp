@@ -400,10 +400,29 @@ hr {
   display: flex;
   position: absolute;
   top: 605px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+input[type="radio"]{
+  appearance: none;
+  background-image: url(media/login/radiobutton.svg);
+  width: 7.5px;
+  height: 7px;
+  mix-blend-mode: normal;
+  opacity: 0.3;
 }
 
 input[type="radio"]:not(:first-child){
   margin-left: 9px;
+}
+
+input[type="radio"]:hover{
+  opacity: 1;
+}
+
+input[type="radio"]:checked{
+  opacity: 1;
 }
 
 .carousel__item img {
