@@ -252,20 +252,20 @@ li img {
     margin-top: 51px;
 }
 
-.threeColumnView svg{
+.tripleColumnViewButton__svg{
     fill: #515151;
 }
 
-.threeColumnView svg:hover{
+.tripleColumnViewButton__svg:hover{
     fill: #7D7D7D;
 }
 
-.singleColumnView svg{
+.singleColumnViewButton__svg{
     margin-left: 24px;
     fill: #303030;
 }
 
-.singleColumnView svg:hover{
+.singleColumnViewButton__svg:hover{
     fill: #7D7D7D;
 }
 
