@@ -5,6 +5,7 @@
   --white: #FFFFFF;
   --green: #7CD235;
   --gradientGreen: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+  --radioButtons: #D8D8D8;
   --errorRed: #E07979;
 }
 
@@ -97,6 +98,7 @@ h1 {
   height: 50px;
   display: flex;
   color: var(--lightGray);
+  width: 100%;
 }
 
 .userPass {
@@ -321,13 +323,6 @@ hr {
   flex: auto;
 }
 
-.containerCarrousel {
-  border-radius: 0px 10px 10px 0px;
-  overflow: hidden; /* F: Para lo que sobre */
-  width: 453px;
-  height: 660px;
-}
-
 /* - - - Error - - - */
 
 .errorText {
@@ -361,6 +356,10 @@ hr {
   fill: var(--errorRed);
 }
 
+.showPasswordIcon__svg:focus{
+  outline: none;
+}
+
 /* - - - Active - - - */
 
 .userMail.focus {
@@ -379,7 +378,64 @@ hr {
   border-left: 1px solid var(--white);
 }
 
-/* - - - Media Queries - - - */
+/* - - - - - - - - CAROUSEL - - - - - - - - */
+
+.carousel {
+  border-radius: 0px 10px 10px 0px;
+  overflow: hidden;
+  width: 453px;
+  height: 660px;
+  position: relative;
+}
+
+.carousel__visibleItem{
+  width: inherit;
+  height: inherit;
+  display: block;
+}
+    
+.carousel__hiddenItem{
+  width: inherit;
+  height: inherit;
+  display: none;
+}
+
+.carousel__buttons{
+  display: flex;
+  position: absolute;
+  top: 605px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+input[type="radio"]{
+  appearance: none;
+  background-image: url(media/login/radiobutton.svg);
+  width: 7.5px;
+  height: 7px;
+  mix-blend-mode: normal;
+  opacity: 0.3;
+}
+
+input[type="radio"]:not(:first-child){
+  margin-left: 9px;
+}
+
+input[type="radio"]:hover{
+  opacity: 1;
+}
+
+input[type="radio"]:checked{
+  opacity: 1;
+}
+
+.carousel__item img {
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
+}
+
+/* - - - - - - - - MEDIA QUERIES - - - - - - - - */
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   body{
