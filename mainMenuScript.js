@@ -27,10 +27,10 @@ function singleColumnView(){
 
 function openMenu(){
     document.querySelector(".clickContainer--tabletAndMobile").classList.add("show");
-    document.querySelector(".nav").setAttribute("style","display:block");
+    document.querySelector(".nav").classList.add("show");
 }
 
 function closeMenu(){
     document.querySelector(".clickContainer--tabletAndMobile").classList.remove("show");
-    document.querySelector(".nav").setAttribute("style","display:none");
+    document.querySelector(".nav").classList.remove("show");
 }

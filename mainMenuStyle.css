@@ -595,14 +595,18 @@ li img {
     }
 
     nav{
-        display: none;
         position: absolute;
         /* z-index: 2; */
         width: 303px;
         height: 100%;
-        left: 0;
+        left: -303px;
         top: 0;
         background: #151515;
+        transition: left .4s cubic-bezier(.33,.33,.6,.59);
+    }
+
+    nav.show{
+        left:0;
         box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
     }
 
@@ -654,3 +658,7 @@ li img {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* @media only screen and (min-width: 320px) and (max-width: 767px) {
+
+} */
