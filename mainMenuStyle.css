@@ -65,6 +65,10 @@ header {
     color: var(--white);
 }
 
+.headerOptions__hamburgerMenu{
+    display: none;
+}
+
 .headerOptions__searchBarContainer {
     display: flex;
     width: 362px;
@@ -253,6 +257,7 @@ li img {
 }
 
 .tripleColumnViewButton__svg{
+    cursor: pointer;
     fill: #515151;
 }
 
@@ -261,6 +266,7 @@ li img {
 }
 
 .singleColumnViewButton__svg{
+    cursor: pointer;
     margin-left: 24px;
     fill: #303030;
 }
@@ -434,7 +440,8 @@ li img {
     border-radius: 10px;
     width: 696px;
     height: 538px;
-    overflow: hidden
+    overflow: hidden;
+    margin: 40px auto 0px;
 }
 
 .card__Image.singleColumnView{
@@ -564,4 +571,30 @@ li img {
     letter-spacing: 0px;
     text-align: left;
     display: block;
+}
+
+/* - - - - - - - - MEDIA QUERIES - - - - - - - - */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .headerOptions__title{
+        display: none;
+    }
+
+    .headerOptions__hamburgerMenu{
+        display: block;
+        margin-top: 40px;
+        margin-left: 40px;
+    }
+
+    nav{
+        display: none;
+    }
+
+    .horizontalContainer{
+        margin-left: 40px;
+    }
+
+    .cardsContainer__list{
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
