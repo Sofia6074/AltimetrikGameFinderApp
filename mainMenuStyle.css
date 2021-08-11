@@ -178,6 +178,10 @@ nav {
     flex: none;
 }
 
+.nav__title{
+    display: none;
+}
+
 ul{
     list-style-type: none;
 }
@@ -586,8 +590,45 @@ li img {
         margin-left: 40px;
     }
 
+    .headerOptions__logoutContainer{
+        display: none;
+    }
+
     nav{
         display: none;
+        position: absolute;
+        width: 303px;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: #151515;
+        box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
+    }
+
+    .nav__title{
+        display: block;
+        color: var(--white);
+        height: 38px;
+        width: 198px;
+        margin-left: 39px;
+        margin-top: 34px;
+        margin-bottom: 50px;
+    }
+
+    .nav__title h1{
+        font-weight: normal;
+        font-size: 28px;
+        line-height: 38px;
+        letter-spacing: 1.74222px;
+    }
+
+    .title__strong{
+        font-weight: 800;
+    }
+
+    nav ul {
+        padding-top: 22px;
+        padding-left: 40px;
     }
 
     .horizontalContainer{

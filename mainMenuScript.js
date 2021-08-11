@@ -1,6 +1,7 @@
 window.addEventListener("load", start);
 
 function start() {
+    document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".tripleColumnViewButton__svg").addEventListener("click", tripleColumnView);
     document.querySelector(".singleColumnViewButton__svg").addEventListener("click", singleColumnView);
 }
@@ -21,4 +22,9 @@ function singleColumnView(){
     for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].classList.add("singleColumnView");
     }
+}
+
+function openMenu(){
+    console.log("openMenu called")
+    document.querySelector(".nav").setAttribute("style","display:block");
 }
