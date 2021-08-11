@@ -152,6 +152,10 @@ input::placeholder {
     border-radius: 50%;
 }
 
+.headerOptions__searchLens--mobile{
+    display: none;
+}
+
 .headerLine {
     display: flex;
     align-items: center;
@@ -179,6 +183,10 @@ nav {
 }
 
 .nav__title{
+    display: none;
+}
+
+.nav__hamburgerMenu--mobile{
     display: none;
 }
 
@@ -429,7 +437,6 @@ li img {
 .cardsContainer.singleColumnView{
     display: flex;
     width: 100%;
-    justify-content: center;
     margin-top: 40px;
 }
 
@@ -594,6 +601,10 @@ li img {
         display: none;
     }
 
+    .headerOptions__searchLens--mobile{
+        display: none;
+    }
+
     nav{
         position: absolute;
         /* z-index: 2; */
@@ -631,16 +642,20 @@ li img {
         font-weight: 800;
     }
 
+    .nav__hamburgerMenu--mobile{
+        display: none;
+    }
+
     nav ul {
         padding-top: 22px;
         padding-left: 40px;
     }
 
-    .clickContainer--tabletAndMobile{
+    .clickContainer--tablet{
         display: none;
     }
 
-    .clickContainer--tabletAndMobile.show{
+    .clickContainer--tablet.show{
         display: block;
         position: absolute;
         left: 303px;
@@ -659,6 +674,123 @@ li img {
     }
 }
 
-/* @media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (min-width: 320px) and (max-width: 767px) {
 
-} */
+    header{
+        height: 104px;
+        width: 100%;
+    }
+
+    .headerOptions{
+        justify-content: space-between;
+    }
+
+    .headerOptions__title, .headerOptions__searchBarContainer, .headerOptions__profileIconContainer,
+    .headerOptions__logoutContainer, .headerLine, .viewOptions{
+        display: none;
+    }
+    /* okay? */
+
+    .headerOptions__hamburgerMenu{
+        display: block;
+        margin-top: 40px;
+        margin-left: 40px;
+    }
+
+    .headerOptions__searchLens--mobile{
+        display: block;
+        margin-top: 40px;
+        margin-right: 40px;
+    }
+
+    nav{
+        position: absolute;
+        width: 100vw;;
+        height: 100%;
+        left: -420px;
+        top: 0;
+        background: #151515;
+        transition: left .4s cubic-bezier(.33,.33,.6,.59);
+    }
+
+    nav.show{
+        left:0;
+    }
+
+    .nav__title{
+        display: block;
+        color: var(--white);
+        height: 38px;
+        width: 198px;
+        margin-left: 30px;
+        margin-top: 34px;
+        margin-bottom: 50px;
+    }
+
+    .nav__title h1{
+        font-weight: normal;
+        font-size: 28px;
+        line-height: 38px;
+        letter-spacing: 1.74222px;
+    }
+
+    .title__strong{
+        font-weight: 800;
+    }
+
+    .hamburgerMenu__svg--mobile{
+        display: block;
+        position: relative;
+    }
+
+    nav ul {
+        padding-top: 22px;
+        padding-left: 30px;
+    }
+
+    .cardsSection__info{
+        margin-left: 40px;
+        margin-bottom: 30px;
+        margin-right: 40px;
+    }
+
+    .titles__subtitle{
+        margin-top: 20px;
+        margin-right: 40px;
+    }
+    
+    .cardsContainer__list{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    .card.listElement{
+        width: auto;
+        height: 321px;
+        border-radius: 0px;
+    }
+
+    .card.card__Image{
+        height: 164px;
+    }
+
+    .card.cardInfo{
+        display: flex;
+        flex-direction: column;
+        height: 157px;
+        padding-top: 10px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .card .cardInfo__leftInfo{
+        width: auto;
+        margin-top: 5px;
+    }
+
+    .card .card.cardInfo__leftInfo hr{
+        width: auto;
+    }
+
+}
