@@ -236,7 +236,6 @@ li img {
 .cardsSection{
     height: 89px;
     flex: auto;
-    padding-right: 40px;
 }
 
 .cardsSection__info{
@@ -245,6 +244,7 @@ li img {
     margin-right: 40px;
     width: 100%;
     margin-bottom: 30px;
+    padding-right: 40px;
 }
 
 .titles__mainTitle{
@@ -294,12 +294,13 @@ li img {
 .cardsContainer{
     display: flex;
     width: 100%;
+    padding-right: 40px;
 }
 
 .cardsContainer__list{
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(363px, auto));
     grid-template-rows: 314px 314px 314px;
     gap: 24px;
 }
@@ -443,7 +444,7 @@ li img {
 .cardsContainer__list.singleColumnView{
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 0px;
 }
 
 .card.listElement.singleColumnView{
@@ -452,7 +453,8 @@ li img {
     width: 696px;
     height: 538px;
     overflow: hidden;
-    margin: 40px auto 0px;
+    margin: auto;
+    margin-bottom: 24px;
 }
 
 .card__Image.singleColumnView{
@@ -667,10 +669,6 @@ li img {
 
     .horizontalContainer{
         margin-left: 40px;
-    }
-
-    .cardsContainer__list{
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
