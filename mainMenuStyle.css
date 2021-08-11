@@ -769,6 +769,7 @@ li img {
         width: auto;
         height: 321px;
         border-radius: 0px;
+        min-width: 0px;
     }
 
     .card.card__Image{
@@ -791,6 +792,16 @@ li img {
 
     .card .card.cardInfo__leftInfo hr{
         width: auto;
+    }
+
+    .card.cardInfo__rightInfo{
+        flex-direction: row;
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .card.platformIcon:first-child{
+        margin-left: 0px;
     }
 
 }
