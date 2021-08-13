@@ -692,7 +692,7 @@ li img {
     }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
 
     header{
         height: 104px;
@@ -725,7 +725,7 @@ li img {
         display: none;
         position: absolute;
         width: 100vw;;
-        height: 100vh;
+        height: auto;
         left: -400px;
         top: 0;
         background: #151515;
@@ -776,6 +776,7 @@ li img {
 
     .list__logOut.show{
         margin-top: 62px;
+        margin-bottom: 30px;
     }
 
     .cardsSection{
@@ -786,6 +787,7 @@ li img {
         margin-left: 40px;
         margin-bottom: 30px;
         margin-right: 0px;
+        padding-right: 0px;
         width: auto;
     }
 
@@ -863,12 +865,4 @@ li img {
         margin-left: 0px;
     }
 
-}
-
-/* I added this breakpoint just to check that the mobile view was working right. */
-@media only screen and (max-width: 320px) {
-    body{
-        display: none;
-        background-color: var(--black);
-    }
 }
