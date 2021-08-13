@@ -26,11 +26,25 @@ function singleColumnView(){
 }
 
 function openMenu(){
-    document.querySelector(".clickContainer--tablet").classList.add("show");
     document.querySelector(".nav").classList.add("show");
+    if (window.screen.width < 1023 && window.screen.width > 768){
+        document.querySelector(".clickContainer--tablet").classList.add("show");
+    }
+    if (window.screen.width < 767){
+        if(document.querySelector(".headerOptions__hamburgerMenu").classList.contains("show")){
+            closeMenu();
+        }
+        else{
+        document.querySelector(".headerOptions__hamburgerMenu").classList.add("show");
+        }
+    }
 }
 
 function closeMenu(){
     document.querySelector(".clickContainer--tablet").classList.remove("show");
     document.querySelector(".nav").classList.remove("show");
+
+    if (window.screen.width < 767){
+        document.querySelector(".headerOptions__hamburgerMenu").classList.remove("show");
+    }
 }

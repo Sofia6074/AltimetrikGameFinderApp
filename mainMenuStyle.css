@@ -718,6 +718,12 @@ li img {
         left:0;
     }
 
+    .headerOptions__hamburgerMenu.show img {
+        position: absolute;
+        z-index: 1;
+        right: 40px;
+    }
+
     .nav__title{
         display: block;
         color: var(--white);
@@ -756,12 +762,21 @@ li img {
     .cardsSection__info{
         margin-left: 40px;
         margin-bottom: 30px;
+        margin-right: 0px;
         width: auto;
+    }
+
+    .titles__mainTitle{
+        font-size: 45px;
+        line-height: 110%;
+        margin-right: 40px;
     }
 
     .titles__subtitle{
         margin-top: 20px;
         margin-right: 40px;
+        font-size: 18px;
+        line-height: 25px;
     }
 
     .cardsContainer{
@@ -813,12 +828,21 @@ li img {
         margin-top: 15px;
     }
 
+    .card.rightInfo__platformIcons{
+        width: auto;
+    }
+
+    .card.rightInfo__position{
+        margin-block: auto;
+    }
+
     .card.platformIcon:first-child{
         margin-left: 0px;
     }
 
 }
 
+/* I added this breakpoint just to check that the mobile view was working right. */
 @media only screen and (max-width: 320px) {
     body{
         display: none;
