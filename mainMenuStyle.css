@@ -672,7 +672,9 @@ li img {
     }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
+
+    /* body, html { overflow-x:hidden; } */
 
     header{
         height: 104px;
@@ -702,16 +704,18 @@ li img {
     }
 
     nav{
+        display: none;
         position: absolute;
         width: 100vw;;
-        height: 100%;
-        left: -420px;
+        height: 100vh;
+        left: -400px;
         top: 0;
         background: #151515;
         transition: left .4s cubic-bezier(.33,.33,.6,.59);
     }
 
     nav.show{
+        display: block;
         left:0;
     }
 
@@ -746,15 +750,21 @@ li img {
         padding-left: 30px;
     }
 
+
     .cardsSection__info{
         margin-left: 40px;
         margin-bottom: 30px;
-        margin-right: 40px;
+        /* margin-right: 40px; */
+        width: auto;
     }
 
     .titles__subtitle{
         margin-top: 20px;
         margin-right: 40px;
+    }
+
+    .cardsContainer{
+        padding-right: 0px;
     }
     
     .cardsContainer__list{
@@ -768,6 +778,10 @@ li img {
         height: 321px;
         border-radius: 0px;
         min-width: 0px;
+    }
+
+    .card.listElement img{
+        margin-right: 0px;
     }
 
     .card.card__Image{
