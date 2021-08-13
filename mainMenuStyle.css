@@ -137,6 +137,11 @@ input::placeholder {
     line-height: 19px;
 }
 
+.headerOptions__logoutContainer.show{
+    position: absolute;
+    z-index: 1;
+}
+
 .logoutIcon {
     display: flex;
     align-items: baseline;
@@ -232,6 +237,14 @@ li img {
     font-weight: normal;
     font-size: 22px;
     line-height: 30px;
+}
+
+.list__logOut{
+    display: none;
+}
+
+.list__logOut.show{
+    display: block;
 }
 
 /* - - - - - - - - CARDS CONTAINER - - - - - - - - */
@@ -426,6 +439,7 @@ li img {
     display: flex;
     align-items: flex-end;
     position: absolute;
+    z-index: 1;
 }
 
 .releaseDate--singleColumn.singleColumnView{
@@ -621,6 +635,7 @@ li img {
     }
 
     nav.show{
+        z-index: 2;
         left:0;
         box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
     }
@@ -653,6 +668,10 @@ li img {
     nav ul {
         padding-top: 22px;
         padding-left: 40px;
+    }
+
+    .list__logOut.show{
+        margin-top: 317px;
     }
 
     .clickContainer--tablet{
@@ -753,6 +772,10 @@ li img {
     nav ul {
         padding-top: 22px;
         padding-left: 30px;
+    }
+
+    .list__logOut.show{
+        margin-top: 62px;
     }
 
     .cardsSection{

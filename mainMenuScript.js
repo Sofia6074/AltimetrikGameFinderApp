@@ -27,10 +27,11 @@ function singleColumnView(){
 
 function openMenu(){
     document.querySelector(".nav").classList.add("show");
-    if (window.screen.width < 1023 && window.screen.width > 768){
+    document.querySelector(".list__logOut").classList.add("show");
+    if (window.screen.width <= 1023 && window.screen.width >= 768){
         document.querySelector(".clickContainer--tablet").classList.add("show");
     }
-    if (window.screen.width < 767){
+    if (window.screen.width <= 767){
         if(document.querySelector(".headerOptions__hamburgerMenu").classList.contains("show")){
             closeMenu();
         }
