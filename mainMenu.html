@@ -39,12 +39,17 @@
                     <img src="media/mainMenu/profile.png" alt="Profile photo">
                 </div>
                 <div class="headerOptions__searchLens--mobile">
-                    <img src="media/mainMenu/movileLens.svg" alt = "Search icon">
+                    <img src="media/mainMenu/movileLens.svg" class="searchLens--mobile__svg" alt = "Search icon">
                 </div>
             </div>
             <div class="headerLine">
                 <hr>
             </div>
+            <div class="header__searchBarContainer--mobile">
+                <!-- David: I want to improve using BEM so i want to know if the "--mobile" is right?  -->
+                <input type="text" placeholder="Type game name">
+            </div>
+            <div class="header__clickContainer--mobile"></div>
         </header>
     </div>
     <div class="horizontalContainer">
@@ -94,7 +99,6 @@
             </ul>
         </nav>
         <div class="clickContainer--tablet"></div>
-        <!-- David: I want to improve using BEM so i want to know if the "--tablet" is right?  -->
         <div class="cardsSection">
             <div class="cardsSection__info">
                 <div class="titles">
