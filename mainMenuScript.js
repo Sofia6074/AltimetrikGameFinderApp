@@ -10,6 +10,7 @@ function start() {
 }
 
 function openMenu(){
+    document.querySelector("header").setAttribute("style", "position: unset;");
     document.querySelector(".nav").classList.add("show");
     document.querySelector(".list__logOut").classList.add("show");
     if (window.screen.width <= 1023 && window.screen.width >= 768){
@@ -20,12 +21,13 @@ function openMenu(){
             closeMenu();
         }
         else{
-        document.querySelector(".headerOptions__hamburgerMenu").classList.add("show");
+            document.querySelector(".headerOptions__hamburgerMenu").classList.add("show");
         }
     }
 }
 
 function closeMenu(){
+    document.querySelector("header").removeAttribute("style", "position: unset;");
     document.querySelector(".clickContainer--tablet").classList.remove("show");
     document.querySelector(".nav").classList.remove("show");
 
