@@ -694,6 +694,14 @@ li img {
     .horizontalContainer{
         margin-left: 40px;
     }
+
+    .cardsContainer__list{
+        grid-template-columns: repeat(auto-fill, minmax(332px, auto));
+    }
+
+    .card.listElement{
+        min-width: 332px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
