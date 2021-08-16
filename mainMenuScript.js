@@ -20,14 +20,14 @@ async function loadCardsInfo(){
         let gameImg = element.background_image;
         let gameName = element.name;
         let gameDate = setDate(element.released);
-        let gameGenres = element.genres;
-        let gamePlatforms = element.gamePlatforms;
+        let gameGenres = setGenres(element.genres);
+        let gamePlatforms = setPlatforms(element.parent_platforms);
         console.log("Game: " + gameImg,gameName,gameDate,gameGenres,gamePlatforms);
     });
 }
 
-function setDate(str){
-    const dateArray = str.split("-");
+function setDate(date){
+    const dateArray = date.split("-");
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let monthInNumber = dateArray[1];
     if (monthInNumber.startsWith("0")){
@@ -36,6 +36,13 @@ function setDate(str){
     return [monthNames[monthInNumber], dateArray[2], dateArray[0]];
 }
 
+function setGenres(genresArray){
+    let genres = "";
+    for (let i = 0; i < genresArray.length; i++) {
+        genres += genresArray[i].name + ", ";  
+    }
+    return genres.substring(0,genres.length-2);
+}
 
 function openMenu(){
     document.querySelector("header").setAttribute("style", "position: unset;");
