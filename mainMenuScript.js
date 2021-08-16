@@ -1,12 +1,29 @@
 window.addEventListener("load", start);
 
 function start() {
+    loadCardsInfo();
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
     document.querySelector(".searchLens--mobile__svg").addEventListener("click",openSearchBar);
     document.querySelector(".header__clickContainer--mobile").addEventListener("click",closeSearchBar);
     document.querySelector(".tripleColumnViewButton__svg").addEventListener("click", tripleColumnView);
     document.querySelector(".singleColumnViewButton__svg").addEventListener("click", singleColumnView);
+}
+
+async function loadCardsInfo(){
+    // const key = "2276ace6657640eb84d3a1710c12f880";
+    const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
+    let data = await fetchInfo.json();
+    console.log(data.results);
+    document.querySelector(".cardsContainer__list").innerHTML = "";
+    let cardsData = data.results.map(function(element){
+        let gameImg = element.background_image;
+        let gameName = element.name;
+        let gameDate = element.released;
+        let gameGenres = element.genres;
+        let gamePlatforms = element.gamePlatforms;
+        console.log("Game: " + gameImg,gameName,gameDate,gameGenres,gamePlatforms);
+    });
 }
 
 function openMenu(){
