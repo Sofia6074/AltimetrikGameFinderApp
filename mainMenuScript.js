@@ -19,12 +19,23 @@ async function loadCardsInfo(){
     let cardsData = data.results.map(function(element){
         let gameImg = element.background_image;
         let gameName = element.name;
-        let gameDate = element.released;
+        let gameDate = setDate(element.released);
         let gameGenres = element.genres;
         let gamePlatforms = element.gamePlatforms;
         console.log("Game: " + gameImg,gameName,gameDate,gameGenres,gamePlatforms);
     });
 }
+
+function setDate(str){
+    const dateArray = str.split("-");
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let monthInNumber = dateArray[1];
+    if (monthInNumber.startsWith("0")){
+        monthInNumber = monthInNumber.substring(1);
+    }
+    return [monthNames[monthInNumber], dateArray[2], dateArray[0]];
+}
+
 
 function openMenu(){
     document.querySelector("header").setAttribute("style", "position: unset;");
