@@ -24,7 +24,6 @@ async function loadCardsInfo(){
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
         let gamePlatforms = element.parent_platforms;
-        console.log("gamePlatforms: " + gamePlatforms);
         let card =
         `
         <li class="card listElement">
@@ -51,8 +50,22 @@ async function loadCardsInfo(){
                                 <div class="card genres__text">
                                     Genres
                                 </div>
-                                <div class="card genres__info">
-                                    ${gameGenres}
+                                <div class="card genres__info tooltip"> `;
+
+                                    if(gameGenres.length > 20 ){
+                                        const tooltipText = gameGenres;
+                                        gameGenres = gameGenres.substring(0,18);
+                                        gameGenres += "...";
+                                        card += `
+                                                ${gameGenres}
+                                                <span class="tooltip tooltip__text">${tooltipText}</span>
+                                            `;
+                                    }
+                                    else{
+                                        card += `${gameGenres}`;
+                                    }
+
+                                    card += `
                                 </div>
                             </div>
                             <hr class="card leftInfo__secondLine">
@@ -67,7 +80,6 @@ async function loadCardsInfo(){
 
                         for (let i = 0; i < gamePlatforms.length; i++) {
                             let platform = setPlatformIcon(gamePlatforms[i].platform.id);
-                            console.log(platform);
                             card += `
                             <div class="card platformIcon">
                                 <img src=${platform}>
