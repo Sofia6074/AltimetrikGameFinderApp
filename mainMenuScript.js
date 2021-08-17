@@ -97,7 +97,7 @@ function setDate(date){
     if (monthInNumber.startsWith("0")){
         monthInNumber = monthInNumber.substring(1);
     }
-    return [monthNames[monthInNumber], dateArray[2], dateArray[0]];
+    return [monthNames[monthInNumber] + " " + dateArray[2] + " " + dateArray[0]];
 }
 
 function setGenres(genresArray){
