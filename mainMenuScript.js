@@ -1,7 +1,6 @@
 window.addEventListener("load", start);
 
 function start() {
-    // var gameRanking = 1;
     loadCardsInfo();
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
@@ -12,18 +11,82 @@ function start() {
 }
 
 async function loadCardsInfo(){
+    let cardRanking = 0;
     // const key = "2276ace6657640eb84d3a1710c12f880";
     const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
     let data = await fetchInfo.json();
     console.log(data.results);
     document.querySelector(".cardsContainer__list").innerHTML = "";
     let cardsData = data.results.map(function(element){
+        cardRanking++;
         let gameImg = element.background_image;
         let gameName = element.name;
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
         let gamePlatforms = element.parent_platforms;
-        document.querySelector(".cardsContainer__list").innerHTML += "card";
+        let card =
+        `
+        <li class="card listElement">
+            <div class="card card__Image">
+                <img src="${gameImg}">
+            </div>
+            <div class="card cardInfo">
+                <div class="card cardInfo__leftInfo">
+                    <div class="card leftInfo__title">${gameName}</div>
+                    <div class="card infoContainer--singleColumn">
+                        <div class = "card releaseDate--singleColumn">
+                            <div class="card leftInfo__releaseDate">
+                                <div class="card releaseDate__text">
+                                    Release date
+                                </div>
+                                <div class="card releaseDate__date">
+                                    ${gameDate}
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__firstLine">
+                        </div>
+                        <div class="card genres--singleColumn">
+                            <div class="card leftInfo__genres">
+                                <div class="card genres__text">
+                                    Genres
+                                </div>
+                                <div class="card genres__info">
+                                    ${gameGenres}
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__secondLine">
+                        </div>
+                        <div class="card leftInfo__position">
+                            #${cardRanking}
+                        </div>
+                    </div>
+                </div>
+                <div class="card cardInfo__rightInfo">
+                    <div class="card rightInfo__platformIcons">`;
+
+                        for (let i = 0; i < gamePlatforms.length; i++) {
+                            let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                            console.log(platform);
+                            card += `
+                            <div class="card platformIcon">
+                                <img src=${platform}>
+                            </div>`;
+                        }
+                        console.log("im out");
+                    card += `
+                    </div>
+                    <div class="card rightInfo__position">
+                        #${cardRanking}
+                    </div>
+                    <div class="card rightInfo__giftButton">
+                        <input type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="card cardInfo__gameDescription"> </div>  
+        </li>  
+        `;
+        document.querySelector(".cardsContainer__list").innerHTML += card;
     });
 }
 
@@ -48,26 +111,29 @@ function setGenres(genresArray){
 function setPlatformIcon(platform){
     switch (platform) {
         case 1:
-            platform = "media/mainMenu/platform__windows";
+            platform = "media/mainMenu/platform__windows.svg";
             break;
         case 2:
-            platform = "media/mainMenu/platform__playStation";
+            platform = "media/mainMenu/platform__playStation.svg";
             break;
         case 3:
-            platform = "media/mainMenu/platform__xbox";
+            platform = "media/mainMenu/platform__xbox.svg";
             break;
         case 4:
-            platform = "media/mainMenu/platform__ios";
+            platform = "media/mainMenu/platform__ios.svg";
             break;
         case 5:
-            platform = "media/mainMenu/platform__apple";
+            platform = "media/mainMenu/platform__apple.svg";
             break;
         case  6:
-            platform = "media/mainMenu/platform__linux";
+            platform = "media/mainMenu/platform__linux.svg";
             break;
         case  7:
-            platform = "media/mainMenu/platform__nintendo";
+            platform = "media/mainMenu/platform__nintendo.svg";
+            break;
+        default: return "media/mainMenu/imageNotFound.jpg";
     }
+    return platform;
 }
 
 function openMenu(){
