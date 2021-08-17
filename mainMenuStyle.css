@@ -218,6 +218,8 @@ li a {
 
 li img {
     margin-right: 13px;
+    width: 16.25px;
+    height: 13px;
 }
 
 .list__boldOption.marginTop {

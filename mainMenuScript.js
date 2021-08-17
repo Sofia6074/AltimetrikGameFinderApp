@@ -24,6 +24,7 @@ async function loadCardsInfo(){
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
         let gamePlatforms = element.parent_platforms;
+        console.log("gamePlatforms: " + gamePlatforms);
         let card =
         `
         <li class="card listElement">
@@ -69,7 +70,7 @@ async function loadCardsInfo(){
                             console.log(platform);
                             card += `
                             <div class="card platformIcon">
-                                <img src="${platform}">
+                                <img src=${platform}>
                             </div>`;
                         }
 
@@ -95,6 +96,8 @@ async function loadCardsInfo(){
     });
 }
 
+// - - - - - - - - - - Aux functions to re-format the information fetched
+// Date
 function setDate(date){
     const dateArray = date.split("-");
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -105,6 +108,7 @@ function setDate(date){
     return [monthNames[monthInNumber] + " " + dateArray[2] + " " + dateArray[0]];
 }
 
+// Genres
 function setGenres(genresArray){
     let genres = "";
     for (let i = 0; i < genresArray.length; i++) {
@@ -113,6 +117,7 @@ function setGenres(genresArray){
     return genres.substring(0,genres.length-2);
 }
 
+// Set icon src based on the id
 function setPlatformIcon(platform){
     switch (platform) {
         case 1:
@@ -141,6 +146,7 @@ function setPlatformIcon(platform){
     return platform;
 }
 
+// - - - - - - - - - - Hamburguer menu
 function openMenu(){
     document.querySelector("header").setAttribute("style", "position: unset;");
     document.querySelector(".nav").classList.add("show");
@@ -168,6 +174,7 @@ function closeMenu(){
     }
 }
 
+// - - - - - - - - - - Search Bar
 function openSearchBar(){
     if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
         closeSearchBar();
@@ -185,6 +192,7 @@ function closeSearchBar(){
     document.querySelector("header").removeAttribute("style", "height:166px");
 }
 
+// - - - - - - - - - - Views
 function tripleColumnView(){
     document.querySelector(".singleColumnViewButton__svg").setAttribute("style", "fill:#303030;");
     document.querySelector(".tripleColumnViewButton__svg").setAttribute("style", "fill:#515151;");
