@@ -444,8 +444,7 @@ li img {
 .infoContainer--singleColumn.singleColumnView{
     display: flex;
     align-items: flex-end;
-    position: absolute;
-    z-index: 1;
+    width: auto;
 }
 
 .releaseDate--singleColumn.singleColumnView{
