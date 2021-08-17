@@ -352,7 +352,7 @@ li img {
     padding-right: 20px;
 }
 
-.card.cardInfo__leftInfo{
+.infoContainer--singleColumn{
     width: 186px;
 }
 

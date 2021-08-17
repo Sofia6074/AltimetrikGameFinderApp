@@ -69,10 +69,10 @@ async function loadCardsInfo(){
                             console.log(platform);
                             card += `
                             <div class="card platformIcon">
-                                <img src=${platform}>
+                                <img src="${platform}">
                             </div>`;
                         }
-                        console.log("im out");
+
                     card += `
                     </div>
                     <div class="card rightInfo__position">
@@ -83,7 +83,12 @@ async function loadCardsInfo(){
                     </div>
                 </div>
             </div>
-            <div class="card cardInfo__gameDescription"> </div>  
+            <div class="card cardInfo__gameDescription">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
+                Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
+                Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
+                Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
+            </div>  
         </li>  
         `;
         document.querySelector(".cardsContainer__list").innerHTML += card;
