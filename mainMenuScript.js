@@ -1,6 +1,7 @@
 window.addEventListener("load", start);
 
 function start() {
+    // var gameRanking = 1;
     loadCardsInfo();
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
@@ -21,8 +22,8 @@ async function loadCardsInfo(){
         let gameName = element.name;
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
-        let gamePlatforms = setPlatforms(element.parent_platforms);
-        console.log("Game: " + gameImg,gameName,gameDate,gameGenres,gamePlatforms);
+        let gamePlatforms = element.parent_platforms;
+        document.querySelector(".cardsContainer__list").innerHTML += "card";
     });
 }
 
@@ -42,6 +43,31 @@ function setGenres(genresArray){
         genres += genresArray[i].name + ", ";  
     }
     return genres.substring(0,genres.length-2);
+}
+
+function setPlatformIcon(platform){
+    switch (platform) {
+        case 1:
+            platform = "media/mainMenu/platform__windows";
+            break;
+        case 2:
+            platform = "media/mainMenu/platform__playStation";
+            break;
+        case 3:
+            platform = "media/mainMenu/platform__xbox";
+            break;
+        case 4:
+            platform = "media/mainMenu/platform__ios";
+            break;
+        case 5:
+            platform = "media/mainMenu/platform__apple";
+            break;
+        case  6:
+            platform = "media/mainMenu/platform__linux";
+            break;
+        case  7:
+            platform = "media/mainMenu/platform__nintendo";
+    }
 }
 
 function openMenu(){
