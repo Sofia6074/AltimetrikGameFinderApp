@@ -32,7 +32,22 @@ async function loadCardsInfo(){
             </div>
             <div class="card cardInfo">
                 <div class="card cardInfo__leftInfo">
-                    <div class="card leftInfo__title">${gameName}</div>
+                    <div class="card leftInfo__title tooltip"> `;
+                                    
+                    if(gameName.length > 20 ){
+                        const tooltipText = gameName;
+                        gameName = gameName.substring(0,18);
+                        gameName += "...";
+                        card += `
+                                ${gameName}
+                                <span class="tooltip tooltip__text">${tooltipText}</span>
+                            `;
+                    }
+                    else{
+                        card += `${gameName}`;
+                    }
+
+                card += `</div>
                     <div class="card infoContainer--singleColumn">
                         <div class = "card releaseDate--singleColumn">
                             <div class="card leftInfo__releaseDate">
@@ -65,7 +80,7 @@ async function loadCardsInfo(){
                                         card += `${gameGenres}`;
                                     }
 
-                                    card += `
+                                card += `
                                 </div>
                             </div>
                             <hr class="card leftInfo__secondLine">

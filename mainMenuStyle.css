@@ -608,6 +608,8 @@ li img {
     display: block;
 }
 
+/* - - - - - - - - TOOLTIP - - - - - - - - */
+
 .tooltip {
     position: relative;
     display: inline-block;
@@ -615,7 +617,7 @@ li img {
   
 .tooltip__text {
     visibility: hidden;
-    width: 120px;
+    width: auto;
     background-color: var(--black);
     color: #fff;
     text-align: center;
@@ -746,6 +748,7 @@ li img {
         height: 104px;
         width: 100%;
         position: fixed;
+        z-index: 3;
     }
 
     .headerOptions{
