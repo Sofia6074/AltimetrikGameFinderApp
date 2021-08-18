@@ -34,13 +34,13 @@ async function loadCardsInfo(){
                 <div class="card cardInfo__leftInfo">
                     <div class="card leftInfo__title tooltip"> `;
                                     
-                    if(gameName.length > 20 ){
+                    if(gameName.length >= 20 ){
                         const tooltipText = gameName;
-                        gameName = gameName.substring(0,18);
+                        gameName = gameName.substring(0,16);
                         gameName += "...";
                         card += `
                                 ${gameName}
-                                <span class="tooltip tooltip__text">${tooltipText}</span>
+                                <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
                             `;
                     }
                     else{
@@ -77,7 +77,10 @@ async function loadCardsInfo(){
                                             `;
                                     }
                                     else{
-                                        card += `${gameGenres}`;
+                                        card += `
+                                                ${gameGenres}
+                                                <span class="tooltip tooltip__text"></span>
+                                            `;
                                     }
 
                                 card += `
@@ -119,6 +122,11 @@ async function loadCardsInfo(){
             </div>  
         </li>  
         `;
+        // let newLi = document.createElement("li");
+        // newLi.classList.add("card");
+        // newLi.classList.add("listElement");
+        // newLi.innerHTML += card;
+        // document.querySelector(".cardsContainer__list").appendChild(newLi);
         document.querySelector(".cardsContainer__list").innerHTML += card;
     });
 }
@@ -232,8 +240,18 @@ function tripleColumnView(){
 function singleColumnView(){
     document.querySelector(".singleColumnViewButton__svg").setAttribute("style", "fill:#515151;");
     document.querySelector(".tripleColumnViewButton__svg").setAttribute("style", "fill:#303030;");
+    
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].classList.add("singleColumnView");
     }
+
+    // // Tooltip
+    // const test = document.querySelectorAll(".leftInfo__title");
+    // for (let i = 0; i < test.length; i++) {
+    //     if (test[i].children.innerHTML != 'undefined'){
+    //         test[i].innerHTML = document.querySelector(".leftInfo__titleFullText").textContent;
+    //         test[i].classList.remove("tooltip");
+    //     }
+    // }
 }
