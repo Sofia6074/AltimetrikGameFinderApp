@@ -13,9 +13,6 @@
     --green: #2BB34F;
     --gradientGreen: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
     --red: #D24040;
-
-    /* David: if a color is used just once (for example, like the color on line 716),
-    should we add a color variable too? */
 }
 
 * {
@@ -759,7 +756,6 @@ li img {
     .headerOptions__logoutContainer, .headerLine, .viewOptions{
         display: none;
     }
-    /* David: Is this a good way to decrease the amount of code lines?*/
 
     .headerOptions__hamburgerMenu{
         display: block;
