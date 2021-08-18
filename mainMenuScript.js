@@ -2,7 +2,7 @@ window.addEventListener("load", start);
 
 function start() {
     loadCardsInfo();
-
+    document.querySelector
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
     document.querySelector(".searchLens--mobile__svg").addEventListener("click",openSearchBar);
@@ -14,12 +14,11 @@ function start() {
 //  - - - - - - - - - - Connection with Rawg API to load the cards
 async function loadCardsInfo(){
     let cardRanking = 0;
-    // const key = "2276ace6657640eb84d3a1710c12f880";
     const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
     let data = await fetchInfo.json();
     console.log(data.results);
     document.querySelector(".cardsContainer__list").innerHTML = "";
-    let cardsData = data.results.map(function(element){
+    data.results.map(function(element){
         cardRanking++;
         let gameImg = element.background_image;
         let gameName = element.name;
@@ -112,12 +111,7 @@ async function loadCardsInfo(){
                     </div>
                 </div>
             </div>
-            <div class="card cardInfo__gameDescription">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget rutrum nulla.
-                Nullam rutrum est nec risus ullamcorper sagittis. Phasellus tempor quam non purus dictum, nec rhoncus nulla fringilla.
-                Nulla semper nisl id augue rhoncus suscipit. Vivamus sit amet massa mi. Nunc gravida sem id tellus lobortis, ut egestas odio elementum.
-                Morbi ultrices nunc vel turpis vehicula consequat. Duis sit amet neque vulputate nisi sodales pulvinar id
-            </div>  
+            <div class="card cardInfo__gameDescription"></div>  
         </li>  
         `;
         // let newLi = document.createElement("li");
