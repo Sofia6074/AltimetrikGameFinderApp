@@ -38,6 +38,7 @@ async function loadCardsInfo(){
                         const tooltipText = gameName;
                         gameName = gameName.substring(0,16);
                         gameName += "...";
+                        //May add: check if overflow exists
                         card += `
                             <div class="card leftInfo__title tooltip">${gameName}
                             <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
