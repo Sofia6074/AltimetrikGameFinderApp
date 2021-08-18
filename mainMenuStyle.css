@@ -614,7 +614,7 @@ li img {
   
 .tooltip__text {
     visibility: hidden;
-    width: auto;
+    width: 100%;
     background-color: var(--black);
     color: #fff;
     text-align: center;
