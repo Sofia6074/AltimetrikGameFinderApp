@@ -2,6 +2,7 @@ window.addEventListener("load", start);
 
 function start() {
     loadCardsInfo();
+
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
     document.querySelector(".searchLens--mobile__svg").addEventListener("click",openSearchBar);
@@ -10,6 +11,7 @@ function start() {
     document.querySelector(".singleColumnViewButton__svg").addEventListener("click", singleColumnView);
 }
 
+//  - - - - - - - - - - Connection with Rawg API to load the cards
 async function loadCardsInfo(){
     let cardRanking = 0;
     // const key = "2276ace6657640eb84d3a1710c12f880";
@@ -31,20 +33,18 @@ async function loadCardsInfo(){
                 <img src="${gameImg}">
             </div>
             <div class="card cardInfo">
-                <div class="card cardInfo__leftInfo">
-                    <div class="card leftInfo__title tooltip"> `;
-                                    
+                <div class="card cardInfo__leftInfo">`;         
                     if(gameName.length >= 20 ){
                         const tooltipText = gameName;
                         gameName = gameName.substring(0,16);
                         gameName += "...";
                         card += `
-                                ${gameName}
-                                <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
+                            <div class="card leftInfo__title tooltip">${gameName}
+                            <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
                             `;
                     }
                     else{
-                        card += `${gameName}`;
+                        card +=`<div class="card leftInfo__title">${gameName}`;
                     }
 
                 card += `</div>
@@ -64,21 +64,18 @@ async function loadCardsInfo(){
                             <div class="card leftInfo__genres">
                                 <div class="card genres__text">
                                     Genres
-                                </div>
-                                <div class="card genres__info tooltip"> `;
+                                </div>`;
 
                                     if(gameGenres.length > 20 ){
                                         const tooltipText = gameGenres;
                                         gameGenres = gameGenres.substring(0,18);
                                         gameGenres += "...";
-                                        card += `
-                                                ${gameGenres}
+                                        card += `<div class="card genres__info tooltip">${gameGenres}
                                                 <span class="tooltip tooltip__text">${tooltipText}</span>
                                             `;
                                     }
                                     else{
-                                        card += `
-                                                ${gameGenres}
+                                        card += `<div class="card genres__info">${gameGenres}
                                                 <span class="tooltip tooltip__text"></span>
                                             `;
                                     }
@@ -179,6 +176,11 @@ function setPlatformIcon(platform){
         default: return "media/mainMenu/imageNotFound.jpg";
     }
     return platform;
+}
+
+//  - - - - - - - - - - Search Functionality
+function search(){
+
 }
 
 // - - - - - - - - - - Hamburguer menu

@@ -803,7 +803,7 @@ li img {
         display: none;
         position: absolute;
         width: 100vw;;
-        height: auto;
+        height: 100%;
         left: -400px;
         top: 0;
         background: #151515;
@@ -813,11 +813,12 @@ li img {
     nav.show{
         display: block;
         left:0;
+        z-index: 2;
     }
 
     .headerOptions__hamburgerMenu.show img {
         position: absolute;
-        z-index: 1;
+        z-index: 3;
         right: 40px;
     }
 
@@ -868,6 +869,10 @@ li img {
         margin-bottom: 30px;
         margin-right: 0px;
         padding-right: 0px;
+        width: auto;
+    }
+
+    .infoContainer--singleColumn {
         width: auto;
     }
 
