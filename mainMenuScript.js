@@ -127,7 +127,7 @@ async function loadCardsInfo(){
 // With search parameter
 async function loadCardsInfoWithSearch(search){
     let cardRanking = 0;
-    const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&search=${search}');
+    const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&search=${search}`);
     let data = await fetchInfo.json();
     console.log(data.results);
     document.querySelector(".cardsContainer__list").innerHTML = "";
