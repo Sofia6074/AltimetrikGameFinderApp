@@ -19,6 +19,8 @@ async function loadCardsInfo(){
     let data = await fetchInfo.json();
     console.log(data.results);
     document.querySelector(".cardsContainer__list").innerHTML = "";
+    document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
+    document.querySelector(".titles__subtitle").innerHTML = "Based on player counts and release date";
     data.results.map(function(element){
         cardRanking++;
         let gameImg = element.background_image;
@@ -131,6 +133,8 @@ async function loadCardsInfoWithSearch(search){
     let data = await fetchInfo.json();
     console.log(data.results);
     document.querySelector(".cardsContainer__list").innerHTML = "";
+    document.querySelector(".titles__mainTitle").innerHTML = "Search Results";
+    document.querySelector(".titles__subtitle").innerHTML = "Showing results for '" + search + "'";
     data.results.map(function(element){
         cardRanking++;
         let gameImg = element.background_image;
@@ -138,6 +142,7 @@ async function loadCardsInfoWithSearch(search){
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
         let gamePlatforms = element.parent_platforms;
+        console.log(gamePlatforms);
         let card =
         `
         <li class="card listElement">
@@ -291,7 +296,8 @@ function setPlatformIcon(platform){
         case  7:
             platform = "media/mainMenu/platform__nintendo.svg";
             break;
-        default: return "media/mainMenu/imageNotFound.jpg";
+        default: return "media/mainMenu/platform__notFound.svg";
+        //source: https://www.flaticon.com/free-icon/not-found_2748441?term=not%20found&page=1&position=12&page=1&position=12&related_id=2748441&origin=search
     }
     return platform;
 }
