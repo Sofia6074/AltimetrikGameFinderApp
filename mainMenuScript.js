@@ -2,7 +2,7 @@ window.addEventListener("load", start);
 
 function start() {
     loadCardsInfo();
-    document.querySelector
+    document.querySelector(".search").addEventListener("click",search);
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
     document.querySelector(".searchLens--mobile__svg").addEventListener("click",openSearchBar);
@@ -12,9 +12,122 @@ function start() {
 }
 
 //  - - - - - - - - - - Connection with Rawg API to load the cards
+// Common
 async function loadCardsInfo(){
     let cardRanking = 0;
     const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
+    let data = await fetchInfo.json();
+    console.log(data.results);
+    document.querySelector(".cardsContainer__list").innerHTML = "";
+    data.results.map(function(element){
+        cardRanking++;
+        let gameImg = element.background_image;
+        let gameName = element.name;
+        let gameDate = setDate(element.released);
+        let gameGenres = setGenres(element.genres);
+        let gamePlatforms = element.parent_platforms;
+        let card =
+        `
+        <li class="card listElement">
+            <div class="card card__Image">
+                <img src="${gameImg}">
+            </div>
+            <div class="card cardInfo">
+                <div class="card cardInfo__leftInfo">`;         
+                    if(gameName.length >= 20 ){
+                        const tooltipText = gameName;
+                        gameName = gameName.substring(0,16);
+                        gameName += "...";
+                        //May add: check if overflow exists
+                        card += `
+                            <div class="card leftInfo__title tooltip">${gameName}
+                            <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
+                            `;
+                    }
+                    else{
+                        card +=`<div class="card leftInfo__title">${gameName}`;
+                    }
+
+                card += `</div>
+                    <div class="card infoContainer--singleColumn">
+                        <div class = "card releaseDate--singleColumn">
+                            <div class="card leftInfo__releaseDate">
+                                <div class="card releaseDate__text">
+                                    Release date
+                                </div>
+                                <div class="card releaseDate__date">
+                                    ${gameDate}
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__firstLine">
+                        </div>
+                        <div class="card genres--singleColumn">
+                            <div class="card leftInfo__genres">
+                                <div class="card genres__text">
+                                    Genres
+                                </div>`;
+
+                                    if(gameGenres.length > 20 ){
+                                        const tooltipText = gameGenres;
+                                        gameGenres = gameGenres.substring(0,18);
+                                        gameGenres += "...";
+                                        card += `<div class="card genres__info tooltip">${gameGenres}
+                                                <span class="tooltip tooltip__text">${tooltipText}</span>
+                                            `;
+                                    }
+                                    else{
+                                        card += `<div class="card genres__info">${gameGenres}
+                                                <span class="tooltip tooltip__text"></span>
+                                            `;
+                                    }
+
+                                card += `
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__secondLine">
+                        </div>
+                        <div class="card leftInfo__position">
+                            #${cardRanking}
+                        </div>
+                    </div>
+                </div>
+                <div class="card cardInfo__rightInfo">
+                    <div class="card rightInfo__platformIcons">`;
+
+                        for (let i = 0; i < gamePlatforms.length; i++) {
+                            let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                            card += `
+                            <div class="card platformIcon">
+                                <img src=${platform}>
+                            </div>`;
+                        }
+
+                    card += `
+                    </div>
+                    <div class="card rightInfo__position">
+                        #${cardRanking}
+                    </div>
+                    <div class="card rightInfo__giftButton">
+                        <input type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="card cardInfo__gameDescription"></div>  
+        </li>  
+        `;
+        // let newLi = document.createElement("li");
+        // newLi.classList.add("card");
+        // newLi.classList.add("listElement");
+        // newLi.innerHTML += card;
+        // document.querySelector(".cardsContainer__list").appendChild(newLi);
+        document.querySelector(".cardsContainer__list").innerHTML += card;
+    });
+}
+
+// With search parameter
+async function loadCardsInfoWithSearch(search){
+    let cardRanking = 0;
+    const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&search=${search}');
     let data = await fetchInfo.json();
     console.log(data.results);
     document.querySelector(".cardsContainer__list").innerHTML = "";
@@ -175,7 +288,15 @@ function setPlatformIcon(platform){
 
 //  - - - - - - - - - - Search Functionality
 function search(){
-
+    let searchText = "";
+    if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
+        searchText = document.querySelectorAll(".searchInput")[1].value;
+        closeSearchBar();
+    }
+    else {
+        searchText = document.querySelectorAll(".searchInput")[0].value;
+    }
+    loadCardsInfoWithSearch(searchText);
 }
 
 // - - - - - - - - - - Hamburguer menu
@@ -209,7 +330,7 @@ function closeMenu(){
 // - - - - - - - - - - Search Bar
 function openSearchBar(){
     if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
-        closeSearchBar();
+        search();
     }
     else{
         document.querySelector(".header__clickContainer--mobile").classList.add("show");
