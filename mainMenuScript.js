@@ -239,22 +239,32 @@ async function loadCardsInfoWithSearch(search){
 // - - - - - - - - - - Aux functions to re-format the information fetched
 // Date
 function setDate(date){
-    const dateArray = date.split("-");
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let monthInNumber = dateArray[1];
-    if (monthInNumber.startsWith("0")){
-        monthInNumber = monthInNumber.substring(1);
+    if (date === null) {
+        return "No date";
     }
-    return [monthNames[monthInNumber] + " " + dateArray[2] + " " + dateArray[0]];
+    else{    
+        const dateArray = date.split("-");
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        let monthInNumber = dateArray[1];
+        if (monthInNumber.startsWith("0")){
+            monthInNumber = monthInNumber.substring(1);
+        }
+        return [monthNames[monthInNumber] + " " + dateArray[2] + " " + dateArray[0]];
+    }
 }
 
 // Genres
 function setGenres(genresArray){
-    let genres = "";
-    for (let i = 0; i < genresArray.length; i++) {
-        genres += genresArray[i].name + ", ";  
+    if (genresArray === null) {
+        return "No genres";
     }
-    return genres.substring(0,genres.length-2);
+    else {
+        let genres = "";
+        for (let i = 0; i < genresArray.length; i++) {
+            genres += genresArray[i].name + ", ";  
+        }
+        return genres.substring(0,genres.length-2);
+    }
 }
 
 // Set icon src based on the id
