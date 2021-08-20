@@ -71,28 +71,44 @@ header {
 
 .headerOptions__searchBarContainer {
     display: flex;
+    position: absolute;
     width: 362px;
     height: 40px;
     background: var(--white2);
     border-radius: 20px;
-    margin: auto;
     margin-top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 input[type="text"] {
+    position: relative;
     background: transparent;
     color: var(--grey2);
 }
 
-.gameSuggestions {
+.gameSuggestions{
+    display: none;
+}
+
+.gameSuggestions.show {
+    display: block;
+    position: absolute;
     border-top: 2px solid #999;
-    padding: 15px;
+    width: 362px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gameSuggestions.show > div{
+    background-color: var(--white2);
+    padding: 13px;
     font-size: 20px;
     color: #A6A6A6;
     cursor: pointer;
 }
 
-.gameSuggestions:hover {
+.gameSuggestions > div :hover {
     background-color: #FFF;
 }
 
@@ -132,6 +148,8 @@ input::placeholder {
     display: flex;
     align-items: baseline;
     margin-top: 44px;
+    margin-left: auto;
+    margin-right: 0px
 }
 
 .headerOptions__logoutContainer img {
@@ -158,8 +176,9 @@ input::placeholder {
 
 .headerOptions__profileIconContainer {
     margin-top: 29.33px;
-    margin-left: 32.32px;
-    margin-right: 37.81px;
+    padding-left: 32.32px;
+    padding-right: 37.81px;
+    margin-right: 0px
 }
 
 .headerOptions__profileIconContainer img {

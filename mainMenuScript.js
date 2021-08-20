@@ -326,8 +326,7 @@ function search(){
 
 //  - - - - - - - - - - Search suggesitons
 async function showSuggestions(){
-
-    document.querySelector(".gameSuggestions").innerHTML = "";
+    document.querySelector(".gameSuggestions").classList.add("show");
     const input = document.querySelector(".searchInput").value;
     const gamesList = await loadGamesSuggestions(input);
     console.log(gamesList);
@@ -338,9 +337,10 @@ async function showSuggestions(){
         document.querySelector(".gameSuggestions").appendChild(div);
     });
     
-    // if (input === '') {
-    //     document.querySelector(".gameSuggestions").innerHTML = '';  
-    // }
+    if (input === '') {
+        document.querySelector(".gameSuggestions").innerHTML = '';
+        document.querySelector(".gameSuggestions").classList.remove("show");  
+    }
 }
 
 // Loads just the first 3 games that are suggested
@@ -350,6 +350,7 @@ async function loadGamesSuggestions(search){
     let data = await fetchInfo.json();
     data.results.map(function(element){
         gamesArray.push(element.name);
+        document.querySelector(".gameSuggestions").innerHTML = "";
     });
     return gamesArray;
 }
