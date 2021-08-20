@@ -324,6 +324,36 @@ function search(){
     loadCardsInfoWithSearch(searchText);
 }
 
+//  - - - - - - - - - - Search suggesitons
+async function showSuggestions(){
+
+    document.querySelector(".gameSuggestions").innerHTML = "";
+    const input = document.querySelector(".searchInput").value;
+    const gamesList = await loadGamesSuggestions(input);
+    console.log(gamesList);
+
+    gamesList.forEach(function(game) {
+        const div = document.createElement('div');
+        div.innerHTML = game;
+        document.querySelector(".gameSuggestions").appendChild(div);
+    });
+    
+    // if (input === '') {
+    //     document.querySelector(".gameSuggestions").innerHTML = '';  
+    // }
+}
+
+// Loads just the first 3 games that are suggested
+async function loadGamesSuggestions(search){
+    let gamesArray = [];
+    const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&page_size=3&search=${search}`);
+    let data = await fetchInfo.json();
+    data.results.map(function(element){
+        gamesArray.push(element.name);
+    });
+    return gamesArray;
+}
+
 // - - - - - - - - - - Hamburguer menu
 function openMenu(){
     document.querySelector("header").setAttribute("style", "position: unset;");
