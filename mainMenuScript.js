@@ -3,6 +3,7 @@ window.addEventListener("load", start);
 function start() {
     loadCardsInfo();
     document.querySelector(".search").addEventListener("click",search);
+    document.querySelector(".searchInput").addEventListener("keyup",showSuggestions);
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
     document.querySelector(".searchLens--mobile__svg").addEventListener("click",openSearchBar);
@@ -23,7 +24,7 @@ async function loadCardsInfo(){
     document.querySelector(".titles__subtitle").innerHTML = "Based on player counts and release date";
     data.results.map(function(element){
         cardRanking++;
-        let gameImg = element.background_image;
+        let gameImg = setImage(element.background_image);
         let gameName = element.name;
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
@@ -137,12 +138,11 @@ async function loadCardsInfoWithSearch(search){
     document.querySelector(".titles__subtitle").innerHTML = "Showing results for '" + search + "'";
     data.results.map(function(element){
         cardRanking++;
-        let gameImg = element.background_image;
+        let gameImg = setImage(element.background_image);
         let gameName = element.name;
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
         let gamePlatforms = element.parent_platforms;
-        console.log(gamePlatforms);
         let card =
         `
         <li class="card listElement">
@@ -242,6 +242,15 @@ async function loadCardsInfoWithSearch(search){
 }
 
 // - - - - - - - - - - Aux functions to re-format the information fetched
+// Background image
+function setImage(img){
+    if (img === null){
+        console.log("null image");
+        return "media/mainMenu/imageNotFound.jpg";
+    }
+    return img;
+}
+
 // Date
 function setDate(date){
     if (date === null) {
@@ -297,12 +306,12 @@ function setPlatformIcon(platform){
             platform = "media/mainMenu/platform__nintendo.svg";
             break;
         default: return "media/mainMenu/platform__notFound.svg";
-        //source: https://www.flaticon.com/free-icon/not-found_2748441?term=not%20found&page=1&position=12&page=1&position=12&related_id=2748441&origin=search
+        // svg source: https://freesvg.org/1544388897
     }
     return platform;
 }
 
-//  - - - - - - - - - - Search Functionality
+//  - - - - - - - - - - Search functionality
 function search(){
     let searchText = "";
     if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
