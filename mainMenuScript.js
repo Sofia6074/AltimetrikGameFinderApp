@@ -4,6 +4,7 @@ function start() {
     loadCardsInfo();
     document.querySelector(".search").addEventListener("click",search);
     document.querySelector(".searchInput").addEventListener("keyup",showSuggestions);
+    document.querySelector(".gameSuggestions__div").addEventListener("click",fillSearchInput);
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
     document.querySelector(".searchLens--mobile__svg").addEventListener("click",openSearchBar);
@@ -324,23 +325,30 @@ function search(){
     loadCardsInfoWithSearch(searchText);
 }
 
-//  - - - - - - - - - - Search suggesitons
+// Search suggesitons
 async function showSuggestions(){
-    document.querySelector(".gameSuggestions").classList.add("show");
+    const listContainer = document.querySelector(".gameSuggestions");
+    listContainer.classList.add("show");
     const input = document.querySelector(".searchInput").value;
+    const divs = document.querySelectorAll(".gameSuggestions__div");
     const gamesList = await loadGamesSuggestions(input);
-    console.log(gamesList);
 
-    gamesList.forEach(function(game) {
-        const div = document.createElement('div');
-        div.innerHTML = game;
-        document.querySelector(".gameSuggestions").appendChild(div);
-    });
-    
     if (input === '') {
-        document.querySelector(".gameSuggestions").innerHTML = '';
-        document.querySelector(".gameSuggestions").classList.remove("show");  
+        listContainer.innerHTML = '';
+        listContainer.classList.remove("show");  
     }
+    else{
+        for (let i = 0; i < gamesList.length; i++) {
+            const game = gamesList[i];
+            let div = divs[i];
+            div.innerHTML = game;
+            listContainer.append(div);
+        }
+    }
+}
+
+function closeSuggestions(){
+    document.querySelector(".gameSuggestions").classList.remove("show");
 }
 
 // Loads just the first 3 games that are suggested
@@ -353,6 +361,14 @@ async function loadGamesSuggestions(search){
         document.querySelector(".gameSuggestions").innerHTML = "";
     });
     return gamesArray;
+}
+
+// Adds the game name into the input
+function fillSearchInput(id){
+    let game = document.querySelectorAll(".gameSuggestions__div")[id].textContent;
+    document.querySelector(".searchInput").value = game;
+    search();
+    closeSuggestions();
 }
 
 // - - - - - - - - - - Hamburguer menu

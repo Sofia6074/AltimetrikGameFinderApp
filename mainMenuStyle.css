@@ -94,13 +94,16 @@ input[type="text"] {
 .gameSuggestions.show {
     display: block;
     position: absolute;
-    border-top: 2px solid #999;
+    background-color: var(--white2);
+    padding-top: 20px;
     width: 362px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
 }
 
-.gameSuggestions.show > div{
+.gameSuggestions__div {
     background-color: var(--white2);
     padding: 13px;
     font-size: 20px;
@@ -108,8 +111,13 @@ input[type="text"] {
     cursor: pointer;
 }
 
-.gameSuggestions > div :hover {
-    background-color: #FFF;
+.gameSuggestions__div:first-of-type {
+    border-top: 2px solid #999;
+}
+
+.gameSuggestions__div:last-of-type {
+    overflow: hidden;
+    border-radius: 0px 0px 20px 20px;
 }
 
 input::placeholder {
@@ -123,6 +131,7 @@ input::placeholder {
     background: var(--white2);
     border-radius: 20px 0px 0px 20px;
     width: 56px;
+    z-index: 2;
 }
 
 .searchBarIcon img {
@@ -142,6 +151,7 @@ input::placeholder {
     line-height: 22px;
     letter-spacing: 0px;
     padding-left: 5px;
+    z-index: 2;
 }
 
 .headerOptions__logoutContainer {
@@ -688,6 +698,10 @@ li img {
 
     .headerOptions__logoutContainer{
         display: none;
+    }
+
+    .headerOptions__profileIconContainer{
+        margin-left: auto;
     }
 
     .headerOptions__searchLens--mobile{
