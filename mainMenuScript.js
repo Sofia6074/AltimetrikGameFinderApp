@@ -133,7 +133,7 @@ async function loadCardsInfoWithSearch(search){
     let cardRanking = 0;
     const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&search=${search}`);
     let data = await fetchInfo.json();
-    console.log(data.results);
+    // console.log(data.results);
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "Search Results";
     document.querySelector(".titles__subtitle").innerHTML = "Showing results for '" + search + "'";
@@ -233,11 +233,6 @@ async function loadCardsInfoWithSearch(search){
             <div class="card cardInfo__gameDescription"></div>  
         </li>  
         `;
-        // let newLi = document.createElement("li");
-        // newLi.classList.add("card");
-        // newLi.classList.add("listElement");
-        // newLi.innerHTML += card;
-        // document.querySelector(".cardsContainer__list").appendChild(newLi);
         document.querySelector(".cardsContainer__list").innerHTML += card;
     });
 }
@@ -365,6 +360,7 @@ async function loadGamesSuggestions(search){
 
 // Adds the game name into the input
 function fillSearchInput(id){
+    console.log(document.querySelectorAll(".gameSuggestions__div")[id]);
     let game = document.querySelectorAll(".gameSuggestions__div")[id].textContent;
     document.querySelector(".searchInput").value = game;
     search();
