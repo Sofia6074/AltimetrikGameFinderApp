@@ -29,12 +29,8 @@ body {
     width: 100%;
 }
 
-.snackbar {
-  display: none;
-}
-
-.snackbar.show{
-  display: flex !important;
+.snackbar{
+  display: flex;
   height: 100%;
   width: 100%;
   justify-content: space-between;
