@@ -407,9 +407,8 @@ hr {
 input[type="radio"]{
   appearance: none;
   background-image: url(media/login/radiobutton.svg);
-  width: 7.5px;
-  height: 7px;
-  mix-blend-mode: normal;
+  width: 8.5px;
+  height: 8.5px;
   opacity: 0.3;
 }
 
