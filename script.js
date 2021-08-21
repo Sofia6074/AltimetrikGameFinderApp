@@ -10,28 +10,31 @@ function start() {
 }
 
 // - - - - - - - - - - Login control
-async function login(){
-  let email = document.getElementById("emailInput").value;
-  let password = document.getElementById("passInput").value;
+async function login() {
+    let email = document.getElementById("emailInput").value;
+    let password = document.getElementById("passInput").value;
 
-  if (validateEmail(email) && validatePassword(password)){
-    let loginResponse = await checkIfUserRegistered();
+    if (validateEmail(email) && validatePassword(password)) {
+        let loginResponse = await checkIfUserRegistered();
 
-    if (loginResponse === 200){
-      document.querySelector(".succesSnackbar").removeAttribute("style", "display: none;");
-      setTimeout(function(){window.location = "mainMenu.html"}, 1000);
-    } else {
-      document.querySelector(".errorSnackbar").removeAttribute("style", "display: none;");
-      let errorMessage = document.querySelector(".passwordErrorMessage");
-      let elements = document.querySelectorAll(".userMail, .inputMail, .userPass, .inputPass, .icon__svg");
-      let node = document.createTextNode("Your email or password is incorrect");
-      errorMessage.innerHTML = "";
-      errorMessage.appendChild(node);
-      errorMessage.classList.add("errorText");
+        if (loginResponse === 200) {
+            document.querySelector(".succesSnackbar").setAttribute("style", "display: flex;");
+            document.querySelector(".errorSnackbar").setAttribute("style", "display: none;");
+            setTimeout(function () { window.location = "mainMenu.html" }, 1000);
+        } else {
+            document.querySelector(".succesSnackbar").setAttribute("style", "display: none;");
+            document.querySelector(".errorSnackbar").setAttribute("style", "display: flex;");
+            let errorMessage = document.querySelector(".passwordErrorMessage");
+            let elements = document.querySelectorAll(".userMail, .inputMail, .userPass, .inputPass, .icon__svg");
+            let node = document.createTextNode("Your email or password is incorrect");
+            errorMessage.innerHTML = "";
+            errorMessage.appendChild(node);
+            errorMessage.classList.add("errorText");
 
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.add("error");
-      }
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].classList.add("error");
+            }
+        }
     }
 }
 
@@ -71,6 +74,7 @@ function validateEmail(email) {
     errorMessage.innerHTML = "";
 
     if (!result) {
+        document.querySelector(".errorSnackbar").setAttribute("style", "display: flex;");
         let node = document.createTextNode("Enter a valid mail");
         errorMessage.appendChild(node);
         errorMessage.classList.add("errorText");
@@ -80,6 +84,7 @@ function validateEmail(email) {
         }
     }
     else {
+        document.querySelector(".errorSnackbar").setAttribute("style", "display: none;");
         errorMessage.classList.remove("errorText");
         icon.classList.remove("error");
         for (let i = 0; i < elements.length; i++) {
@@ -99,6 +104,7 @@ function validatePassword(password) {
 
     // Check length
     if (password.length <= 3) {
+        document.querySelector(".errorSnackbar").setAttribute("style", "display: flex;");
         let node = document.createTextNode("The password is too short");
         errorMessage.appendChild(node);
         icon.classList.add("error");
@@ -109,6 +115,7 @@ function validatePassword(password) {
     }
     // Check white spaces
     if (password.indexOf(' ') > 0) {
+        document.querySelector(".errorSnackbar").setAttribute("style", "display: flex;");
         let node = document.createTextNode("The password can't have white spaces");
         errorMessage.appendChild(node);
         icon.classList.add("error");
@@ -117,6 +124,7 @@ function validatePassword(password) {
         }
         return false;
     }
+    document.querySelector(".errorSnackbar").setAttribute("style", "display: none;");
     icon.classList.remove("error");
     for (let i = 0; i < elements.length; i++) {
         elements[i].classList.remove("error");
@@ -165,27 +173,21 @@ function blurPassInput() {
 }
 
 // - - - - - - - - - - Show or hide password
-function togglePass(){
-  let pass = document.getElementById("passInput");
-  let passImage = document.querySelector(".showPasswordIcon__svg");
+function togglePass() {
+    let pass = document.getElementById("passInput");
+    let passImage = document.querySelector(".showPasswordIcon__svg");
 
-  if (pass.type === "password") {
-    pass.type = "text";
-    passImage.setAttribute('src', "./media/login/hidePass.svg");
-  } else {
-    pass.type = "password";
-    passImage.setAttribute('src', "./media/login/showPass.svg");
-  }
+    if (pass.type === "password") {
+        pass.type = "text";
+        passImage.setAttribute('src', "./media/login/hidePass.svg");
+    } else {
+        pass.type = "password";
+        passImage.setAttribute('src', "./media/login/showPass.svg");
+    }
 }
 
-// - - - - - - - - - - Carrousel
-let carouselPosition = 0;
-const carousel = document.getElementsByClassName("carousel__item");
-
-function showImage(position){
-  carousel[carouselPosition].classList.remove("carousel__visibleItem");
-  carousel[carouselPosition].classList.add("carousel__hiddenItem");
-  carousel[position].classList.remove("carousel__hiddenItem");
-  carousel[position].classList.add("carousel__visibleItem");
-  carouselPosition = position;
+// - - - - - - - - - - Snackbar
+function closeSnackBar() {
+    document.querySelector(".succesSnackbar").classList.remove("show");
+    document.querySelector(".errorSnackbar").classList.remove("show");
 }

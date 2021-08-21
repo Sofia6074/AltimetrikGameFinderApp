@@ -29,16 +29,16 @@ body {
     width: 100%;
 }
 
-.snackbar {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
-    padding: 11px 20px 0px 20px;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    color: var(--white);
+.snackbar{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  padding: 11px 20px 0px 20px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--white);
 }
 
 .succesSnackbar{
