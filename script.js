@@ -10,27 +10,28 @@ function start() {
 }
 
 // - - - - - - - - - - Login control
-async function login() {
-    let email = document.getElementById("emailInput").value;
-    let password = document.getElementById("passInput").value;
+async function login(){
+  let email = document.getElementById("emailInput").value;
+  let password = document.getElementById("passInput").value;
 
-    if (validateEmail(email) && validatePassword(password)) {
-        let loginResponse = await checkIfUserRegistered();
+  if (validateEmail(email) && validatePassword(password)){
+    let loginResponse = await checkIfUserRegistered();
 
-        if (loginResponse === 200) {
-            window.location = "mainMenu.html";
-        } else {
-            let errorMessage = document.querySelector(".passwordErrorMessage");
-            let elements = document.querySelectorAll(".userMail, .inputMail, .userPass, .inputPass, .icon__svg");
-            let node = document.createTextNode("Your email or password is incorrect");
-            errorMessage.innerHTML = "";
-            errorMessage.appendChild(node);
-            errorMessage.classList.add("errorText");
+    if (loginResponse === 200){
+      document.querySelector(".succesSnackbar").removeAttribute("style", "display: none;");
+      setTimeout(function(){window.location = "mainMenu.html"}, 1000);
+    } else {
+      document.querySelector(".errorSnackbar").removeAttribute("style", "display: none;");
+      let errorMessage = document.querySelector(".passwordErrorMessage");
+      let elements = document.querySelectorAll(".userMail, .inputMail, .userPass, .inputPass, .icon__svg");
+      let node = document.createTextNode("Your email or password is incorrect");
+      errorMessage.innerHTML = "";
+      errorMessage.appendChild(node);
+      errorMessage.classList.add("errorText");
 
-            for (let i = 0; i < elements.length; i++) {
-                elements[i].classList.add("error");
-            }
-        }
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.add("error");
+      }
     }
 }
 
@@ -76,8 +77,6 @@ function validateEmail(email) {
         icon.classList.add("error");
         for (let i = 0; i < elements.length; i++) {
             elements[i].classList.add("error");
-            // Personal note: "classList" allows for manipulation of element's class content attribute
-            //                as a set of whitespace-separated tokens through a DOMTokenList object.
         }
     }
     else {
