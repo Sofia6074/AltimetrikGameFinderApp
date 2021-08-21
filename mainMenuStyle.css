@@ -271,6 +271,10 @@ li img {
     line-height: 30px;
 }
 
+.list__boldOption.list__selected > a {
+    color: var(--lightGreen);
+}
+
 .list_iconOption.marginTop {
     margin-top: 33px;
 }
@@ -381,7 +385,7 @@ li img {
     flex-shrink: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .card.cardInfo{
@@ -771,13 +775,13 @@ li img {
         height: 100%;
     }
 
+    .cardsContainer__list{
+        grid-template-columns: repeat(auto-fill, minmax(332px, 1fr));
+    }
+
     .horizontalContainer{
         margin-left: 40px;
     }
-
-    /* .cardsContainer__list{
-        grid-template-columns: repeat(auto-fill, minmax(332px, auto));
-    } */
 
     .card.listElement{
         min-width: 332px;

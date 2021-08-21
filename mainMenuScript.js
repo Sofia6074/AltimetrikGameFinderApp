@@ -4,7 +4,6 @@ function start() {
     loadCardsInfo();
     document.querySelector(".search").addEventListener("click",search);
     document.querySelector(".searchInput").addEventListener("keyup",showSuggestions);
-    // document.querySelector(".gameSuggestions__div").addEventListener("click",fillSearchInput);
     document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
     document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
     document.querySelector(".searchLens--mobile__svg").addEventListener("click",openSearchBar);
@@ -19,6 +18,7 @@ async function loadCardsInfo(){
     let cardRanking = 0;
     const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
     let data = await fetchInfo.json();
+    document.querySelector(".list__boldOption").classList.add("list__selected");
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
     document.querySelector(".titles__subtitle").innerHTML = "Based on player counts and release date";
@@ -132,6 +132,7 @@ async function loadCardsInfoWithSearch(search){
     let cardRanking = 0;
     const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&search=${search}`);
     let data = await fetchInfo.json();
+    document.querySelector(".list__boldOption").classList.remove("list__selected");
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "Search Results";
     document.querySelector(".titles__subtitle").innerHTML = "Showing results for '" + search + "'";
