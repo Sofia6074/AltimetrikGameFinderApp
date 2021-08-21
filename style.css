@@ -4,8 +4,11 @@
   --lightGray: #8F8F8F;
   --white: #FFFFFF;
   --green: #7CD235;
+  --succesSnackbar:#88DA44;
   --gradientGreen: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
   --errorRed: #E07979;
+  --errorSnackbar: #ED7474;
+
 }
 
 * {
@@ -20,6 +23,38 @@ body {
   background-color: var(--black);
 }
 
+.snackbarContainer{
+    position: fixed;
+    height: 40px;
+    width: 100%;
+}
+
+.snackbar {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    padding: 11px 20px 0px 20px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--white);
+}
+
+.succesSnackbar{
+    background-color: var(--succesSnackbar);
+}
+
+.errorSnackbar {
+    background-color: var(--errorSnackbar);
+}
+
+.snackbarContainer img {
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
 .limiter {
   display: flex;
   justify-content: center;
@@ -27,7 +62,7 @@ body {
   padding-bottom: 184px;
 }
 
-.containerLogin {
+.loginContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -394,7 +429,7 @@ hr {
     padding-top: 0px;
   }
 
-  .containerLogin {
+  .loginContainer {
     box-shadow: none;
     border-radius: 0px;
   }
@@ -417,7 +452,7 @@ hr {
     background-color: var(--gray);
   }
 
-  .containerLogin {
+  .loginContainer {
     box-shadow: none;
     border-radius: 0px;
   }
