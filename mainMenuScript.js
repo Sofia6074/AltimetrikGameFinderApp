@@ -97,12 +97,20 @@ async function loadCardsInfo(){
                 <div class="card cardInfo__rightInfo">
                     <div class="card rightInfo__platformIcons">`;
 
-                        for (let i = 0; i < gamePlatforms.length; i++) {
-                            let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                        if (gamePlatforms == null){
                             card += `
                             <div class="card platformIcon">
-                                <img src=${platform}>
+                                No platforms
                             </div>`;
+                        }
+                        else{
+                            for (let i = 0; i < gamePlatforms.length; i++) {
+                                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                                card += `
+                                <div class="card platformIcon">
+                                    <img src=${platform}>
+                                </div>`;
+                            }
                         }
 
                     card += `
