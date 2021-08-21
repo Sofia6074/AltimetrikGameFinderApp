@@ -22,6 +22,7 @@ async function loadCardsInfo(){
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
     document.querySelector(".titles__subtitle").innerHTML = "Based on player counts and release date";
+
     data.results.map(function(element){
         cardRanking++;
         let gameImg = setImage(element.background_image);
@@ -29,6 +30,7 @@ async function loadCardsInfo(){
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
         let gamePlatforms = element.parent_platforms;
+        let gameId = element.id;
         let card =
         `
         <li class="card listElement">
@@ -123,14 +125,11 @@ async function loadCardsInfo(){
                     </div>
                 </div>
             </div>
-            <div class="card cardInfo__gameDescription"></div>  
+            <div class="card cardInfo__gameDescription">
+                ${gameId}
+            </div>  
         </li>  
         `;
-        // let newLi = document.createElement("li");
-        // newLi.classList.add("card");
-        // newLi.classList.add("listElement");
-        // newLi.innerHTML += card;
-        // document.querySelector(".cardsContainer__list").appendChild(newLi);
         document.querySelector(".cardsContainer__list").innerHTML += card;
     });
 }
@@ -151,6 +150,7 @@ async function loadCardsInfoWithSearch(search){
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
         let gamePlatforms = element.parent_platforms;
+        let gameDescription = getDescription(element.id);
         let card =
         `
         <li class="card listElement">
@@ -244,7 +244,7 @@ async function loadCardsInfoWithSearch(search){
     });
 }
 
-// - - - - - - - - - - Aux functions to re-format the information fetched
+// - - - - - - - - - - Aux functions
 // Background image
 function setImage(img){
     if (img === null){
@@ -311,6 +311,18 @@ function setPlatformIcon(platform){
         // svg source: https://freesvg.org/1544388897
     }
     return platform;
+}
+
+// Get game description based on the id
+async function getDescription(id){
+    const gameDescription = await loadCardsInfoWithId(id);
+    return gameDescription.description;
+}
+
+async function loadCardsInfoWithId(gameId){
+    const fetchInfo = await fetch(`https://api.rawg.io/api/games/${gameId}?key=2276ace6657640eb84d3a1710c12f880`);
+    let data = fetchInfo.json();
+    return data;
 }
 
 //  - - - - - - - - - - Search functionality
@@ -428,13 +440,21 @@ function tripleColumnView(){
     }
 }
 
-function singleColumnView(){
+async function singleColumnView(){
     document.querySelector(".singleColumnViewButton__svg").setAttribute("style", "fill:#515151;");
     document.querySelector(".tripleColumnViewButton__svg").setAttribute("style", "fill:#303030;");
     
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].classList.add("singleColumnView");
+    }
+
+    cardsDescription = document.querySelectorAll(".cardInfo__gameDescription");
+    for (let i = 0; i < cardsDescription.length; i++) {
+        const gameId = cardsDescription[i].innerText;
+        const gameDescription = await getDescription(gameId);
+        cardsDescription[i].innerHTML = "";
+        cardsDescription[i].innerHTML = gameDescription;
     }
 
     // // Tooltip

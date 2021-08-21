@@ -639,6 +639,7 @@ li img {
 }
 
 .cardInfo__gameDescription.singleColumnView{
+    height: 95px;
     color: var(--white);
     margin-left: 40px;
     margin-right: 40px;
