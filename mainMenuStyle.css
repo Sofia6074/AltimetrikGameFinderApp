@@ -25,6 +25,7 @@
 
 body {
     background-color: #141414;
+    overflow-x: hidden;
     /* background: var(--gradientBlack);
     background-repeat: no-repeat;
     background-attachment: fixed; */
@@ -660,6 +661,77 @@ li img {
     text-align: left;
     display: block;
     overflow: hidden;
+}
+
+
+/* - - - - - - - - MODAL - - - - - - - - */
+
+.modalClick.show{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000C8;
+    z-index: 1;
+}
+
+.modal{
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    width: 1082px;
+    height: 793px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    background: #303030;
+    z-index: 2;
+}
+
+.modal.show{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "platforms platforms"
+        "title title"
+        "dateAndRating media"
+        "options media"
+        "description media"
+        "actions media"
+        "info media";
+}
+
+.modal__platforms{
+    grid-area: platforms;
+}
+
+.modal__title{
+    grid-area: title;
+}
+
+.modal__dateAndRating {
+    grid-area: dateAndRating;
+}
+
+.modal__options {
+    grid-area: options;
+}
+
+.modal__description {
+    grid-area: description;
+}
+
+.modal__actions {
+    grid-area: actions;
+}
+
+.modal__info {
+    grid-area: info;
+}
+
+.modal__media {
+    grid-area: media;
 }
 
 /* - - - - - - - - TOOLTIP - - - - - - - - */

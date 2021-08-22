@@ -10,6 +10,7 @@ function start() {
     document.querySelector(".header__clickContainer--mobile").addEventListener("click",closeSearchBar);
     document.querySelector(".tripleColumnViewButton__svg").addEventListener("click", tripleColumnView);
     document.querySelector(".singleColumnViewButton__svg").addEventListener("click", singleColumnView);
+    document.querySelector(".modalClick").addEventListener("click", closeModal);
 }
 
 //  - - - - - - - - - - Connection with Rawg API to load the cards
@@ -33,7 +34,7 @@ async function loadCardsInfo(){
         let gameId = element.id;
         let card =
         `
-        <li class="card listElement">
+        <li class="card listElement" onclick=openModal(${gameId})>
             <div class="card card__Image">
                 <img src="${gameImg}">
             </div>
@@ -453,7 +454,7 @@ function tripleColumnView(){
 
 async function singleColumnView(){
     document.querySelector(".loaderContainer").removeAttribute("style", "display:none;");
-    setTimeout(function () { document.querySelector(".loaderContainer").setAttribute("style", "display:none;"); }, 500);
+    setTimeout(function () { document.querySelector(".loaderContainer").setAttribute("style", "display:none;"); }, 1000);
     
     document.querySelector(".singleColumnViewButton__svg").setAttribute("style", "fill:#515151;");
     document.querySelector(".tripleColumnViewButton__svg").setAttribute("style", "fill:#303030;");
@@ -478,4 +479,15 @@ async function singleColumnView(){
     //         test[i].classList.remove("tooltip");
     //     }
     // }
+}
+
+// - - - - - - - - - - Modal
+function openModal(id){
+    document.querySelector(".modalClick").classList.add("show");
+    document.querySelector(".modal").classList.add("show");
+}
+
+function closeModal(){
+    document.querySelector(".modalClick").classList.remove("show");
+    document.querySelector(".modal").classList.remove("show");
 }
