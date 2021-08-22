@@ -10,12 +10,11 @@ function start() {
     document.querySelector(".header__clickContainer--mobile").addEventListener("click",closeSearchBar);
     document.querySelector(".tripleColumnViewButton__svg").addEventListener("click", tripleColumnView);
     document.querySelector(".singleColumnViewButton__svg").addEventListener("click", singleColumnView);
-    document.querySelector(".modalClick").addEventListener("click", closeModal);
-    document.querySelector(".modal__exitButton").addEventListener("click", closeModal);
+    document.querySelector(".modalContainer").addEventListener("click", closeModal);
 }
 
 //  - - - - - - - - - - Connection with Rawg API to load the cards
-// Common
+// Home 
 async function loadCardsInfo(){
     let cardRanking = 0;
     const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
@@ -24,6 +23,7 @@ async function loadCardsInfo(){
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
     document.querySelector(".titles__subtitle").innerHTML = "Based on player counts and release date";
+    console.log(data.results)
 
     data.results.map(function(element){
         cardRanking++;
@@ -137,7 +137,7 @@ async function loadCardsInfo(){
     document.querySelector(".loaderContainer").setAttribute("style", "display:none;");
 }
 
-// With search parameter
+// Search
 async function loadCardsInfoWithSearch(search){
     let cardRanking = 0;
     const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&search=${search}`);
@@ -334,7 +334,7 @@ async function getDescription(id){
 
 async function loadCardsInfoWithId(gameId){
     const fetchInfo = await fetch(`https://api.rawg.io/api/games/${gameId}?key=2276ace6657640eb84d3a1710c12f880`);
-    let data = fetchInfo.json();
+    let data = await fetchInfo.json();
     return data;
 }
 
@@ -483,9 +483,8 @@ async function singleColumnView(){
 }
 
 // - - - - - - - - - - Modal
-function openModal(id){
-    document.querySelector(".modalClick").classList.add("show");
-    document.querySelector(".modal").classList.add("show");
+async function openModal(id){
+    document.querySelector(".modalContainer").classList.add("show");
     
     // Get card info
     const cards = document.querySelectorAll(".listElement");
@@ -515,7 +514,7 @@ function openModal(id){
             // Get platforms
             let platforms = [];
             if (cards[i].querySelector(".platformIcon").classList.contains("noPlatform")){
-                platforms = "None"
+                platforms.push("Not defined");
             }
             else {
                 for (let j = 0; j < cards[i].querySelectorAll(".platformIcon").length; j++) {
@@ -530,14 +529,171 @@ function openModal(id){
                 }
             }
             else {
-                description = cards[i].querySelector(".cardInfo__gameDescription").textContent;
+                description = await getDescription(id);
             }
+
+            //Fetch aditional info
+            const extraInfo = await loadCardsInfoWithId(id);
+            console.log(extraInfo);
+            const platformsName = setPlatformsNames(extraInfo.parent_platforms);
+            const publisher = setPublisher(extraInfo.publishers[0]);
+            const website = setWebsite(extraInfo.website);
+            const developer = setDeveloper(extraInfo.developers[0]);
+            const ageRating = setAgeRating(extraInfo.esrb_rating);
+            const screenshots = await loadScreenshots(extraInfo.slug);
+            
+            let modal = 
+            `
+            <div class="modal show" style="background-image: url(${img});">
+                <div class="modal__platforms">`;
+
+                    for (let j = 0; j < platforms.length; j++) {
+                        if (platforms[i] == "Not defined") {
+                            modal += `Not defined`;
+                        }
+                        else{
+                            modal += `<img src=${platforms[j]}>`;
+                        }
+                        
+                    }
+
+                modal +=`
+                </div>
+                <div class="modal__title">
+                    ${name}
+                </div>
+                <div class="modal__dateAndRating">
+                    <div class="dateAndRating dateAndRating__date">Placeholder</div>
+                    <div class="dateAndRating dateAndRating__ratingTop">Placeholder</div>
+                    <div class="dateAndRating dateAndRating__ratingCategory">Placeholder</div>
+                </div>
+                <div class="modal__options">
+                    <input type="button" class="options__buy">
+                    <input type="button" class="options__wishList">
+                </div>
+                <div class="modal__description">
+                    ${description}
+                </div>
+                <div class="modal__actions">
+                    <input type="button" class="actions__comment">
+                    <input type="button" class="actions__review">
+                </div>
+                <div class="modal__info">
+                    <div class="modalInfo__leftInfo">
+                        <div class="info title info__platforms">
+                            Platforms
+                            <a href="" class="subtitle">${platformsName}</a>
+                        </div>
+                        <div class="info title info__releaseDate">
+                            Release Date
+                            <p class="subtitle">${releaseDate}</p>
+                        </div>
+                        <div class="info title info__publisher">
+                            Publisher
+                            <a href="" class="subtitle">${publisher}</a>
+                        </div>
+                        <div class="info title info__website">
+                            Website
+                            <a href="" class="subtitle">${website}</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info title info__genre">
+                            Genre
+                            <a href="" class="subtitle">${genres}</a>
+                        </div>
+                        <div class="info title info__developer">
+                            Developer
+                            <a href="" class="subtitle">${developer}</a>
+                        </div>
+                        <div class="info title info__ageRating">
+                            Age Rating
+                            <p class="subtitle">${ageRating}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__media">
+                    <div class="mainMedia">
+                        <img src="${screenshots[0]}">
+                    </div>
+                    <div class="bottomMedia">
+                        <img src="${screenshots[1]}">
+                        <img src="${screenshots[2]}">
+                        <img src="${screenshots[3]}">
+                        <img src="${screenshots[4]}">
+                    </div>
+                </div>
+                <div class="modal__exitButton">
+                    <img src="media/mainMenu/exitModal.svg" onclick=closeModal()>
+                </div>
+            </div>
+            `
+            document.querySelector(".modalContainer").innerHTML += modal;
         }
+
     }
 
 }
 
+// - - - - - - - - - - Aux functions
+function setPlatformsNames(platforms){
+    if (platforms === null) {
+        return "Not defined";
+    }
+    else {
+        let platformNames = "";
+        for (let i = 0; i < platforms.length; i++) {
+            platformNames += platforms[i].platform.name + ", ";  
+        }
+        return platformNames.substring(0,platformNames.length-2);
+    }
+}
+
+function setPublisher (publisher){
+    if (publisher == null){
+        return publisher = "Not defined";
+    }
+    return publisher.name;
+}
+
+function setWebsite (website){
+    if (website == ""){
+        return website = "Not defined";
+    }
+    return website;
+}
+
+function setDeveloper (developer){
+    if (developer == null){
+        return developer = "Not defined";
+    }
+    return developer.name;
+}
+
+function setAgeRating (rating){
+    if (rating == null){
+        return rating = "Not rated";
+    }
+    return rating.name;
+}
+
 function closeModal(){
-    document.querySelector(".modalClick").classList.remove("show");
+    document.querySelector(".modalContainer").classList.remove("show");
     document.querySelector(".modal").classList.remove("show");
+}
+
+async function loadScreenshots(gameSlug){
+    const fetchInfo = await fetch(`https://api.rawg.io/api/games/${gameSlug}/screenshots?key=2276ace6657640eb84d3a1710c12f880`);
+    let data = await fetchInfo.json();
+    let screenshots = [];
+    
+    for (let i = 0; i < 5; i++) {
+        if (data.results[i].image == null){
+            screenshots.push("media/mainMenu/imageNotFound.jpg");
+        }
+        else {
+            screenshots.push(data.results[i].image);
+        }
+    }
+    return screenshots;
 }
