@@ -11,6 +11,7 @@ function start() {
     document.querySelector(".tripleColumnViewButton__svg").addEventListener("click", tripleColumnView);
     document.querySelector(".singleColumnViewButton__svg").addEventListener("click", singleColumnView);
     document.querySelector(".modalClick").addEventListener("click", closeModal);
+    document.querySelector(".modal__exitButton").addEventListener("click", closeModal);
 }
 
 //  - - - - - - - - - - Connection with Rawg API to load the cards
