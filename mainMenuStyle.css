@@ -359,6 +359,16 @@ li img {
     display: flex;
     width: 100%;
     padding-right: 40px;
+    position: relative;
+}
+
+.loaderContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    text-align: center;
+    z-index: 1;
 }
 
 .cardsContainer__list{
@@ -649,6 +659,7 @@ li img {
     letter-spacing: 0px;
     text-align: left;
     display: block;
+    overflow: hidden;
 }
 
 /* - - - - - - - - TOOLTIP - - - - - - - - */

@@ -132,6 +132,7 @@ async function loadCardsInfo(){
         `;
         document.querySelector(".cardsContainer__list").innerHTML += card;
     });
+    document.querySelector(".loaderContainer").setAttribute("style", "display:none;");
 }
 
 // With search parameter
@@ -150,7 +151,7 @@ async function loadCardsInfoWithSearch(search){
         let gameDate = setDate(element.released);
         let gameGenres = setGenres(element.genres);
         let gamePlatforms = element.parent_platforms;
-        let gameDescription = getDescription(element.id);
+        let gameId = element.id;
         let card =
         `
         <li class="card listElement">
@@ -219,6 +220,13 @@ async function loadCardsInfoWithSearch(search){
                 <div class="card cardInfo__rightInfo">
                     <div class="card rightInfo__platformIcons">`;
 
+                    if (gamePlatforms == null){
+                        card += `
+                        <div class="card platformIcon">
+                            No platforms
+                        </div>`;
+                    }
+                    else{
                         for (let i = 0; i < gamePlatforms.length; i++) {
                             let platform = setPlatformIcon(gamePlatforms[i].platform.id);
                             card += `
@@ -226,6 +234,7 @@ async function loadCardsInfoWithSearch(search){
                                 <img src=${platform}>
                             </div>`;
                         }
+                    }
 
                     card += `
                     </div>
@@ -237,7 +246,9 @@ async function loadCardsInfoWithSearch(search){
                     </div>
                 </div>
             </div>
-            <div class="card cardInfo__gameDescription"></div>  
+            <div class="card cardInfo__gameDescription">
+                ${gameId}
+            </div>
         </li>  
         `;
         document.querySelector(".cardsContainer__list").innerHTML += card;
@@ -441,6 +452,9 @@ function tripleColumnView(){
 }
 
 async function singleColumnView(){
+    document.querySelector(".loaderContainer").removeAttribute("style", "display:none;");
+    setTimeout(function () { document.querySelector(".loaderContainer").setAttribute("style", "display:none;"); }, 500);
+    
     document.querySelector(".singleColumnViewButton__svg").setAttribute("style", "fill:#515151;");
     document.querySelector(".tripleColumnViewButton__svg").setAttribute("style", "fill:#303030;");
     
@@ -448,7 +462,6 @@ async function singleColumnView(){
     for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].classList.add("singleColumnView");
     }
-
     cardsDescription = document.querySelectorAll(".cardInfo__gameDescription");
     for (let i = 0; i < cardsDescription.length; i++) {
         const gameId = cardsDescription[i].innerText;
