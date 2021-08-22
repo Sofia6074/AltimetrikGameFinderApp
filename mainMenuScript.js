@@ -103,8 +103,8 @@ async function loadCardsInfo(){
 
                         if (gamePlatforms == null){
                             card += `
-                            <div class="card platformIcon">
-                                No platforms
+                            <div class="card platformIcon noPlatform">
+                            <p>None</p>
                             </div>`;
                         }
                         else{
@@ -156,7 +156,7 @@ async function loadCardsInfoWithSearch(search){
         let gameId = element.id;
         let card =
         `
-        <li class="card listElement">
+        <li class="card listElement" onclick=openModal(${gameId})>
             <div class="card card__Image">
                 <img src="${gameImg}">
             </div>
@@ -224,8 +224,8 @@ async function loadCardsInfoWithSearch(search){
 
                     if (gamePlatforms == null){
                         card += `
-                        <div class="card platformIcon">
-                            No platforms
+                        <div class="card platformIcon noPlatform">
+                        <p>None</p>
                         </div>`;
                     }
                     else{
@@ -486,6 +486,55 @@ async function singleColumnView(){
 function openModal(id){
     document.querySelector(".modalClick").classList.add("show");
     document.querySelector(".modal").classList.add("show");
+    
+    // Get card info
+    const cards = document.querySelectorAll(".listElement");
+    for (let i = 0; i < cards.length; i++) {
+        if (cards[i].getAttribute("onclick") == `openModal(${id})`){
+            console.log(cards[i]);
+            // Get img
+            const img = cards[i].querySelector(".card__Image").getElementsByTagName("img")[0].currentSrc;
+            // Get name
+            let name = "";
+            if (cards[i].querySelector(".leftInfo__title").classList.contains("tooltip")){
+                name = cards[i].querySelectorAll(".tooltip")[1].textContent;
+            }
+            else {
+                name = cards[i].querySelector(".leftInfo__title").textContent;
+            }
+            //Get release date
+            const releaseDate = cards[i].querySelector(".releaseDate__date").textContent;
+            //Get genres
+            let genres = "";
+            if (cards[i].querySelector(".genres__info").classList.contains("tooltip")){
+                genres = cards[i].querySelectorAll(".tooltip")[1].textContent;
+            }
+            else {
+                genres = cards[i].querySelector(".genres__info").textContent;
+            }
+            // Get platforms
+            let platforms = [];
+            if (cards[i].querySelector(".platformIcon").classList.contains("noPlatform")){
+                platforms = "None"
+            }
+            else {
+                for (let j = 0; j < cards[i].querySelectorAll(".platformIcon").length; j++) {
+                    platforms.push(cards[i].querySelectorAll(".platformIcon")[j].getElementsByTagName("img")[0].currentSrc);
+                }
+            }
+            // Get description
+            let description = [];
+            if (cards[i].querySelector(".cardInfo__gameDescription").classList.contains("singleColumnView")){
+                for (let j = 0; j < cards[i].querySelector(".cardInfo__gameDescription").childNodes.length; j++) {
+                    description.push(cards[i].querySelector(".cardInfo__gameDescription").childNodes[j].innerText); 
+                }
+            }
+            else {
+                description = cards[i].querySelector(".cardInfo__gameDescription").textContent;
+            }
+        }
+    }
+
 }
 
 function closeModal(){

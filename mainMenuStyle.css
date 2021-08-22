@@ -465,6 +465,14 @@ li img {
     margin-left: 8px;
 }
 
+.card.platformIcon.noPlatform {
+    /* In case no platforms are loaded: */
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey2)
+}
+
 .card.rightInfo__position{
     margin-left: auto;
     margin-top: 20px;
