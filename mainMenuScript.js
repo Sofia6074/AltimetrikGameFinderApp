@@ -52,7 +52,6 @@ async function loadCardsInfo(){
                         const tooltipText = gameName;
                         gameName = gameName.substring(0,16);
                         gameName += "...";
-                        //May add: check if overflow exists
                         card += `
                             <div class="card leftInfo__title tooltip">${gameName}
                             <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
@@ -174,7 +173,6 @@ async function loadCardsInfoWithSearch(search){
                         const tooltipText = gameName;
                         gameName = gameName.substring(0,16);
                         gameName += "...";
-                        //May add: check if overflow exists
                         card += `
                             <div class="card leftInfo__title tooltip">${gameName}
                             <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
@@ -490,12 +488,21 @@ async function singleColumnView(){
         // Get card description
         const desc = descriptions[i].innerText;
 
+        // Load description of games that don't already have it
         if (desc == id){
             const gameDescription = await getDescription(id);
             descriptions[i].innerHTML = "";
             descriptions[i].innerHTML = gameDescription;
         }
-       
+
+        // Desactivate Tooltip
+        let name = "";
+        if (cards[i].querySelector(".leftInfo__title").classList.contains("tooltip")){
+            name = cards[i].querySelectorAll(".tooltip")[1].textContent;
+            cards[i].querySelector(".leftInfo__title").innerText = name;
+            cards[i].querySelector(".leftInfo__title").classList.remove("tooltip");
+        }
+
     }
 }
 
@@ -784,7 +791,6 @@ const fetchInfo = await fetch(`${nextPage}`);
                         const tooltipText = gameName;
                         gameName = gameName.substring(0,16);
                         gameName += "...";
-                        //May add: check if overflow exists
                         card += `
                             <div class="card leftInfo__title tooltip">${gameName}
                             <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
@@ -880,10 +886,8 @@ const fetchInfo = await fetch(`${nextPage}`);
         singleColumnView();
     }
 }
+
 // - - - - - - - - - - Infinite Scrolling
-// https://javascript.info/size-and-scroll
-
-
 document.addEventListener('scroll', function(e) {
     let pageHeight = document.body.scrollHeight;
     let scrollPosition = window.scrollY + 1000;

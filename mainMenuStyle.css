@@ -28,9 +28,6 @@
 body {
     background-color: #141414;
     overflow-x: hidden;
-    /* background: var(--gradientBlack);
-    background-repeat: no-repeat;
-    background-attachment: fixed; */
 }
 
 body.modal--open {
@@ -508,6 +505,7 @@ li img {
 .card.rightInfo__platformIcons{
     width: 100%;
     display: flex;
+    justify-content: flex-end;
 }
 
 .card.platformIcon{
