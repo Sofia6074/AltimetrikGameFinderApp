@@ -10,12 +10,12 @@ window.onbeforeunload = function () {
 
 function start() {
     loadCardsInfo();
-    document.querySelector(".search").addEventListener("click",search);
-    document.querySelector(".searchInput").addEventListener("keyup",showSuggestions);
-    document.querySelector(".hamburgerMenu__svg").addEventListener("click",openMenu);
-    document.querySelector(".clickContainer--tablet").addEventListener("click",closeMenu);
-    document.querySelector(".searchLens--mobile__svg").addEventListener("click",openSearchBar);
-    document.querySelector(".header__clickContainer--mobile").addEventListener("click",closeSearchBar);
+    document.querySelector(".search").addEventListener("click", search);
+    document.querySelector(".searchInput").addEventListener("keyup", showSuggestions);
+    document.querySelector(".hamburgerMenu__svg").addEventListener("click", openMenu);
+    document.querySelector(".clickContainer--tablet").addEventListener("click", closeMenu);
+    document.querySelector(".searchLens--mobile__svg").addEventListener("click", openSearchBar);
+    document.querySelector(".header__clickContainer--mobile").addEventListener("click", closeSearchBar);
     document.querySelector(".tripleColumnViewButton__svg").addEventListener("click", tripleColumnView);
     document.querySelector(".singleColumnViewButton__svg").addEventListener("click", singleColumnView);
     document.querySelector(".modalClickContainer").addEventListener("click", closeModal);
@@ -23,7 +23,7 @@ function start() {
 
 //  - - - - - - - - - - Connection with Rawg API to load the cards
 // Home 
-async function loadCardsInfo(){
+async function loadCardsInfo() {
     const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
     let data = await fetchInfo.json();
     page = data.next;
@@ -32,7 +32,7 @@ async function loadCardsInfo(){
     document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
     document.querySelector(".titles__subtitle").innerHTML = "Based on player counts and release date";
 
-    data.results.map(function(element){
+    data.results.map(function (element) {
         cardRanking++;
         let gameImg = setImage(element.background_image);
         let gameName = element.name;
@@ -41,27 +41,27 @@ async function loadCardsInfo(){
         let gamePlatforms = element.parent_platforms;
         let gameId = element.id;
         let card =
-        `
+            `
         <li class="card listElement" onclick=openModal(${gameId})>
             <div class="card card__Image">
                 <img src="${gameImg}">
             </div>
             <div class="card cardInfo">
-                <div class="card cardInfo__leftInfo">`;         
-                    if(gameName.length >= 20 ){
-                        const tooltipText = gameName;
-                        gameName = gameName.substring(0,16);
-                        gameName += "...";
-                        card += `
+                <div class="card cardInfo__leftInfo">`;
+        if (gameName.length >= 20) {
+            const tooltipText = gameName;
+            gameName = gameName.substring(0, 16);
+            gameName += "...";
+            card += `
                             <div class="card leftInfo__title tooltip">${gameName}
                             <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
                             `;
-                    }
-                    else{
-                        card +=`<div class="card leftInfo__title">${gameName}`;
-                    }
+        }
+        else {
+            card += `<div class="card leftInfo__title">${gameName}`;
+        }
 
-                card += `</div>
+        card += `</div>
                     <div class="card infoContainer--singleColumn">
                         <div class = "card releaseDate--singleColumn">
                             <div class="card leftInfo__releaseDate">
@@ -80,21 +80,21 @@ async function loadCardsInfo(){
                                     Genres
                                 </div>`;
 
-                                    if(gameGenres.length > 20 ){
-                                        const tooltipText = gameGenres;
-                                        gameGenres = gameGenres.substring(0,18);
-                                        gameGenres += "...";
-                                        card += `<div class="card genres__info tooltip">${gameGenres}
+        if (gameGenres.length > 20) {
+            const tooltipText = gameGenres;
+            gameGenres = gameGenres.substring(0, 18);
+            gameGenres += "...";
+            card += `<div class="card genres__info tooltip">${gameGenres}
                                                 <span class="tooltip tooltip__text">${tooltipText}</span>
                                             `;
-                                    }
-                                    else{
-                                        card += `<div class="card genres__info">${gameGenres}
+        }
+        else {
+            card += `<div class="card genres__info">${gameGenres}
                                                 <span class="tooltip tooltip__text"></span>
                                             `;
-                                    }
+        }
 
-                                card += `
+        card += `
                                 </div>
                             </div>
                             <hr class="card leftInfo__secondLine">
@@ -107,23 +107,23 @@ async function loadCardsInfo(){
                 <div class="card cardInfo__rightInfo">
                     <div class="card rightInfo__platformIcons">`;
 
-                        if (gamePlatforms == null){
-                            card += `
+        if (gamePlatforms == null) {
+            card += `
                             <div class="card platformIcon noPlatform">
                             <p>None</p>
                             </div>`;
-                        }
-                        else{
-                            for (let i = 0; i < gamePlatforms.length; i++) {
-                                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
-                                card += `
+        }
+        else {
+            for (let i = 0; i < gamePlatforms.length; i++) {
+                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                card += `
                                 <div class="card platformIcon">
                                     <img src=${platform}>
                                 </div>`;
-                            }
-                        }
+            }
+        }
 
-                    card += `
+        card += `
                     </div>
                     <div class="card rightInfo__position">
                         #${cardRanking}
@@ -145,7 +145,7 @@ async function loadCardsInfo(){
 }
 
 // Search
-async function loadCardsInfoWithSearch(search){
+async function loadCardsInfoWithSearch(search) {
     let cardRanking = 0;
     const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&search=${search}`);
     let data = await fetchInfo.json();
@@ -153,7 +153,7 @@ async function loadCardsInfoWithSearch(search){
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "Search Results";
     document.querySelector(".titles__subtitle").innerHTML = "Showing results for '" + search + "'";
-    data.results.map(function(element){
+    data.results.map(function (element) {
         cardRanking++;
         let gameImg = setImage(element.background_image);
         let gameName = element.name;
@@ -162,27 +162,27 @@ async function loadCardsInfoWithSearch(search){
         let gamePlatforms = element.parent_platforms;
         let gameId = element.id;
         let card =
-        `
+            `
         <li class="card listElement" onclick=openModal(${gameId})>
             <div class="card card__Image">
                 <img src="${gameImg}">
             </div>
             <div class="card cardInfo">
-                <div class="card cardInfo__leftInfo">`;         
-                    if(gameName.length >= 20 ){
-                        const tooltipText = gameName;
-                        gameName = gameName.substring(0,16);
-                        gameName += "...";
-                        card += `
+                <div class="card cardInfo__leftInfo">`;
+        if (gameName.length >= 20) {
+            const tooltipText = gameName;
+            gameName = gameName.substring(0, 16);
+            gameName += "...";
+            card += `
                             <div class="card leftInfo__title tooltip">${gameName}
                             <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
                             `;
-                    }
-                    else{
-                        card +=`<div class="card leftInfo__title">${gameName}`;
-                    }
+        }
+        else {
+            card += `<div class="card leftInfo__title">${gameName}`;
+        }
 
-                card += `</div>
+        card += `</div>
                     <div class="card infoContainer--singleColumn">
                         <div class = "card releaseDate--singleColumn">
                             <div class="card leftInfo__releaseDate">
@@ -201,21 +201,21 @@ async function loadCardsInfoWithSearch(search){
                                     Genres
                                 </div>`;
 
-                                    if(gameGenres.length > 20 ){
-                                        const tooltipText = gameGenres;
-                                        gameGenres = gameGenres.substring(0,18);
-                                        gameGenres += "...";
-                                        card += `<div class="card genres__info tooltip">${gameGenres}
+        if (gameGenres.length > 20) {
+            const tooltipText = gameGenres;
+            gameGenres = gameGenres.substring(0, 18);
+            gameGenres += "...";
+            card += `<div class="card genres__info tooltip">${gameGenres}
                                                 <span class="tooltip tooltip__text">${tooltipText}</span>
                                             `;
-                                    }
-                                    else{
-                                        card += `<div class="card genres__info">${gameGenres}
+        }
+        else {
+            card += `<div class="card genres__info">${gameGenres}
                                                 <span class="tooltip tooltip__text"></span>
                                             `;
-                                    }
+        }
 
-                                card += `
+        card += `
                                 </div>
                             </div>
                             <hr class="card leftInfo__secondLine">
@@ -228,23 +228,23 @@ async function loadCardsInfoWithSearch(search){
                 <div class="card cardInfo__rightInfo">
                     <div class="card rightInfo__platformIcons">`;
 
-                    if (gamePlatforms == null){
-                        card += `
+        if (gamePlatforms == null) {
+            card += `
                         <div class="card platformIcon noPlatform">
                         <p>None</p>
                         </div>`;
-                    }
-                    else{
-                        for (let i = 0; i < gamePlatforms.length; i++) {
-                            let platform = setPlatformIcon(gamePlatforms[i].platform.id);
-                            card += `
+        }
+        else {
+            for (let i = 0; i < gamePlatforms.length; i++) {
+                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                card += `
                             <div class="card platformIcon">
                                 <img src=${platform}>
                             </div>`;
-                        }
-                    }
+            }
+        }
 
-                    card += `
+        card += `
                     </div>
                     <div class="card rightInfo__position">
                         #${cardRanking}
@@ -265,23 +265,23 @@ async function loadCardsInfoWithSearch(search){
 
 // - - - - - - - - - - Aux functions
 // Background image
-function setImage(img){
-    if (img === null){
+function setImage(img) {
+    if (img === null) {
         return "media/mainMenu/imageNotFound.jpg";
     }
     return img;
 }
 
 // Date
-function setDate(date){
+function setDate(date) {
     if (date === null) {
         return "No date";
     }
-    else{    
+    else {
         const dateArray = date.split("-");
         const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         let monthInNumber = dateArray[1];
-        if (monthInNumber.startsWith("0")){
+        if (monthInNumber.startsWith("0")) {
             monthInNumber = monthInNumber.substring(1);
         }
         return [monthNames[monthInNumber] + " " + dateArray[2] + " " + dateArray[0]];
@@ -289,21 +289,21 @@ function setDate(date){
 }
 
 // Genres
-function setGenres(genresArray){
+function setGenres(genresArray) {
     if (genresArray === null) {
         return "No genres";
     }
     else {
         let genres = "";
         for (let i = 0; i < genresArray.length; i++) {
-            genres += genresArray[i].name + ", ";  
+            genres += genresArray[i].name + ", ";
         }
-        return genres.substring(0,genres.length-2);
+        return genres.substring(0, genres.length - 2);
     }
 }
 
 // Set icon src based on the id
-function setPlatformIcon(platform){
+function setPlatformIcon(platform) {
     switch (platform) {
         case 1:
             platform = "media/mainMenu/platform__windows.svg";
@@ -336,67 +336,67 @@ function setPlatformIcon(platform){
 }
 
 // Get game description based on the id
-async function getDescription(id){
+async function getDescription(id) {
     const gameDescription = await loadCardsInfoWithId(id);
     return gameDescription.description;
 }
 
-async function loadCardsInfoWithId(gameId){
+async function loadCardsInfoWithId(gameId) {
     const fetchInfo = await fetch(`https://api.rawg.io/api/games/${gameId}?key=2276ace6657640eb84d3a1710c12f880`);
     let data = await fetchInfo.json();
     return data;
 }
 
 // - - - - - - - - - - Hamburguer menu
-function openMenu(){
+function openMenu() {
     document.querySelector("header").setAttribute("style", "position: unset;");
     document.querySelector(".nav").classList.add("show");
     document.querySelector(".list__logOut").classList.add("show");
-    if (window.screen.width <= 1023 && window.screen.width >= 768){
+    if (window.screen.width <= 1023 && window.screen.width >= 768) {
         document.querySelector(".clickContainer--tablet").classList.add("show");
     }
-    if (window.screen.width <= 767){
-        if(document.querySelector(".headerOptions__hamburgerMenu").classList.contains("show")){
+    if (window.screen.width <= 767) {
+        if (document.querySelector(".headerOptions__hamburgerMenu").classList.contains("show")) {
             closeMenu();
         }
-        else{
+        else {
             document.querySelector(".headerOptions__hamburgerMenu").classList.add("show");
         }
     }
 }
 
-function closeMenu(){
+function closeMenu() {
     document.querySelector("header").removeAttribute("style", "position: unset;");
     document.querySelector(".clickContainer--tablet").classList.remove("show");
     document.querySelector(".nav").classList.remove("show");
 
-    if (window.screen.width < 767){
+    if (window.screen.width < 767) {
         document.querySelector(".headerOptions__hamburgerMenu").classList.remove("show");
     }
 }
 
 // - - - - - - - - - - Search Bar
-function openSearchBar(){
-    if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
+function openSearchBar() {
+    if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")) {
         search();
     }
-    else{
+    else {
         document.querySelector(".header__clickContainer--mobile").classList.add("show");
         document.querySelector(".header__searchBarContainer--mobile").classList.add("show");
         document.querySelector("header").setAttribute("style", "height:166px");
     }
 }
 
-function closeSearchBar(){
+function closeSearchBar() {
     document.querySelector(".header__clickContainer--mobile").classList.remove("show");
     document.querySelector(".header__searchBarContainer--mobile").classList.remove("show");
     document.querySelector("header").removeAttribute("style", "height:166px");
 }
 
 //  - - - - - - - - - - Search Bar functionality
-function search(){
+function search() {
     let searchText = "";
-    if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
+    if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")) {
         searchText = document.querySelectorAll(".searchInput")[1].value;
         closeSearchBar();
     }
@@ -407,7 +407,7 @@ function search(){
 }
 
 // Search suggesitons
-async function showSuggestions(){
+async function showSuggestions() {
     const listContainer = document.querySelector(".gameSuggestions");
     listContainer.classList.add("show");
     const input = document.querySelector(".searchInput").value;
@@ -416,9 +416,9 @@ async function showSuggestions(){
 
     if (input === '') {
         listContainer.innerHTML = '';
-        listContainer.classList.remove("show");  
+        listContainer.classList.remove("show");
     }
-    else{
+    else {
         for (let i = 0; i < gamesList.length; i++) {
             const game = gamesList[i];
             let div = divs[i];
@@ -428,16 +428,16 @@ async function showSuggestions(){
     }
 }
 
-function closeSuggestions(){
+function closeSuggestions() {
     document.querySelector(".gameSuggestions").classList.remove("show");
 }
 
 // Loads just the first 3 games that are suggested
-async function loadGamesSuggestions(search){
+async function loadGamesSuggestions(search) {
     let gamesArray = [];
     const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&page_size=3&search=${search}`);
     let data = await fetchInfo.json();
-    data.results.map(function(element){
+    data.results.map(function (element) {
         gamesArray.push(element.name);
         document.querySelector(".gameSuggestions").innerHTML = "";
     });
@@ -445,7 +445,7 @@ async function loadGamesSuggestions(search){
 }
 
 // Adds the game name into the input
-function fillSearchInput(id){
+function fillSearchInput(id) {
     let game = document.querySelectorAll(".gameSuggestions__div")[id].textContent;
     document.querySelector(".searchInput").value = game;
     search();
@@ -454,7 +454,7 @@ function fillSearchInput(id){
 
 // - - - - - - - - - - Views
 // Change to triple column view
-function tripleColumnView(){
+function tripleColumnView() {
     document.querySelector(".singleColumnViewButton__svg").classList.remove("selected");
     document.querySelector(".tripleColumnViewButton__svg").classList.remove("unselected");
 
@@ -465,13 +465,13 @@ function tripleColumnView(){
 }
 
 // Change to single column view
-async function singleColumnView(){
+async function singleColumnView() {
     document.querySelector(".loaderContainer").removeAttribute("style", "display:none;");
     setTimeout(function () { document.querySelector(".loaderContainer").setAttribute("style", "display:none;"); }, 1000);
-    
+
     document.querySelector(".singleColumnViewButton__svg").classList.add("selected");
     document.querySelector(".tripleColumnViewButton__svg").classList.add("unselected");
-    
+
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].classList.add("singleColumnView");
@@ -484,12 +484,12 @@ async function singleColumnView(){
         let id = cards[i].getAttribute("onclick");
         firstBracket = id.indexOf('(');
         lastBracket = id.indexOf(')');
-        id = id.substr(firstBracket+1,lastBracket-firstBracket-1);
+        id = id.substr(firstBracket + 1, lastBracket - firstBracket - 1);
         // Get card description
         const desc = descriptions[i].innerText;
 
         // Load description of games that don't already have it
-        if (desc == id){
+        if (desc == id) {
             const gameDescription = await getDescription(id);
             descriptions[i].innerHTML = "";
             descriptions[i].innerHTML = gameDescription;
@@ -497,7 +497,7 @@ async function singleColumnView(){
 
         // Desactivate Tooltip
         let name = "";
-        if (cards[i].querySelector(".leftInfo__title").classList.contains("tooltip")){
+        if (cards[i].querySelector(".leftInfo__title").classList.contains("tooltip")) {
             name = cards[i].querySelectorAll(".tooltip")[1].textContent;
             cards[i].querySelector(".leftInfo__title").innerText = name;
             cards[i].querySelector(".leftInfo__title").classList.remove("tooltip");
@@ -507,40 +507,40 @@ async function singleColumnView(){
 }
 
 // View icons hover event
-document.querySelector(".singleColumnViewButton__svg").onmouseover = function(){
+document.querySelector(".singleColumnViewButton__svg").onmouseover = function () {
     document.querySelector(".singleColumnViewButton__svg").classList.add("hover");
 };
 
-document.querySelector(".singleColumnViewButton__svg").onmouseout = function(){
+document.querySelector(".singleColumnViewButton__svg").onmouseout = function () {
     document.querySelector(".singleColumnViewButton__svg").classList.remove("hover");
 };
 
-document.querySelector(".tripleColumnViewButton__svg").onmouseover = function(){
+document.querySelector(".tripleColumnViewButton__svg").onmouseover = function () {
     document.querySelector(".tripleColumnViewButton__svg").classList.add("hover");
 };
 
-document.querySelector(".tripleColumnViewButton__svg").onmouseout = function(){
+document.querySelector(".tripleColumnViewButton__svg").onmouseout = function () {
     document.querySelector(".tripleColumnViewButton__svg").classList.remove("hover");
 };
 
 // - - - - - - - - - - Modal
-async function openModal(id){
+async function openModal(id) {
     document.querySelector(".modalClickContainer").classList.add("show");
 
     // To disable the scroll, only for desktop
-    if (window.innerWidth > 1023 ) {
+    if (window.innerWidth > 1023) {
         document.querySelector("body").classList.add("modal--open");
     }
-    
+
     // Get card info
     const cards = document.querySelectorAll(".listElement");
     for (let i = 0; i < cards.length; i++) {
-        if (cards[i].getAttribute("onclick") == `openModal(${id})`){
+        if (cards[i].getAttribute("onclick") == `openModal(${id})`) {
             // Get img
             const img = cards[i].querySelector(".card__Image").getElementsByTagName("img")[0].currentSrc;
             // Get name
             let name = "";
-            if (cards[i].querySelector(".leftInfo__title").classList.contains("tooltip")){
+            if (cards[i].querySelector(".leftInfo__title").classList.contains("tooltip")) {
                 name = cards[i].querySelectorAll(".tooltip")[1].textContent;
             }
             else {
@@ -550,7 +550,7 @@ async function openModal(id){
             const releaseDate = cards[i].querySelector(".releaseDate__date").textContent;
             //Get genres
             let genres = "";
-            if (cards[i].querySelector(".genres__info").classList.contains("tooltip")){
+            if (cards[i].querySelector(".genres__info").classList.contains("tooltip")) {
                 genres = cards[i].querySelectorAll(".tooltip")[1].textContent;
             }
             else {
@@ -558,7 +558,7 @@ async function openModal(id){
             }
             // Get platforms
             let platforms = [];
-            if (cards[i].querySelector(".platformIcon").classList.contains("noPlatform")){
+            if (cards[i].querySelector(".platformIcon").classList.contains("noPlatform")) {
                 platforms.push("Not defined");
             }
             else {
@@ -568,9 +568,9 @@ async function openModal(id){
             }
             // Get description
             let description = [];
-            if (cards[i].querySelector(".cardInfo__gameDescription").classList.contains("singleColumnView")){
+            if (cards[i].querySelector(".cardInfo__gameDescription").classList.contains("singleColumnView")) {
                 for (let j = 0; j < cards[i].querySelector(".cardInfo__gameDescription").childNodes.length; j++) {
-                    description.push(cards[i].querySelector(".cardInfo__gameDescription").childNodes[j].innerText); 
+                    description.push(cards[i].querySelector(".cardInfo__gameDescription").childNodes[j].innerText);
                 }
             }
             else {
@@ -585,9 +585,9 @@ async function openModal(id){
             const developer = setDeveloper(extraInfo.developers[0]);
             const ageRating = setAgeRating(extraInfo.esrb_rating);
             const screenshots = await loadScreenshots(extraInfo.slug);
-            
-            let modal = 
-            `
+
+            let modal =
+                `
             <div class="modal__bg show">
                 <img src="${img}">
                 <div class="modal__gradient"></div>
@@ -595,17 +595,17 @@ async function openModal(id){
             <div class="modal show">
                 <div class="modal__platforms">`;
 
-                    for (let j = 0; j < platforms.length; j++) {
-                        if (platforms[i] == "Not defined") {
-                            modal += `Not defined`;
-                        }
-                        else{
-                            modal += `<img src=${platforms[j]}>`;
-                        }
-                        
-                    }
+            for (let j = 0; j < platforms.length; j++) {
+                if (platforms[i] == "Not defined") {
+                    modal += `Not defined`;
+                }
+                else {
+                    modal += `<img src=${platforms[j]}>`;
+                }
 
-                modal +=`
+            }
+
+            modal += `
                 </div>
                 <div class="modal__title">
                     ${name}
@@ -680,65 +680,65 @@ async function openModal(id){
         }
     }
 
-    if (window.innerWidth <= 1023 ) {
+    if (window.innerWidth <= 1023) {
         document.querySelector("footer").classList.add("footer--tablet");
     }
-    if (window.innerWidth <= 767 ) {
-        document.querySelector("footer").setAttribute("style","display: none;");
+    if (window.innerWidth <= 767) {
+        document.querySelector("footer").setAttribute("style", "display: none;");
     }
 
 }
 
 // - - - - - - - - - - Modal aux functions
-function setPlatformsNames(platforms){
+function setPlatformsNames(platforms) {
     if (platforms === null) {
         return "Not defined";
     }
     else {
         let platformNames = "";
         for (let i = 0; i < platforms.length; i++) {
-            platformNames += platforms[i].platform.name + ", ";  
+            platformNames += platforms[i].platform.name + ", ";
         }
-        return platformNames.substring(0,platformNames.length-2);
+        return platformNames.substring(0, platformNames.length - 2);
     }
 }
 
-function setPublisher (publisher){
-    if (publisher == null){
+function setPublisher(publisher) {
+    if (publisher == null) {
         return publisher = "Not defined";
     }
     return publisher.name;
 }
 
-function setWebsite (website){
-    if (website == ""){
+function setWebsite(website) {
+    if (website == "") {
         return website = "Not defined";
     }
     return website;
 }
 
-function setDeveloper (developer){
-    if (developer == null){
+function setDeveloper(developer) {
+    if (developer == null) {
         return developer = "Not defined";
     }
     return developer.name;
 }
 
-function setAgeRating (rating){
-    if (rating == null){
+function setAgeRating(rating) {
+    if (rating == null) {
         return rating = "Not rated";
     }
     return rating.name;
 }
 
 // Loads the screenshots for the modal
-async function loadScreenshots(gameSlug){
+async function loadScreenshots(gameSlug) {
     const fetchInfo = await fetch(`https://api.rawg.io/api/games/${gameSlug}/screenshots?key=2276ace6657640eb84d3a1710c12f880`);
     let data = await fetchInfo.json();
     let screenshots = [];
-    
+
     for (let i = 0; i < 5; i++) {
-        if (data.results[i].image == null){
+        if (data.results[i].image == null) {
             screenshots.push("media/mainMenu/imageNotFound.jpg");
         }
         else {
@@ -749,18 +749,18 @@ async function loadScreenshots(gameSlug){
 }
 
 // Close modal
-function closeModal(){
+function closeModal() {
     document.querySelector(".modal").remove();
     document.querySelector(".modal__bg").remove();
     document.querySelector(".modalClickContainer").classList.remove("show");
 
-    if (window.innerWidth <= 767 ) {
-        document.querySelector("footer").setAttribute("style","display: block;");
+    if (window.innerWidth <= 767) {
+        document.querySelector("footer").setAttribute("style", "display: block;");
     }
-    if (window.innerWidth <= 1023 ) {
+    if (window.innerWidth <= 1023) {
         document.querySelector("footer").classList.remove("footer--tablet");
     }
-    else{
+    else {
         // Enable scroll
         document.querySelector("body").classList.remove("modal--open");
     }
@@ -768,10 +768,10 @@ function closeModal(){
 }
 
 // CALL WITH PAGE
-async function callNextPage(nextPage){
-const fetchInfo = await fetch(`${nextPage}`);
+async function callNextPage(nextPage) {
+    const fetchInfo = await fetch(`${nextPage}`);
     let data = await fetchInfo.json();
-    data.results.map(function(element){
+    data.results.map(function (element) {
         cardRanking++;
         let gameImg = setImage(element.background_image);
         let gameName = element.name;
@@ -780,27 +780,27 @@ const fetchInfo = await fetch(`${nextPage}`);
         let gamePlatforms = element.parent_platforms;
         let gameId = element.id;
         let card =
-        `
+            `
         <li class="card listElement" onclick=openModal(${gameId})>
             <div class="card card__Image">
                 <img src="${gameImg}">
             </div>
             <div class="card cardInfo">
-                <div class="card cardInfo__leftInfo">`;         
-                    if(gameName.length >= 20 ){
-                        const tooltipText = gameName;
-                        gameName = gameName.substring(0,16);
-                        gameName += "...";
-                        card += `
+                <div class="card cardInfo__leftInfo">`;
+        if (gameName.length >= 20) {
+            const tooltipText = gameName;
+            gameName = gameName.substring(0, 16);
+            gameName += "...";
+            card += `
                             <div class="card leftInfo__title tooltip">${gameName}
                             <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
                             `;
-                    }
-                    else{
-                        card +=`<div class="card leftInfo__title">${gameName}`;
-                    }
+        }
+        else {
+            card += `<div class="card leftInfo__title">${gameName}`;
+        }
 
-                card += `</div>
+        card += `</div>
                     <div class="card infoContainer--singleColumn">
                         <div class = "card releaseDate--singleColumn">
                             <div class="card leftInfo__releaseDate">
@@ -819,21 +819,21 @@ const fetchInfo = await fetch(`${nextPage}`);
                                     Genres
                                 </div>`;
 
-                                    if(gameGenres.length > 20 ){
-                                        const tooltipText = gameGenres;
-                                        gameGenres = gameGenres.substring(0,18);
-                                        gameGenres += "...";
-                                        card += `<div class="card genres__info tooltip">${gameGenres}
+        if (gameGenres.length > 20) {
+            const tooltipText = gameGenres;
+            gameGenres = gameGenres.substring(0, 18);
+            gameGenres += "...";
+            card += `<div class="card genres__info tooltip">${gameGenres}
                                                 <span class="tooltip tooltip__text">${tooltipText}</span>
                                             `;
-                                    }
-                                    else{
-                                        card += `<div class="card genres__info">${gameGenres}
+        }
+        else {
+            card += `<div class="card genres__info">${gameGenres}
                                                 <span class="tooltip tooltip__text"></span>
                                             `;
-                                    }
+        }
 
-                                card += `
+        card += `
                                 </div>
                             </div>
                             <hr class="card leftInfo__secondLine">
@@ -846,23 +846,23 @@ const fetchInfo = await fetch(`${nextPage}`);
                 <div class="card cardInfo__rightInfo">
                     <div class="card rightInfo__platformIcons">`;
 
-                        if (gamePlatforms == null){
-                            card += `
+        if (gamePlatforms == null) {
+            card += `
                             <div class="card platformIcon noPlatform">
                             <p>None</p>
                             </div>`;
-                        }
-                        else{
-                            for (let i = 0; i < gamePlatforms.length; i++) {
-                                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
-                                card += `
+        }
+        else {
+            for (let i = 0; i < gamePlatforms.length; i++) {
+                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                card += `
                                 <div class="card platformIcon">
                                     <img src=${platform}>
                                 </div>`;
-                            }
-                        }
+            }
+        }
 
-                    card += `
+        card += `
                     </div>
                     <div class="card rightInfo__position">
                         #${cardRanking}
@@ -881,20 +881,20 @@ const fetchInfo = await fetch(`${nextPage}`);
     });
     page = data.next;
     nextPageCalled = false;
-    
-    if (document.querySelector(".cardsContainer").classList.contains("singleColumnView")){
+
+    if (document.querySelector(".cardsContainer").classList.contains("singleColumnView")) {
         singleColumnView();
     }
 }
 
 // - - - - - - - - - - Infinite Scrolling
-document.addEventListener('scroll', function(e) {
+document.addEventListener('scroll', function (e) {
     let pageHeight = document.body.scrollHeight;
     let scrollPosition = window.scrollY + 1000;
     // 1000 is the height of the scrollbar
 
-    if (pageHeight-scrollPosition < 1500){
-        if (!nextPageCalled){
+    if (pageHeight - scrollPosition < 1500) {
+        if (!nextPageCalled) {
             nextPageCalled = true;
             callNextPage(page);
         }
