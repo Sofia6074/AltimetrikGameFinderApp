@@ -393,6 +393,7 @@ li img {
     height: 100%;
     background: var(--black);
     text-align: center;
+    object-fit: cover;
     z-index: 1;
 }
 
@@ -1331,6 +1332,10 @@ footer {
         margin-right: 0px;
         padding-right: 0px;
         width: auto;
+    }
+
+    .loaderContainer img{
+        width: 80vw;
     }
 
     .infoContainer--singleColumn {
