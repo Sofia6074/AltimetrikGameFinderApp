@@ -453,8 +453,8 @@ function fillSearchInput(id){
 // - - - - - - - - - - Views
 // Change to triple column view
 function tripleColumnView(){
-    document.querySelector(".singleColumnViewButton__svg").classList.add("unselected");
-    document.querySelector(".tripleColumnViewButton__svg").classList.add("selected");
+    document.querySelector(".singleColumnViewButton__svg").classList.remove("selected");
+    document.querySelector(".tripleColumnViewButton__svg").classList.remove("unselected");
 
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
@@ -467,8 +467,8 @@ async function singleColumnView(){
     document.querySelector(".loaderContainer").removeAttribute("style", "display:none;");
     setTimeout(function () { document.querySelector(".loaderContainer").setAttribute("style", "display:none;"); }, 1000);
     
-    document.querySelector(".singleColumnViewButton__svg").classList.remove("unselected");
-    document.querySelector(".tripleColumnViewButton__svg").classList.remove("selected");
+    document.querySelector(".singleColumnViewButton__svg").classList.add("selected");
+    document.querySelector(".tripleColumnViewButton__svg").classList.add("unselected");
     
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
