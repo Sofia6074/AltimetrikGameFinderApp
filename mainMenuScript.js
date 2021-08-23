@@ -10,7 +10,7 @@ function start() {
     document.querySelector(".header__clickContainer--mobile").addEventListener("click",closeSearchBar);
     document.querySelector(".tripleColumnViewButton__svg").addEventListener("click", tripleColumnView);
     document.querySelector(".singleColumnViewButton__svg").addEventListener("click", singleColumnView);
-    document.querySelector(".modalContainer").addEventListener("click", closeModal);
+    document.querySelector(".modalClickContainer").addEventListener("click", closeModal);
 }
 
 //  - - - - - - - - - - Connection with Rawg API to load the cards
@@ -484,7 +484,7 @@ async function singleColumnView(){
 
 // - - - - - - - - - - Modal
 async function openModal(id){
-    document.querySelector(".modalContainer").classList.add("show");
+    document.querySelector(".modalClickContainer").classList.add("show");
     
     // Get card info
     const cards = document.querySelectorAll(".listElement");
@@ -678,8 +678,8 @@ function setAgeRating (rating){
 }
 
 function closeModal(){
-    document.querySelector(".modalContainer").classList.remove("show");
-    document.querySelector(".modal").classList.remove("show");
+    document.querySelector(".modal").remove();
+    document.querySelector(".modalClickContainer").classList.remove("show");
 }
 
 async function loadScreenshots(gameSlug){
