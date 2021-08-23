@@ -1,7 +1,7 @@
 # AltimetrikGameFinderApp ![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/62264679/130334969-e10c4f23-63e1-4670-b077-2f371e2ade1d.gif)
 
 
-## How to start the server
+## How to start the server :computer:
 ![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/62264679/130335039-814fa5d0-1fb1-4b06-89c6-1010e1728e60.gif)
 
 1 - Into the "db" folder open the terminal
@@ -38,7 +38,7 @@
 
 ![ezgif-6-7665ee5a1d10](https://user-images.githubusercontent.com/62264679/129407451-fc948cbb-c6a4-47d2-af35-f64d4f224810.png)
 
-## Valid user
+## Valid user :heavy_check_mark:
 
 ```
 Mail: user@mail.com
@@ -46,3 +46,17 @@ Password: user
 ```
 
 ![ezgif-6-b35869685930](https://user-images.githubusercontent.com/62264679/130335688-cf801725-db3e-4a88-9ed3-41e1a12ed49a.gif)
+
+
+## About the API  ![1_BpN9QAQTn892BeJvKq7FMQ (2)](https://user-images.githubusercontent.com/62264679/130439527-5a6e24aa-128a-4eb2-a247-e286ee92227a.png)
+
+#### Main page
+
+* https://rawg.io/
+
+#### Used documentation
+
+* RAWG Docs: https://api.rawg.io/docs/
+* Community-powered documentation: https://rawgthedocs.orels.sh/
+
+![0](https://user-images.githubusercontent.com/62264679/130440137-7eb8d80a-6e8e-4d31-a3b2-a9ccb85e9217.png)
