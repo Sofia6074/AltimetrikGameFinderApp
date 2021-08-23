@@ -63,7 +63,7 @@ body {
 
 .shadowContainer{
   display: flex;
-  box-shadow: 0px 0px 50px rgb(0 0 100 / 10%);
+  box-shadow: 0px 0px 50px rgb(0 0 0 / 10%);
 }
 
 .loginContainer {

@@ -2,7 +2,11 @@ window.addEventListener("load", start);
 var page = "";
 var cardRanking = 0;
 var nextPageCalled = Boolean(false);
-console.log(nextPageCalled);
+
+//Scroll to top at page
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+}
 
 function start() {
     loadCardsInfo();
@@ -760,7 +764,6 @@ function closeModal(){
 async function callNextPage(nextPage){
 const fetchInfo = await fetch(`${nextPage}`);
     let data = await fetchInfo.json();
-    console.log(data);
     data.results.map(function(element){
         cardRanking++;
         let gameImg = setImage(element.background_image);
