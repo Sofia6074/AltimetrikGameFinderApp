@@ -1,4 +1,8 @@
 window.addEventListener("load", start);
+var page = "";
+var cardRanking = 0;
+var nextPageCalled = Boolean(false);
+console.log(nextPageCalled);
 
 function start() {
     loadCardsInfo();
@@ -16,9 +20,9 @@ function start() {
 //  - - - - - - - - - - Connection with Rawg API to load the cards
 // Home 
 async function loadCardsInfo(){
-    let cardRanking = 0;
     const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
     let data = await fetchInfo.json();
+    page = data.next;
     document.querySelector(".list__boldOption").classList.add("list__selected");
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
@@ -132,6 +136,7 @@ async function loadCardsInfo(){
         </li>  
         `;
         document.querySelector(".cardsContainer__list").innerHTML += card;
+        cardRanking++;
     });
     document.querySelector(".loaderContainer").setAttribute("style", "display:none;");
 }
@@ -738,3 +743,141 @@ function closeModal(){
     }
 
 }
+
+// CALL WITH PAGE
+async function callNextPage(nextPage){
+const fetchInfo = await fetch(`${nextPage}`);
+    let data = await fetchInfo.json();
+    console.log(data);
+    data.results.map(function(element){
+        cardRanking++;
+        let gameImg = setImage(element.background_image);
+        let gameName = element.name;
+        let gameDate = setDate(element.released);
+        let gameGenres = setGenres(element.genres);
+        let gamePlatforms = element.parent_platforms;
+        let gameId = element.id;
+        let card =
+        `
+        <li class="card listElement" onclick=openModal(${gameId})>
+            <div class="card card__Image">
+                <img src="${gameImg}">
+            </div>
+            <div class="card cardInfo">
+                <div class="card cardInfo__leftInfo">`;         
+                    if(gameName.length >= 20 ){
+                        const tooltipText = gameName;
+                        gameName = gameName.substring(0,16);
+                        gameName += "...";
+                        //May add: check if overflow exists
+                        card += `
+                            <div class="card leftInfo__title tooltip">${gameName}
+                            <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
+                            `;
+                    }
+                    else{
+                        card +=`<div class="card leftInfo__title">${gameName}`;
+                    }
+
+                card += `</div>
+                    <div class="card infoContainer--singleColumn">
+                        <div class = "card releaseDate--singleColumn">
+                            <div class="card leftInfo__releaseDate">
+                                <div class="card releaseDate__text">
+                                    Release date
+                                </div>
+                                <div class="card releaseDate__date">
+                                    ${gameDate}
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__firstLine">
+                        </div>
+                        <div class="card genres--singleColumn">
+                            <div class="card leftInfo__genres">
+                                <div class="card genres__text">
+                                    Genres
+                                </div>`;
+
+                                    if(gameGenres.length > 20 ){
+                                        const tooltipText = gameGenres;
+                                        gameGenres = gameGenres.substring(0,18);
+                                        gameGenres += "...";
+                                        card += `<div class="card genres__info tooltip">${gameGenres}
+                                                <span class="tooltip tooltip__text">${tooltipText}</span>
+                                            `;
+                                    }
+                                    else{
+                                        card += `<div class="card genres__info">${gameGenres}
+                                                <span class="tooltip tooltip__text"></span>
+                                            `;
+                                    }
+
+                                card += `
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__secondLine">
+                        </div>
+                        <div class="card leftInfo__position">
+                            #${cardRanking}
+                        </div>
+                    </div>
+                </div>
+                <div class="card cardInfo__rightInfo">
+                    <div class="card rightInfo__platformIcons">`;
+
+                        if (gamePlatforms == null){
+                            card += `
+                            <div class="card platformIcon noPlatform">
+                            <p>None</p>
+                            </div>`;
+                        }
+                        else{
+                            for (let i = 0; i < gamePlatforms.length; i++) {
+                                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                                card += `
+                                <div class="card platformIcon">
+                                    <img src=${platform}>
+                                </div>`;
+                            }
+                        }
+
+                    card += `
+                    </div>
+                    <div class="card rightInfo__position">
+                        #${cardRanking}
+                    </div>
+                    <div class="card rightInfo__giftButton">
+                        <input type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="card cardInfo__gameDescription">
+                ${gameId}
+            </div>  
+        </li>  
+        `;
+        document.querySelector(".cardsContainer__list").innerHTML += card;
+    });
+    page = data.next;
+    nextPageCalled = false;
+    
+    if (document.querySelector(".cardsContainer".classList.contains("singleColumnView")){
+        console.log("ta en single")
+    }
+}
+// - - - - - - - - - - Infinite Scrolling
+// https://javascript.info/size-and-scroll
+
+
+document.addEventListener('scroll', function(e) {
+    let pageHeight = document.body.scrollHeight;
+    let scrollPosition = window.scrollY + 1000;
+    // 1000 is the height of the scrollbar
+
+    if (pageHeight-scrollPosition < 1500){
+        if (!nextPageCalled){
+            nextPageCalled = true;
+            callNextPage(page);
+        }
+    }
+});
