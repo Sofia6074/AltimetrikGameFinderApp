@@ -474,12 +474,24 @@ async function singleColumnView(){
     for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].classList.add("singleColumnView");
     }
-    cardsDescription = document.querySelectorAll(".cardInfo__gameDescription");
-    for (let i = 0; i < cardsDescription.length; i++) {
-        const gameId = cardsDescription[i].innerText;
-        const gameDescription = await getDescription(gameId);
-        cardsDescription[i].innerHTML = "";
-        cardsDescription[i].innerHTML = gameDescription;
+
+    let cards = document.querySelectorAll(".listElement");
+    let descriptions = document.querySelectorAll(".cardInfo__gameDescription ");
+    for (let i = 0; i < cards.length; i++) {
+        // Get card id
+        let id = cards[i].getAttribute("onclick");
+        firstBracket = id.indexOf('(');
+        lastBracket = id.indexOf(')');
+        id = id.substr(firstBracket+1,lastBracket-firstBracket-1);
+        // Get card description
+        const desc = descriptions[i].innerText;
+
+        if (desc == id){
+            const gameDescription = await getDescription(id);
+            descriptions[i].innerHTML = "";
+            descriptions[i].innerHTML = gameDescription;
+        }
+       
     }
 }
 
@@ -861,8 +873,8 @@ const fetchInfo = await fetch(`${nextPage}`);
     page = data.next;
     nextPageCalled = false;
     
-    if (document.querySelector(".cardsContainer".classList.contains("singleColumnView")){
-        console.log("ta en single")
+    if (document.querySelector(".cardsContainer").classList.contains("singleColumnView")){
+        singleColumnView();
     }
 }
 // - - - - - - - - - - Infinite Scrolling
