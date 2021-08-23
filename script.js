@@ -136,7 +136,7 @@ function validatePassword(password) {
 // - - - - - - - - - - Change icons color depending on the event
 // Email
 function activeEmailInput() {
-    if (firstClickOnInput){
+    if (firstClickOnInput) {
         firstClickOnInput = false;
     }
     document.querySelectorAll(".input")[0].setAttribute("style", "color:white;");
@@ -148,7 +148,7 @@ function activeEmailInput() {
 }
 
 function blurEmailInput() {
-    if (!firstClickOnInput){
+    if (!firstClickOnInput) {
         validateEmail(document.getElementById("emailInput").value);
     }
     validateEmail(document.getElementById("emailInput").value);
@@ -160,9 +160,20 @@ function blurEmailInput() {
     }
 }
 
+document.getElementById("emailInput").addEventListener('keyup', (event) => {
+    if (event.key == "Tab") {
+        document.querySelectorAll(".input")[0].setAttribute("style", "color:white;");
+        document.querySelectorAll(".icon__svg")[0].setAttribute("style", "fill:#d1d1d1;");
+        let elements = document.querySelectorAll(".userMail, .inputMail");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.add("focus");
+        }
+    }
+}, false);
+
 // Password
 function activePassInput() {
-    if (firstClickOnInput){
+    if (firstClickOnInput) {
         firstClickOnInput = false;
     }
     document.querySelectorAll(".input")[1].setAttribute("style", "color:white;");
@@ -174,7 +185,7 @@ function activePassInput() {
 }
 
 function blurPassInput() {
-    if (!firstClickOnInput){
+    if (!firstClickOnInput) {
         validatePassword(document.getElementById("passInput").value)
     }
     validatePassword(document.getElementById("passInput").value);
@@ -185,6 +196,17 @@ function blurPassInput() {
         elements[i].classList.remove("focus");
     }
 }
+
+document.getElementById("passInput").addEventListener('keyup', (event) => {
+    if (event.key == "Tab") {
+        document.querySelectorAll(".input")[1].setAttribute("style", "color:white;");
+        document.querySelectorAll(".icon__svg")[1].setAttribute("style", "fill:#d1d1d1;");
+        let elements = document.querySelectorAll(".userPass, .inputPass");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.add("focus");
+        }
+    }
+}, false);
 
 // - - - - - - - - - - Show or hide password
 function togglePass() {
