@@ -63,7 +63,7 @@ body {
 
 .shadowContainer{
   display: flex;
-  box-shadow: 0px 0px 50px rgb(0 0 100 / 10%);
+  box-shadow: 0px 0px 50px rgb(0 0 0 / 10%);
 }
 
 .loginContainer {
@@ -165,7 +165,7 @@ h1 {
 .showPasswordIcon__svg {
   height: 20px;
   width: 20px;
-  padding-top: 16px;
+  margin-top: 16px;
   box-sizing: content-box;
   justify-content: right;
 }
@@ -372,6 +372,10 @@ hr {
   margin-bottom: -26px;
 }
 
+.passwordErrorMessage.errorText {
+  height: 25px;
+}
+
 .userMail.error {
   border: 1px solid var(--errorRed);
   fill: var(--errorRed);
@@ -394,7 +398,7 @@ hr {
 }
 
 .showPasswordIcon__svg:focus {
-  outline: none;
+  outline: 1px solid white;
 }
 
 /* - - - Active - - - */

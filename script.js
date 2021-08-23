@@ -160,6 +160,17 @@ function blurEmailInput() {
     }
 }
 
+document.getElementById("emailInput").addEventListener('keyup', (event) => {
+    if (event.key == "Tab"){
+        document.querySelectorAll(".input")[0].setAttribute("style", "color:white;");
+        document.querySelectorAll(".icon__svg")[0].setAttribute("style", "fill:#d1d1d1;");
+        let elements = document.querySelectorAll(".userMail, .inputMail");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.add("focus");
+        }
+    }
+}, false);
+
 // Password
 function activePassInput() {
     if (firstClickOnInput){
@@ -167,7 +178,7 @@ function activePassInput() {
     }
     document.querySelectorAll(".input")[1].setAttribute("style", "color:white;");
     document.querySelectorAll(".icon__svg")[1].setAttribute("style", "fill:white;");
-    let elements = document.querySelectorAll(".userPass, .inputPass, .icon__svg");
+    let elements = document.querySelectorAll(".userPass, .inputPass");
     for (let i = 0; i < elements.length; i++) {
         elements[i].classList.add("focus");
     }
@@ -180,11 +191,22 @@ function blurPassInput() {
     validatePassword(document.getElementById("passInput").value);
     document.querySelectorAll(".input")[1].removeAttribute("style", "color:white;");
     document.querySelectorAll(".icon__svg")[1].removeAttribute("style", "fill:white;");
-    let elements = document.querySelectorAll(".userPass, .inputPass, .icon__svg");
+    let elements = document.querySelectorAll(".userPass, .inputPass");
     for (let i = 0; i < elements.length; i++) {
         elements[i].classList.remove("focus");
     }
 }
+
+document.getElementById("passInput").addEventListener('keyup', (event) => {
+    if (event.key == "Tab"){
+        document.querySelectorAll(".input")[1].setAttribute("style", "color:white;");
+        document.querySelectorAll(".icon__svg")[1].setAttribute("style", "fill:#d1d1d1;");
+        let elements = document.querySelectorAll(".userPass, .inputPass");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.add("focus");
+        }
+    }
+}, false);
 
 // - - - - - - - - - - Show or hide password
 function togglePass() {
