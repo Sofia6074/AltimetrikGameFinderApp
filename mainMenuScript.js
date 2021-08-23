@@ -419,18 +419,21 @@ function closeSearchBar(){
 }
 
 // - - - - - - - - - - Views
+// Change to triple column view
 function tripleColumnView(){
-    document.querySelector(".singleColumnViewButton__svg").setAttribute("style", "fill:#303030;");
-    document.querySelector(".tripleColumnViewButton__svg").setAttribute("style", "fill:#515151;");
+    document.querySelector(".singleColumnViewButton__svg").classList.add("unselected");
+    document.querySelector(".tripleColumnViewButton__svg").classList.add("selected");
+
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].classList.remove("singleColumnView");
     }
 }
 
+// Change to single column view
 function singleColumnView(){
-    document.querySelector(".singleColumnViewButton__svg").setAttribute("style", "fill:#515151;");
-    document.querySelector(".tripleColumnViewButton__svg").setAttribute("style", "fill:#303030;");
+    document.querySelector(".singleColumnViewButton__svg").classList.remove("unselected");
+    document.querySelector(".tripleColumnViewButton__svg").classList.remove("selected");
     
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
@@ -446,3 +449,20 @@ function singleColumnView(){
     //     }
     // }
 }
+
+// View icons hover event
+document.querySelector(".singleColumnViewButton__svg").onmouseover = function(){
+    document.querySelector(".singleColumnViewButton__svg").classList.add("hover");
+};
+
+document.querySelector(".singleColumnViewButton__svg").onmouseout = function(){
+    document.querySelector(".singleColumnViewButton__svg").classList.remove("hover");
+};
+
+document.querySelector(".tripleColumnViewButton__svg").onmouseover = function(){
+    document.querySelector(".tripleColumnViewButton__svg").classList.add("hover");
+};
+
+document.querySelector(".tripleColumnViewButton__svg").onmouseout = function(){
+    document.querySelector(".tripleColumnViewButton__svg").classList.remove("hover");
+};

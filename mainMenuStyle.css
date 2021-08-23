@@ -332,22 +332,31 @@ li img {
     margin-top: 51px;
 }
 
-.tripleColumnViewButton__svg{
+.tripleColumnViewButton__svg {
     cursor: pointer;
+    fill: var(--darkGrey);
+}
+
+.tripleColumnViewButton__svg.selected{
     fill: #515151;
 }
 
-.tripleColumnViewButton__svg:hover{
+.tripleColumnViewButton__svg.hover{
     fill: #7D7D7D;
 }
 
 .singleColumnViewButton__svg{
     cursor: pointer;
     margin-left: 24px;
-    fill: #303030;
+    fill: #515151;
 }
 
-.singleColumnViewButton__svg:hover{
+.singleColumnViewButton__svg.unselected{
+    margin-left: 24px;
+    fill: var(--darkGrey);
+}
+
+.singleColumnViewButton__svg.hover{
     fill: #7D7D7D;
 }
 
