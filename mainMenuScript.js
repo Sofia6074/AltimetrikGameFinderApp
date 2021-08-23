@@ -23,7 +23,6 @@ async function loadCardsInfo(){
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
     document.querySelector(".titles__subtitle").innerHTML = "Based on player counts and release date";
-    console.log(data.results)
 
     data.results.map(function(element){
         cardRanking++;
@@ -490,7 +489,6 @@ async function openModal(id){
     const cards = document.querySelectorAll(".listElement");
     for (let i = 0; i < cards.length; i++) {
         if (cards[i].getAttribute("onclick") == `openModal(${id})`){
-            console.log(cards[i]);
             // Get img
             const img = cards[i].querySelector(".card__Image").getElementsByTagName("img")[0].currentSrc;
             // Get name
@@ -534,7 +532,6 @@ async function openModal(id){
 
             //Fetch aditional info
             const extraInfo = await loadCardsInfoWithId(id);
-            console.log(extraInfo);
             const platformsName = setPlatformsNames(extraInfo.parent_platforms);
             const publisher = setPublisher(extraInfo.publishers[0]);
             const website = setWebsite(extraInfo.website);
@@ -634,7 +631,10 @@ async function openModal(id){
             `
             document.querySelector(".modalContainer").innerHTML += modal;
         }
+    }
 
+    if (window.innerWidth <= 1023 ) {
+        document.querySelector("footer").classList.add("footer--tablet");
     }
 
 }
@@ -685,6 +685,11 @@ function closeModal(){
     document.querySelector(".modal").remove();
     document.querySelector(".modal__bg").remove();
     document.querySelector(".modalClickContainer").classList.remove("show");
+
+    if (window.innerWidth <= 1023 ) {
+        document.querySelector("footer").classList.remove("footer--tablet");
+    }
+
 }
 
 async function loadScreenshots(gameSlug){
