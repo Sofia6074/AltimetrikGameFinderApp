@@ -311,12 +311,15 @@ function setPlatformIcon(platform){
             platform = "media/mainMenu/platform__ios.svg";
             break;
         case 5:
+            platform = "media/mainMenu/platform__android.svg";
+            break;
+        case 6:
             platform = "media/mainMenu/platform__apple.svg";
             break;
-        case  6:
+        case 7:
             platform = "media/mainMenu/platform__linux.svg";
             break;
-        case  7:
+        case 8:
             platform = "media/mainMenu/platform__nintendo.svg";
             break;
         default: return "media/mainMenu/platform__notFound.svg";
@@ -337,7 +340,53 @@ async function loadCardsInfoWithId(gameId){
     return data;
 }
 
-//  - - - - - - - - - - Search functionality
+// - - - - - - - - - - Hamburguer menu
+function openMenu(){
+    document.querySelector("header").setAttribute("style", "position: unset;");
+    document.querySelector(".nav").classList.add("show");
+    document.querySelector(".list__logOut").classList.add("show");
+    if (window.screen.width <= 1023 && window.screen.width >= 768){
+        document.querySelector(".clickContainer--tablet").classList.add("show");
+    }
+    if (window.screen.width <= 767){
+        if(document.querySelector(".headerOptions__hamburgerMenu").classList.contains("show")){
+            closeMenu();
+        }
+        else{
+            document.querySelector(".headerOptions__hamburgerMenu").classList.add("show");
+        }
+    }
+}
+
+function closeMenu(){
+    document.querySelector("header").removeAttribute("style", "position: unset;");
+    document.querySelector(".clickContainer--tablet").classList.remove("show");
+    document.querySelector(".nav").classList.remove("show");
+
+    if (window.screen.width < 767){
+        document.querySelector(".headerOptions__hamburgerMenu").classList.remove("show");
+    }
+}
+
+// - - - - - - - - - - Search Bar
+function openSearchBar(){
+    if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
+        search();
+    }
+    else{
+        document.querySelector(".header__clickContainer--mobile").classList.add("show");
+        document.querySelector(".header__searchBarContainer--mobile").classList.add("show");
+        document.querySelector("header").setAttribute("style", "height:166px");
+    }
+}
+
+function closeSearchBar(){
+    document.querySelector(".header__clickContainer--mobile").classList.remove("show");
+    document.querySelector(".header__searchBarContainer--mobile").classList.remove("show");
+    document.querySelector("header").removeAttribute("style", "height:166px");
+}
+
+//  - - - - - - - - - - Search Bar functionality
 function search(){
     let searchText = "";
     if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
@@ -396,52 +445,6 @@ function fillSearchInput(id){
     closeSuggestions();
 }
 
-// - - - - - - - - - - Hamburguer menu
-function openMenu(){
-    document.querySelector("header").setAttribute("style", "position: unset;");
-    document.querySelector(".nav").classList.add("show");
-    document.querySelector(".list__logOut").classList.add("show");
-    if (window.screen.width <= 1023 && window.screen.width >= 768){
-        document.querySelector(".clickContainer--tablet").classList.add("show");
-    }
-    if (window.screen.width <= 767){
-        if(document.querySelector(".headerOptions__hamburgerMenu").classList.contains("show")){
-            closeMenu();
-        }
-        else{
-            document.querySelector(".headerOptions__hamburgerMenu").classList.add("show");
-        }
-    }
-}
-
-function closeMenu(){
-    document.querySelector("header").removeAttribute("style", "position: unset;");
-    document.querySelector(".clickContainer--tablet").classList.remove("show");
-    document.querySelector(".nav").classList.remove("show");
-
-    if (window.screen.width < 767){
-        document.querySelector(".headerOptions__hamburgerMenu").classList.remove("show");
-    }
-}
-
-// - - - - - - - - - - Search Bar
-function openSearchBar(){
-    if (document.querySelector(".header__clickContainer--mobile").classList.contains("show")){
-        search();
-    }
-    else{
-        document.querySelector(".header__clickContainer--mobile").classList.add("show");
-        document.querySelector(".header__searchBarContainer--mobile").classList.add("show");
-        document.querySelector("header").setAttribute("style", "height:166px");
-    }
-}
-
-function closeSearchBar(){
-    document.querySelector(".header__clickContainer--mobile").classList.remove("show");
-    document.querySelector(".header__searchBarContainer--mobile").classList.remove("show");
-    document.querySelector("header").removeAttribute("style", "height:166px");
-}
-
 // - - - - - - - - - - Views
 function tripleColumnView(){
     document.querySelector(".singleColumnViewButton__svg").setAttribute("style", "fill:#303030;");
@@ -470,16 +473,10 @@ async function singleColumnView(){
         cardsDescription[i].innerHTML = "";
         cardsDescription[i].innerHTML = gameDescription;
     }
-
-    // // Tooltip
-    // const test = document.querySelectorAll(".leftInfo__title");
-    // for (let i = 0; i < test.length; i++) {
-    //     if (test[i].children.innerHTML != 'undefined'){
-    //         test[i].innerHTML = document.querySelector(".leftInfo__titleFullText").textContent;
-    //         test[i].classList.remove("tooltip");
-    //     }
-    // }
 }
+
+// - - - - - - - - - - Tooltips Breakpoints
+
 
 // - - - - - - - - - - Modal
 async function openModal(id){
@@ -689,6 +686,25 @@ function setAgeRating (rating){
     return rating.name;
 }
 
+// Loads the screenshots for the modal
+async function loadScreenshots(gameSlug){
+    const fetchInfo = await fetch(`https://api.rawg.io/api/games/${gameSlug}/screenshots?key=2276ace6657640eb84d3a1710c12f880`);
+    let data = await fetchInfo.json();
+    let screenshots = [];
+    
+    for (let i = 0; i < 5; i++) {
+        if (data.results[i].image == null){
+            screenshots.push("media/mainMenu/imageNotFound.jpg");
+        }
+        else {
+            screenshots.push(data.results[i].image);
+        }
+    }
+    return screenshots;
+}
+
+
+// Close modal
 function closeModal(){
     document.querySelector(".modal").remove();
     document.querySelector(".modal__bg").remove();
@@ -705,20 +721,4 @@ function closeModal(){
         document.querySelector("body").classList.remove("modal--open");
     }
 
-}
-
-async function loadScreenshots(gameSlug){
-    const fetchInfo = await fetch(`https://api.rawg.io/api/games/${gameSlug}/screenshots?key=2276ace6657640eb84d3a1710c12f880`);
-    let data = await fetchInfo.json();
-    let screenshots = [];
-    
-    for (let i = 0; i < 5; i++) {
-        if (data.results[i].image == null){
-            screenshots.push("media/mainMenu/imageNotFound.jpg");
-        }
-        else {
-            screenshots.push(data.results[i].image);
-        }
-    }
-    return screenshots;
 }
