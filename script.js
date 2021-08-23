@@ -1,4 +1,5 @@
 window.addEventListener("load", start);
+var firstClickOnInput = Boolean(true);
 
 function start() {
     document.querySelector(".inputMail").addEventListener("click", activeEmailInput);
@@ -135,7 +136,9 @@ function validatePassword(password) {
 // - - - - - - - - - - Change icons color depending on the event
 // Email
 function activeEmailInput() {
-    blurPassInput();
+    if (firstClickOnInput){
+        firstClickOnInput = false;
+    }
     document.querySelectorAll(".input")[0].setAttribute("style", "color:white;");
     document.querySelectorAll(".icon__svg")[0].setAttribute("style", "fill:white;");
     let elements = document.querySelectorAll(".userMail, .inputMail");
@@ -145,6 +148,10 @@ function activeEmailInput() {
 }
 
 function blurEmailInput() {
+    if (!firstClickOnInput){
+        validateEmail(document.getElementById("emailInput").value);
+    }
+    validateEmail(document.getElementById("emailInput").value);
     document.querySelectorAll(".input")[0].removeAttribute("style", "color:white;");
     document.querySelectorAll(".icon__svg")[0].removeAttribute("style", "fill:white;");
     let elements = document.querySelectorAll(".userMail, .inputMail");
@@ -155,6 +162,9 @@ function blurEmailInput() {
 
 // Password
 function activePassInput() {
+    if (firstClickOnInput){
+        firstClickOnInput = false;
+    }
     document.querySelectorAll(".input")[1].setAttribute("style", "color:white;");
     document.querySelectorAll(".icon__svg")[1].setAttribute("style", "fill:white;");
     let elements = document.querySelectorAll(".userPass, .inputPass, .icon__svg");
@@ -164,6 +174,10 @@ function activePassInput() {
 }
 
 function blurPassInput() {
+    if (!firstClickOnInput){
+        validatePassword(document.getElementById("passInput").value)
+    }
+    validatePassword(document.getElementById("passInput").value);
     document.querySelectorAll(".input")[1].removeAttribute("style", "color:white;");
     document.querySelectorAll(".icon__svg")[1].removeAttribute("style", "fill:white;");
     let elements = document.querySelectorAll(".userPass, .inputPass, .icon__svg");
@@ -188,6 +202,6 @@ function togglePass() {
 
 // - - - - - - - - - - Snackbar
 function closeSnackBar() {
-    document.querySelector(".succesSnackbar").classList.remove("show");
-    document.querySelector(".errorSnackbar").classList.remove("show");
+    document.querySelector(".succesSnackbar").setAttribute("style", "display: none;");
+    document.querySelector(".errorSnackbar").setAttribute("style", "display: none;");
 }
