@@ -711,6 +711,35 @@ li img {
     z-index: 1;
 }
 
+.modal__bg.show {
+    position: absolute;
+    overflow: hidden;
+    width: 1082px;
+    height: 793px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    background: var(--darkGrey);
+    z-index: 2;
+}
+
+.modal__bg img {
+    opacity: 0.57;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal__gradient {
+    background: linear-gradient(transparent 0%, #303030 30%);
+    position: absolute;
+    height: 400px;
+    width: 1082px;
+    bottom: 0px;
+    z-index: 2;
+}
+
 .modal {
     display: none;
     position: absolute;
@@ -722,9 +751,7 @@ li img {
     transform: translate(-50%,-50%);
     padding: 31px 90px 0px 80px;
     border-radius: 10px;
-    background: var(--darkGrey);
-    background-repeat: no-repeat;
-    background-size: 100%;
+    background: transparent;
     z-index: 2;
 }
 

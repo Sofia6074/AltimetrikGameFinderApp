@@ -544,7 +544,11 @@ async function openModal(id){
             
             let modal = 
             `
-            <div class="modal show" style="background-image: url(${img});">
+            <div class="modal__bg show">
+                <img src="${img}">
+                <div class="modal__gradient"></div>
+            </div>
+            <div class="modal show">
                 <div class="modal__platforms">`;
 
                     for (let j = 0; j < platforms.length; j++) {
@@ -635,7 +639,7 @@ async function openModal(id){
 
 }
 
-// - - - - - - - - - - Aux functions
+// - - - - - - - - - - Modal aux functions
 function setPlatformsNames(platforms){
     if (platforms === null) {
         return "Not defined";
@@ -679,6 +683,7 @@ function setAgeRating (rating){
 
 function closeModal(){
     document.querySelector(".modal").remove();
+    document.querySelector(".modal__bg").remove();
     document.querySelector(".modalClickContainer").classList.remove("show");
 }
 
