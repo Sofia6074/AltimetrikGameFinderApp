@@ -1,4 +1,12 @@
 window.addEventListener("load", start);
+var page = "";
+var cardRanking = 0;
+var nextPageCalled = Boolean(false);
+
+//Scroll to top at page
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+}
 
 function start() {
     loadCardsInfo();
@@ -16,9 +24,9 @@ function start() {
 //  - - - - - - - - - - Connection with Rawg API to load the cards
 // Home 
 async function loadCardsInfo(){
-    let cardRanking = 0;
     const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
     let data = await fetchInfo.json();
+    page = data.next;
     document.querySelector(".list__boldOption").classList.add("list__selected");
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
@@ -132,6 +140,7 @@ async function loadCardsInfo(){
         </li>  
         `;
         document.querySelector(".cardsContainer__list").innerHTML += card;
+        cardRanking++;
     });
     document.querySelector(".loaderContainer").setAttribute("style", "display:none;");
 }
@@ -448,8 +457,8 @@ function fillSearchInput(id){
 // - - - - - - - - - - Views
 // Change to triple column view
 function tripleColumnView(){
-    document.querySelector(".singleColumnViewButton__svg").classList.add("unselected");
-    document.querySelector(".tripleColumnViewButton__svg").classList.add("selected");
+    document.querySelector(".singleColumnViewButton__svg").classList.remove("selected");
+    document.querySelector(".tripleColumnViewButton__svg").classList.remove("unselected");
 
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
@@ -462,19 +471,31 @@ async function singleColumnView(){
     document.querySelector(".loaderContainer").removeAttribute("style", "display:none;");
     setTimeout(function () { document.querySelector(".loaderContainer").setAttribute("style", "display:none;"); }, 1000);
     
-    document.querySelector(".singleColumnViewButton__svg").classList.remove("unselected");
-    document.querySelector(".tripleColumnViewButton__svg").classList.remove("selected");
+    document.querySelector(".singleColumnViewButton__svg").classList.add("selected");
+    document.querySelector(".tripleColumnViewButton__svg").classList.add("unselected");
     
     let cardElements = document.querySelectorAll(".card");
     for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].classList.add("singleColumnView");
     }
-    cardsDescription = document.querySelectorAll(".cardInfo__gameDescription");
-    for (let i = 0; i < cardsDescription.length; i++) {
-        const gameId = cardsDescription[i].innerText;
-        const gameDescription = await getDescription(gameId);
-        cardsDescription[i].innerHTML = "";
-        cardsDescription[i].innerHTML = gameDescription;
+
+    let cards = document.querySelectorAll(".listElement");
+    let descriptions = document.querySelectorAll(".cardInfo__gameDescription ");
+    for (let i = 0; i < cards.length; i++) {
+        // Get card id
+        let id = cards[i].getAttribute("onclick");
+        firstBracket = id.indexOf('(');
+        lastBracket = id.indexOf(')');
+        id = id.substr(firstBracket+1,lastBracket-firstBracket-1);
+        // Get card description
+        const desc = descriptions[i].innerText;
+
+        if (desc == id){
+            const gameDescription = await getDescription(id);
+            descriptions[i].innerHTML = "";
+            descriptions[i].innerHTML = gameDescription;
+        }
+       
     }
 }
 
@@ -738,3 +759,140 @@ function closeModal(){
     }
 
 }
+
+// CALL WITH PAGE
+async function callNextPage(nextPage){
+const fetchInfo = await fetch(`${nextPage}`);
+    let data = await fetchInfo.json();
+    data.results.map(function(element){
+        cardRanking++;
+        let gameImg = setImage(element.background_image);
+        let gameName = element.name;
+        let gameDate = setDate(element.released);
+        let gameGenres = setGenres(element.genres);
+        let gamePlatforms = element.parent_platforms;
+        let gameId = element.id;
+        let card =
+        `
+        <li class="card listElement" onclick=openModal(${gameId})>
+            <div class="card card__Image">
+                <img src="${gameImg}">
+            </div>
+            <div class="card cardInfo">
+                <div class="card cardInfo__leftInfo">`;         
+                    if(gameName.length >= 20 ){
+                        const tooltipText = gameName;
+                        gameName = gameName.substring(0,16);
+                        gameName += "...";
+                        //May add: check if overflow exists
+                        card += `
+                            <div class="card leftInfo__title tooltip">${gameName}
+                            <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
+                            `;
+                    }
+                    else{
+                        card +=`<div class="card leftInfo__title">${gameName}`;
+                    }
+
+                card += `</div>
+                    <div class="card infoContainer--singleColumn">
+                        <div class = "card releaseDate--singleColumn">
+                            <div class="card leftInfo__releaseDate">
+                                <div class="card releaseDate__text">
+                                    Release date
+                                </div>
+                                <div class="card releaseDate__date">
+                                    ${gameDate}
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__firstLine">
+                        </div>
+                        <div class="card genres--singleColumn">
+                            <div class="card leftInfo__genres">
+                                <div class="card genres__text">
+                                    Genres
+                                </div>`;
+
+                                    if(gameGenres.length > 20 ){
+                                        const tooltipText = gameGenres;
+                                        gameGenres = gameGenres.substring(0,18);
+                                        gameGenres += "...";
+                                        card += `<div class="card genres__info tooltip">${gameGenres}
+                                                <span class="tooltip tooltip__text">${tooltipText}</span>
+                                            `;
+                                    }
+                                    else{
+                                        card += `<div class="card genres__info">${gameGenres}
+                                                <span class="tooltip tooltip__text"></span>
+                                            `;
+                                    }
+
+                                card += `
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__secondLine">
+                        </div>
+                        <div class="card leftInfo__position">
+                            #${cardRanking}
+                        </div>
+                    </div>
+                </div>
+                <div class="card cardInfo__rightInfo">
+                    <div class="card rightInfo__platformIcons">`;
+
+                        if (gamePlatforms == null){
+                            card += `
+                            <div class="card platformIcon noPlatform">
+                            <p>None</p>
+                            </div>`;
+                        }
+                        else{
+                            for (let i = 0; i < gamePlatforms.length; i++) {
+                                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                                card += `
+                                <div class="card platformIcon">
+                                    <img src=${platform}>
+                                </div>`;
+                            }
+                        }
+
+                    card += `
+                    </div>
+                    <div class="card rightInfo__position">
+                        #${cardRanking}
+                    </div>
+                    <div class="card rightInfo__giftButton">
+                        <input type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="card cardInfo__gameDescription">
+                ${gameId}
+            </div>  
+        </li>  
+        `;
+        document.querySelector(".cardsContainer__list").innerHTML += card;
+    });
+    page = data.next;
+    nextPageCalled = false;
+    
+    if (document.querySelector(".cardsContainer").classList.contains("singleColumnView")){
+        singleColumnView();
+    }
+}
+// - - - - - - - - - - Infinite Scrolling
+// https://javascript.info/size-and-scroll
+
+
+document.addEventListener('scroll', function(e) {
+    let pageHeight = document.body.scrollHeight;
+    let scrollPosition = window.scrollY + 1000;
+    // 1000 is the height of the scrollbar
+
+    if (pageHeight-scrollPosition < 1500){
+        if (!nextPageCalled){
+            nextPageCalled = true;
+            callNextPage(page);
+        }
+    }
+});

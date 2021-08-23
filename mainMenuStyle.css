@@ -13,6 +13,8 @@
     --green: #2BB34F;
     --gradientGreen: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
     --red: #D24040;
+    --viewEnabled: #515151;
+    --viewHover: #7D7D7D
 }
 
 * {
@@ -364,11 +366,11 @@ li img {
 
 .tripleColumnViewButton__svg {
     cursor: pointer;
-    fill: var(--darkGrey);
+    fill: var(--viewEnabled);
 }
 
-.tripleColumnViewButton__svg.selected{
-    fill: #515151;
+.tripleColumnViewButton__svg.unselected{
+    fill: var(--darkGrey);
 }
 
 .tripleColumnViewButton__svg.hover{
@@ -378,12 +380,12 @@ li img {
 .singleColumnViewButton__svg{
     cursor: pointer;
     margin-left: 24px;
-    fill: #515151;
+    fill: var(--darkGrey);
 }
 
-.singleColumnViewButton__svg.unselected{
+.singleColumnViewButton__svg.selected{
     margin-left: 24px;
-    fill: var(--darkGrey);
+    fill: var(--viewEnabled);
 }
 
 .singleColumnViewButton__svg.hover{
