@@ -482,9 +482,16 @@ async function singleColumnView(){
 async function openModal(id){
     document.querySelector(".modalClickContainer").classList.add("show");
 
+    if (window.innerWidth <= 767) {
+        document.querySelector("footer").setAttribute("style", "display: none;");
+    }
+    if (window.innerWidth <= 1023) {
+        document.querySelector("footer").classList.add("footer--tablet");
+    }
     // To disable the scroll, only for desktop
-    if (window.innerWidth > 1023 ) {
-        document.querySelector("body").classList.add("modal--open");
+    if (window.innerWidth > 1023) {
+            document.querySelector("body").classList.add("modal--open");
+            document.querySelector("footer").setAttribute("style", "display: none;");
     }
     
     // Get card info
@@ -634,14 +641,6 @@ async function openModal(id){
             document.querySelector(".modalContainer").innerHTML += modal;
         }
     }
-
-    if (window.innerWidth <= 1023 ) {
-        document.querySelector("footer").classList.add("footer--tablet");
-    }
-    if (window.innerWidth <= 767 ) {
-        document.querySelector("footer").setAttribute("style","display: none;");
-    }
-
 }
 
 // - - - - - - - - - - Modal aux functions
@@ -719,6 +718,7 @@ function closeModal(){
     else{
         // Enable scroll
         document.querySelector("body").classList.remove("modal--open");
+        document.querySelector("footer").setAttribute("style", "display: block;");
     }
 
 }
