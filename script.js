@@ -222,6 +222,18 @@ function togglePass() {
     }
 }
 
+// - - - - - - - - - - Carrousel
+let carouselPosition = 0;
+const carousel = document.getElementsByClassName("carousel__item");
+
+function showImage(position){
+  carousel[carouselPosition].classList.remove("carousel__visibleItem");
+  carousel[carouselPosition].classList.add("carousel__hiddenItem");
+  carousel[position].classList.remove("carousel__hiddenItem");
+  carousel[position].classList.add("carousel__visibleItem");
+  carouselPosition = position;
+}
+
 // - - - - - - - - - - Snackbar
 function closeSnackBar() {
     document.querySelector(".succesSnackbar").setAttribute("style", "display: none;");
