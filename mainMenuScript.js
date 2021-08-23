@@ -636,6 +636,9 @@ async function openModal(id){
     if (window.innerWidth <= 1023 ) {
         document.querySelector("footer").classList.add("footer--tablet");
     }
+    if (window.innerWidth <= 767 ) {
+        document.querySelector("footer").setAttribute("style","display: none;");
+    }
 
 }
 
@@ -688,6 +691,9 @@ function closeModal(){
 
     if (window.innerWidth <= 1023 ) {
         document.querySelector("footer").classList.remove("footer--tablet");
+    }
+    if (window.innerWidth <= 767 ) {
+        document.querySelector("footer").setAttribute("style","display: block;");
     }
 
 }
