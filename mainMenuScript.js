@@ -484,6 +484,11 @@ async function singleColumnView(){
 // - - - - - - - - - - Modal
 async function openModal(id){
     document.querySelector(".modalClickContainer").classList.add("show");
+
+    // To disable the scroll, only for desktop
+    if (window.innerWidth > 1023 ) {
+        document.querySelector("body").classList.add("modal--open");
+    }
     
     // Get card info
     const cards = document.querySelectorAll(".listElement");
@@ -689,11 +694,15 @@ function closeModal(){
     document.querySelector(".modal__bg").remove();
     document.querySelector(".modalClickContainer").classList.remove("show");
 
+    if (window.innerWidth <= 767 ) {
+        document.querySelector("footer").setAttribute("style","display: block;");
+    }
     if (window.innerWidth <= 1023 ) {
         document.querySelector("footer").classList.remove("footer--tablet");
     }
-    if (window.innerWidth <= 767 ) {
-        document.querySelector("footer").setAttribute("style","display: block;");
+    else{
+        // Enable scroll
+        document.querySelector("body").classList.remove("modal--open");
     }
 
 }
