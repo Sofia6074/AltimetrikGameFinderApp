@@ -193,6 +193,7 @@ input::placeholder {
 
 .headerOptions__logoutContainer img {
   margin-left: 11px;
+  cursor: pointer;  
 }
 
 .headerOptions__logoutContainer a {
@@ -291,6 +292,7 @@ li img {
   margin-right: 13px;
   width: 16.25px;
   height: 13px;
+  cursor: pointer;
 }
 
 .list__boldOption.marginTop {
