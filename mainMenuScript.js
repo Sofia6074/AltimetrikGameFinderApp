@@ -887,6 +887,11 @@ async function callNextPage(nextPage) {
     }
 }
 
+// - - - - - - - - - - LogOut
+function logOut(){
+    window.location = "index.html"
+}
+
 // - - - - - - - - - - Infinite Scrolling
 document.addEventListener('scroll', function (e) {
     let pageHeight = document.body.scrollHeight;
