@@ -39,6 +39,13 @@ async function login() {
     }
 }
 
+// Submit with enter key
+document.querySelector(".wrapLoginForm").addEventListener('submit', function(evt){
+    console.log("submit")
+    evt.preventDefault();
+    login();
+})
+
 // - - - - - - - - - - Check if the user is already registered
 async function checkIfUserRegistered() {
     let loginResponse = await loginUser();
