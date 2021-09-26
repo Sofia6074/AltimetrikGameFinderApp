@@ -3,7 +3,7 @@ var page = "";
 var cardRanking = 0;
 var nextPageCalled = Boolean(false);
 
-//Scroll to top at page
+//Scroll to top of the page
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
