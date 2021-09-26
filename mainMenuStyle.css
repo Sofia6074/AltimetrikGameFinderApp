@@ -276,6 +276,7 @@ ul {
 nav ul {
   padding-top: 22px;
   padding-left: 39px;
+  width: fit-content;
 }
 
 li a {
@@ -283,11 +284,15 @@ li a {
   color: var(--white);
 }
 
+li a:hover{
+  color: var(--lightGreen);
+}
+
 li svg {
   margin-right: 13px;
   width: 16px;
   height: 16px;
-  fill: white;
+  fill: var(--white);
   cursor: pointer;
 }
 
