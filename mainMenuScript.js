@@ -349,13 +349,14 @@ async function loadCardsInfoWithId(gameId) {
 
 // - - - - - - - - - - Hamburguer menu
 function openMenu() {
-    document.querySelector("header").setAttribute("style", "position: unset;");
     document.querySelector(".nav").classList.add("show");
     document.querySelector(".list__logOut").classList.add("show");
+
     if (window.screen.width <= 1023 && window.screen.width >= 768) {
         document.querySelector(".clickContainer--tablet").classList.add("show");
     }
     if (window.screen.width <= 767) {
+        document.querySelector("header").setAttribute("style", "position: unset;");
         if (document.querySelector(".headerOptions__hamburgerMenu").classList.contains("show")) {
             closeMenu();
         }
