@@ -287,10 +287,11 @@ li a:hover {
   color: rgba(124, 210, 53, 1);
 }
 
-li img {
+li svg {
   margin-right: 13px;
-  width: 16.25px;
-  height: 13px;
+  width: 16px;
+  height: 16px;
+  fill: white;
   cursor: pointer;
 }
 
