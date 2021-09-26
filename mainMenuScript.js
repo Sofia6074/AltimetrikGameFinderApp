@@ -367,12 +367,12 @@ function openMenu() {
 }
 
 function closeMenu() {
-    document.querySelector("header").removeAttribute("style", "position: unset;");
     document.querySelector(".clickContainer--tablet").classList.remove("show");
     document.querySelector(".nav").classList.remove("show");
 
     if (window.screen.width < 767) {
         document.querySelector(".headerOptions__hamburgerMenu").classList.remove("show");
+        document.querySelector("header").removeAttribute("style", "position: unset;");
     }
 }
 
