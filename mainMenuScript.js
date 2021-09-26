@@ -525,6 +525,11 @@ document.querySelector(".tripleColumnViewButton__svg").onmouseout = function () 
     document.querySelector(".tripleColumnViewButton__svg").classList.remove("hover");
 };
 
+// - - - - - - - - - - Nav list hover event
+function hoverListImage(elementOnHover){
+    console.log(elementOnHover);
+}
+
 // - - - - - - - - - - Modal
 async function openModal(id) {
     document.querySelector(".modalClickContainer").classList.add("show");
