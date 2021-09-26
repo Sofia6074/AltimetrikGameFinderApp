@@ -8,8 +8,27 @@ window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
 
+//Get today date
+function getTodayDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    return today;
+}
+
+function getFirstDayOfCurrentYear() {
+    var firstDay = new Date();
+    var yyyy = firstDay.getFullYear();
+
+    firstDay = yyyy + '-01-01';
+    return firstDay;
+}
+
 function start() {
-    loadCardsInfo();
+    loadCardsInfoNewAndTrending();
     document.querySelector(".search").addEventListener("click", search);
     document.querySelector(".searchInput").addEventListener("keyup", showSuggestions);
     document.querySelector(".hamburgerMenu__svg").addEventListener("click", openMenu);
@@ -23,8 +42,10 @@ function start() {
 
 //  - - - - - - - - - - Connection with Rawg API to load the cards
 // Home 
-async function loadCardsInfo() {
-    const fetchInfo = await fetch('https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=2021-01-01,2021-08-15');
+async function loadCardsInfoNewAndTrending() {
+    const firstDayOfThisYear = getFirstDayOfCurrentYear();
+    const todayDate = getTodayDate();
+    const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=${firstDayOfThisYear},${todayDate}`);
     let data = await fetchInfo.json();
     page = data.next;
     document.querySelector(".list__boldOption").classList.add("list__selected");
