@@ -405,6 +405,7 @@ function search() {
         searchText = document.querySelectorAll(".searchInput")[0].value;
     }
     loadCardsInfoWithSearch(searchText);
+    tripleColumnView();
 }
 
 // Search suggesitons
