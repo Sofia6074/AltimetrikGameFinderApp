@@ -528,11 +528,13 @@ document.querySelector(".tripleColumnViewButton__svg").onmouseout = function () 
 
 // - - - - - - - - - - Nav list hover event
 function hoverListImage(elementOnHover){
-    const svg = elementOnHover.getElementsByTagName("svg")[0].style.fill = "#7cd235";
+    elementOnHover.getElementsByTagName("svg")[0].style.fill = "var(--lightGreen)";
+    elementOnHover.getElementsByTagName("a")[0].setAttribute("style", "color: var(--lightGreen);");
 }
 
 function unhoverListImage(elementOnHover){
-    const svg = elementOnHover.getElementsByTagName("svg")[0].style.fill = "white";
+    elementOnHover.getElementsByTagName("svg")[0].style.fill = "white";
+    elementOnHover.getElementsByTagName("a")[0].setAttribute("style", "color: white");
 }
 
 // - - - - - - - - - - Modal

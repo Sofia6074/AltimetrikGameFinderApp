@@ -283,10 +283,6 @@ li a {
   color: var(--white);
 }
 
-li a:hover {
-  color: rgba(124, 210, 53, 1);
-}
-
 li svg {
   margin-right: 13px;
   width: 16px;
