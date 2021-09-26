@@ -224,7 +224,6 @@ input::placeholder {
 .headerOptions__profileIconContainer img {
   height: 45.33333206176758px;
   width: 43.870967864990234px;
-  /* object-fit: cover; */
   border-radius: 50%;
 }
 
