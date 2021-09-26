@@ -333,6 +333,10 @@ li svg {
   display: block;
 }
 
+.list__logOut > a {
+  margin-left: -12px;
+}
+
 /* - - - - - - - - CARDS CONTAINER - - - - - - - - */
 
 .cardsSection {
