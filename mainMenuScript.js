@@ -527,7 +527,11 @@ document.querySelector(".tripleColumnViewButton__svg").onmouseout = function () 
 
 // - - - - - - - - - - Nav list hover event
 function hoverListImage(elementOnHover){
-    console.log(elementOnHover);
+    const svg = elementOnHover.getElementsByTagName("svg")[0].style.fill = "#7cd235";
+}
+
+function unhoverListImage(elementOnHover){
+    const svg = elementOnHover.getElementsByTagName("svg")[0].style.fill = "white";
 }
 
 // - - - - - - - - - - Modal
