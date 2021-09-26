@@ -276,6 +276,9 @@ ul {
 nav ul {
   padding-top: 22px;
   padding-left: 39px;
+}
+
+nav li {
   width: fit-content;
 }
 
@@ -290,7 +293,6 @@ li a:hover{
 
 li svg {
   margin-right: 13px;
-  width: 16px;
   height: 16px;
   fill: var(--white);
   cursor: pointer;
