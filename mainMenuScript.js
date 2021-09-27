@@ -8,25 +8,6 @@ window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
 
-//Get today date
-function getTodayDate() {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-    return today;
-}
-
-function getFirstDayOfCurrentYear() {
-    var firstDay = new Date();
-    var yyyy = firstDay.getFullYear();
-
-    firstDay = yyyy + '-01-01';
-    return firstDay;
-}
-
 function start() {
     loadCardsInfoNewAndTrending();
     document.querySelector(".search").addEventListener("click", search);
@@ -52,6 +33,130 @@ async function loadCardsInfoNewAndTrending() {
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "New and trending";
     document.querySelector(".titles__subtitle").innerHTML = "Based on player counts and release date";
+
+    data.results.map(function (element) {
+        cardRanking++;
+        let gameImg = setImage(element.background_image);
+        let gameName = element.name;
+        let gameDate = setDate(element.released);
+        let gameGenres = setGenres(element.genres);
+        let gamePlatforms = element.parent_platforms;
+        let gameId = element.id;
+        let card =
+            `
+        <li class="card listElement" onclick=openModal(${gameId})>
+            <div class="card card__Image">
+                <img src="${gameImg}">
+            </div>
+            <div class="card cardInfo">
+                <div class="card cardInfo__leftInfo">`;
+        if (gameName.length >= 20) {
+            const tooltipText = gameName;
+            gameName = gameName.substring(0, 16);
+            gameName += "...";
+            card += `
+                            <div class="card leftInfo__title tooltip">${gameName}
+                            <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
+                            `;
+        }
+        else {
+            card += `<div class="card leftInfo__title">${gameName}`;
+        }
+
+        card += `</div>
+                    <div class="card infoContainer--singleColumn">
+                        <div class = "card releaseDate--singleColumn">
+                            <div class="card leftInfo__releaseDate">
+                                <div class="card releaseDate__text">
+                                    Release date
+                                </div>
+                                <div class="card releaseDate__date">
+                                    ${gameDate}
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__firstLine">
+                        </div>
+                        <div class="card genres--singleColumn">
+                            <div class="card leftInfo__genres">
+                                <div class="card genres__text">
+                                    Genres
+                                </div>`;
+
+        if (gameGenres.length > 20) {
+            const tooltipText = gameGenres;
+            gameGenres = gameGenres.substring(0, 18);
+            gameGenres += "...";
+            card += `<div class="card genres__info tooltip">${gameGenres}
+                                                <span class="tooltip tooltip__text">${tooltipText}</span>
+                                            `;
+        }
+        else {
+            card += `<div class="card genres__info">${gameGenres}
+                                                <span class="tooltip tooltip__text"></span>
+                                            `;
+        }
+
+        card += `
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__secondLine">
+                        </div>
+                        <div class="card leftInfo__position">
+                            #${cardRanking}
+                        </div>
+                    </div>
+                </div>
+                <div class="card cardInfo__rightInfo">
+                    <div class="card rightInfo__platformIcons">`;
+
+        if (gamePlatforms == null) {
+            card += `
+                            <div class="card platformIcon noPlatform">
+                            <p>None</p>
+                            </div>`;
+        }
+        else {
+            for (let i = 0; i < gamePlatforms.length; i++) {
+                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                card += `
+                                <div class="card platformIcon">
+                                    <img src=${platform}>
+                                </div>`;
+            }
+        }
+
+        card += `
+                    </div>
+                    <div class="card rightInfo__position">
+                        #${cardRanking}
+                    </div>
+                    <div class="card rightInfo__giftButton">
+                        <input type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="card cardInfo__gameDescription">
+                ${gameId}
+            </div>  
+        </li>  
+        `;
+        document.querySelector(".cardsContainer__list").innerHTML += card;
+        cardRanking++;
+    });
+    document.querySelector(".loaderContainer").setAttribute("style", "display:none;");
+}
+
+// This week
+async function loadCardsInfoThisWeek() {
+    const lastWeekDate = getLastWeekDate();    
+    const todayDate = getTodayDate();
+    const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=${lastWeekDate},${todayDate}`);
+    let data = await fetchInfo.json();
+    page = data.next;
+    document.querySelector(".list__boldOption").classList.add("list__selected");
+    document.querySelector(".cardsContainer__list").innerHTML = "";
+    document.querySelector(".titles__mainTitle").innerHTML = "This Week";
+    document.querySelector(".titles__subtitle").innerHTML = "Games launched this week";
 
     data.results.map(function (element) {
         cardRanking++;
@@ -940,3 +1045,36 @@ document.addEventListener('scroll', function (e) {
         }
     }
 });
+
+// - - - - - - - - - - Dates
+//Get today date
+function getTodayDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    return today;
+}
+
+//Get date of the first day of the current year
+function getFirstDayOfCurrentYear() {
+    var firstDay = new Date();
+    var yyyy = firstDay.getFullYear();
+
+    firstDay = yyyy + '-01-01';
+    return firstDay;
+}
+
+//Get last week date
+function getLastWeekDate(){
+    var lastWeekDate = new Date();
+    lastWeekDate.setDate(lastWeekDate.getDate()-7);
+    var dd = String(lastWeekDate.getDate()).padStart(2, '0');
+    var mm = String(lastWeekDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = lastWeekDate.getFullYear();
+
+    lastWeekDate = yyyy + '-' + mm + '-' + dd;;
+    return lastWeekDate;
+}
