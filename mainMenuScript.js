@@ -270,6 +270,130 @@ async function loadCardsInfoThisWeek() {
     document.querySelector(".loaderContainer").setAttribute("style", "display:none;");
 }
 
+// This month
+async function loadCardsInfoThisMonth() {
+    const lastMonthDate = getLastMonthDate();    
+    const todayDate = getTodayDate();
+    const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=${lastMonthDate},${todayDate}`);
+    let data = await fetchInfo.json();
+    page = data.next;
+    document.querySelector(".list__boldOption").classList.add("list__selected");
+    document.querySelector(".cardsContainer__list").innerHTML = "";
+    document.querySelector(".titles__mainTitle").innerHTML = "This Month";
+    document.querySelector(".titles__subtitle").innerHTML = "Games launched this month";
+
+    data.results.map(function (element) {
+        cardRanking++;
+        let gameImg = setImage(element.background_image);
+        let gameName = element.name;
+        let gameDate = setDate(element.released);
+        let gameGenres = setGenres(element.genres);
+        let gamePlatforms = element.parent_platforms;
+        let gameId = element.id;
+        let card =
+            `
+        <li class="card listElement" onclick=openModal(${gameId})>
+            <div class="card card__Image">
+                <img src="${gameImg}">
+            </div>
+            <div class="card cardInfo">
+                <div class="card cardInfo__leftInfo">`;
+        if (gameName.length >= 20) {
+            const tooltipText = gameName;
+            gameName = gameName.substring(0, 16);
+            gameName += "...";
+            card += `
+                            <div class="card leftInfo__title tooltip">${gameName}
+                            <span class="leftInfo__titleFullText tooltip tooltip__text">${tooltipText}</span>
+                            `;
+        }
+        else {
+            card += `<div class="card leftInfo__title">${gameName}`;
+        }
+
+        card += `</div>
+                    <div class="card infoContainer--singleColumn">
+                        <div class = "card releaseDate--singleColumn">
+                            <div class="card leftInfo__releaseDate">
+                                <div class="card releaseDate__text">
+                                    Release date
+                                </div>
+                                <div class="card releaseDate__date">
+                                    ${gameDate}
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__firstLine">
+                        </div>
+                        <div class="card genres--singleColumn">
+                            <div class="card leftInfo__genres">
+                                <div class="card genres__text">
+                                    Genres
+                                </div>`;
+
+        if (gameGenres.length > 20) {
+            const tooltipText = gameGenres;
+            gameGenres = gameGenres.substring(0, 18);
+            gameGenres += "...";
+            card += `<div class="card genres__info tooltip">${gameGenres}
+                                                <span class="tooltip tooltip__text">${tooltipText}</span>
+                                            `;
+        }
+        else {
+            card += `<div class="card genres__info">${gameGenres}
+                                                <span class="tooltip tooltip__text"></span>
+                                            `;
+        }
+
+        card += `
+                                </div>
+                            </div>
+                            <hr class="card leftInfo__secondLine">
+                        </div>
+                        <div class="card leftInfo__position">
+                            #${cardRanking}
+                        </div>
+                    </div>
+                </div>
+                <div class="card cardInfo__rightInfo">
+                    <div class="card rightInfo__platformIcons">`;
+
+        if (gamePlatforms == null) {
+            card += `
+                            <div class="card platformIcon noPlatform">
+                            <p>None</p>
+                            </div>`;
+        }
+        else {
+            for (let i = 0; i < gamePlatforms.length; i++) {
+                let platform = setPlatformIcon(gamePlatforms[i].platform.id);
+                card += `
+                                <div class="card platformIcon">
+                                    <img src=${platform}>
+                                </div>`;
+            }
+        }
+
+        card += `
+                    </div>
+                    <div class="card rightInfo__position">
+                        #${cardRanking}
+                    </div>
+                    <div class="card rightInfo__giftButton">
+                        <input type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="card cardInfo__gameDescription">
+                ${gameId}
+            </div>  
+        </li>  
+        `;
+        document.querySelector(".cardsContainer__list").innerHTML += card;
+        cardRanking++;
+    });
+    document.querySelector(".loaderContainer").setAttribute("style", "display:none;");
+}
+
 // Search
 async function loadCardsInfoWithSearch(search) {
     let cardRanking = 0;
@@ -1077,4 +1201,16 @@ function getLastWeekDate(){
 
     lastWeekDate = yyyy + '-' + mm + '-' + dd;;
     return lastWeekDate;
+}
+
+//Get last month date
+function getLastMonthDate(){
+    var lastMonthDate = new Date();
+    lastMonthDate.setMonth(lastMonthDate.getMonth()-1);
+    var dd = String(lastMonthDate.getDate()).padStart(2, '0');
+    var mm = String(lastMonthDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = lastMonthDate.getFullYear();
+
+    lastMonthDate = yyyy + '-' + mm + '-' + dd;
+    return lastMonthDate;
 }
