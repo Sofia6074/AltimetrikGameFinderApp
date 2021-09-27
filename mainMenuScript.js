@@ -153,6 +153,7 @@ async function loadCardsInfoThisWeek() {
     const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=${lastWeekDate},${todayDate}`);
     let data = await fetchInfo.json();
     page = data.next;
+    cardRanking = 0;
     document.querySelector(".list__boldOption").classList.add("list__selected");
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "This Week";
@@ -277,6 +278,7 @@ async function loadCardsInfoThisMonth() {
     const fetchInfo = await fetch(`https://api.rawg.io/api/games?key=2276ace6657640eb84d3a1710c12f880&dates=${lastMonthDate},${todayDate}`);
     let data = await fetchInfo.json();
     page = data.next;
+    cardRanking = 0;
     document.querySelector(".list__boldOption").classList.add("list__selected");
     document.querySelector(".cardsContainer__list").innerHTML = "";
     document.querySelector(".titles__mainTitle").innerHTML = "This Month";
@@ -581,7 +583,6 @@ function setPlatformIcon(platform) {
             platform = "media/mainMenu/platform__nintendo.svg";
             break;
         default: return "media/mainMenu/platform__notFound.svg";
-        // svg source: https://freesvg.org/1544388897
     }
     return platform;
 }
